@@ -88,9 +88,7 @@
         radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
     }
 
-    /* ============================================================
-       HEADER - CÁPSULA INSTAGRAM
-       ============================================================ */
+    /* HEADER - CÁPSULA */
     .header {
       display: flex;
       justify-content: space-between;
@@ -217,9 +215,7 @@
       transform: scale(1);
     }
 
-    /* ============================================================
-       FILTROS - CÁPSULA ROLÁVEL
-       ============================================================ */
+    /* FILTROS - CÁPSULA */
     .filter-bar {
       display: flex;
       gap: 2px;
@@ -267,9 +263,7 @@
       background: var(--gold-glow);
     }
 
-    /* ============================================================
-       CHIPS - CÁPSULA
-       ============================================================ */
+    /* CHIPS - CÁPSULA */
     .chip-carousel-wrapper {
       padding: 2px 8px;
       background: rgba(255, 255, 255, 0.03);
@@ -331,9 +325,7 @@
       transform: translateY(-1px);
     }
 
-    /* ============================================================
-       BUSCA - PILL COM BLUR
-       ============================================================ */
+    /* BUSCA - PILL COM BLUR */
     .search-wrapper {
       margin: 4px 0 6px 0;
       display: flex;
@@ -416,9 +408,7 @@
       animation: fadeIn 0.3s ease;
     }
 
-    /* ============================================================
-       CARROSSEL
-       ============================================================ */
+    /* CARROSSEL */
     .unified-carousel-wrapper {
       flex: 1;
       min-height: 0;
@@ -604,32 +594,7 @@
       align-items: center;
     }
 
-    /* ============================================================
-       CONTADOR DE FAVORITOS NO CARD
-       ============================================================ */
-    .carousel-item .fav-count {
-      position: absolute;
-      bottom: 70px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
-      padding: 2px 10px;
-      border-radius: var(--radius-pill);
-      font-size: 0.45rem;
-      color: rgba(255, 255, 255, 0.7);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      z-index: 10;
-    }
-
-    .carousel-item .fav-count span {
-      color: #ff4757;
-    }
-
-    /* ============================================================
-       INDICADORES
-       ============================================================ */
+    /* CAROUSEL INDICATORS */
     .carousel-indicators {
       display: flex;
       justify-content: center;
@@ -655,9 +620,7 @@
       opacity: 1;
     }
 
-    /* ============================================================
-       FOOTER - CÁPSULA INSTAGRAM
-       ============================================================ */
+    /* FOOTER - CÁPSULA INSTAGRAM */
     .footer-minimal {
       margin-top: 2px;
       padding: 4px 0 2px 0;
@@ -742,9 +705,7 @@
       color: var(--gold);
     }
 
-    /* ============================================================
-       MENU OVERLAY
-       ============================================================ */
+    /* MENU OVERLAY */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -916,9 +877,7 @@
       color: var(--gold);
     }
 
-    /* ============================================================
-       PÁGINAS
-       ============================================================ */
+    /* PÁGINAS */
     .page-container {
       flex: 1;
       overflow: hidden;
@@ -981,6 +940,7 @@
       min-height: 26px;
       display: flex;
       align-items: center;
+      background: transparent;
     }
 
     .back-home:hover {
@@ -1023,173 +983,7 @@
       display: none;
     }
 
-    /* ============================================================
-       GRID
-       ============================================================ */
-    .grid-cortes {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 4px 0;
-    }
-
-    .grid-item {
-      aspect-ratio: 9/12;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--bg-card);
-      cursor: pointer;
-      transition: all var(--transition-smooth);
-      border: 1px solid var(--border-subtle);
-      position: relative;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    .grid-item:hover {
-      border-color: var(--border-gold);
-      transform: scale(1.02) translateY(-2px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(80%) sepia(20%) contrast(1.1);
-      transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .grid-item:hover img {
-      filter: grayscale(0%) sepia(0%) contrast(1);
-    }
-
-    .grid-item .grid-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 10px 6px 5px 6px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
-    }
-
-    .grid-item .grid-overlay .grid-title {
-      font-size: 0.48rem;
-      font-weight: 400;
-      color: #fff;
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      letter-spacing: 0.01em;
-    }
-
-    .grid-item .grid-fav {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
-      border: none;
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.6rem;
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-smooth);
-    }
-
-    .grid-item .grid-fav.favorited {
-      color: #ff4757;
-    }
-
-    .grid-item .grid-fav-remove {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.5rem;
-      cursor: pointer;
-      color: #ff4757;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-smooth);
-    }
-
-    .grid-item .grid-fav-remove:hover {
-      transform: scale(1.1);
-      background: rgba(255, 71, 87, 0.2);
-    }
-
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 25px 16px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .empty-state .heart-big {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 6px;
-      opacity: 0.2;
-    }
-
-    /* ============================================================
-       ORDENAÇÃO
-       ============================================================ */
-    .sort-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 2px 0 6px 0;
-      flex-shrink: 0;
-    }
-
-    .sort-wrapper label {
-      font-size: 0.45rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .sort-wrapper select {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-pill);
-      padding: 4px 12px;
-      color: var(--text-secondary);
-      font-size: 0.5rem;
-      font-family: 'Inter', sans-serif;
-      outline: none;
-      cursor: pointer;
-      min-height: 28px;
-    }
-
-    .sort-wrapper select:focus {
-      border-color: var(--gold);
-    }
-
-    .sort-wrapper select option {
-      background: var(--bg-card);
-      color: var(--text-primary);
-    }
-
-    /* ============================================================
-       PÁGINA DE DETALHES
-       ============================================================ */
+    /* PÁGINA DE DETALHES - NOVA */
     .detail-page {
       display: none;
       flex-direction: column;
@@ -1227,6 +1021,24 @@
     .detail-header .back-home:hover {
       color: var(--gold);
       border-color: var(--border-gold);
+    }
+
+    .detail-header .share-btn {
+      color: var(--gold);
+      font-size: 0.5rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-gold);
+      min-height: 26px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      background: transparent;
+    }
+
+    .detail-header .share-btn:hover {
+      background: var(--gold-glow);
     }
 
     .detail-content {
@@ -1352,6 +1164,7 @@
       color: var(--text-secondary);
       border: 1px solid var(--border-subtle);
       flex: 0.5;
+      font-size: 0.8rem;
     }
 
     .detail-actions .share-detail-btn:hover {
@@ -1359,9 +1172,167 @@
       color: var(--gold);
     }
 
-    /* ============================================================
-       TENDÊNCIAS, GALERIA, FAVORITOS, SOBRE, CONTATO (mantidos)
-       ============================================================ */
+    /* ORDENAÇÃO */
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 0 6px 0;
+      flex-shrink: 0;
+    }
+
+    .sort-wrapper label {
+      font-size: 0.45rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .sort-wrapper select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 4px 12px;
+      color: var(--text-secondary);
+      font-size: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      cursor: pointer;
+      min-height: 28px;
+    }
+
+    .sort-wrapper select:focus {
+      border-color: var(--gold);
+    }
+
+    .sort-wrapper select option {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    /* GRID */
+    .grid-cortes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 4px 0;
+    }
+
+    .grid-item {
+      aspect-ratio: 9/12;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .grid-item:hover {
+      border-color: var(--border-gold);
+      transform: scale(1.02) translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(80%) sepia(20%) contrast(1.1);
+      transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .grid-item:hover img {
+      filter: grayscale(0%) sepia(0%) contrast(1);
+    }
+
+    .grid-item .grid-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 6px 5px 6px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+    }
+
+    .grid-item .grid-overlay .grid-title {
+      font-size: 0.48rem;
+      font-weight: 400;
+      color: #fff;
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+
+    .grid-item .grid-fav {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      border: none;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.6rem;
+      cursor: pointer;
+      color: rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+    }
+
+    .grid-item .grid-fav.favorited {
+      color: #ff4757;
+    }
+
+    .grid-item .grid-fav-remove {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.5rem;
+      cursor: pointer;
+      color: #ff4757;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+    }
+
+    .grid-item .grid-fav-remove:hover {
+      transform: scale(1.1);
+      background: rgba(255, 71, 87, 0.2);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 25px 16px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .empty-state .heart-big {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 6px;
+      opacity: 0.2;
+    }
+
+    /* TENDÊNCIAS */
     .tendencias-list {
       display: flex;
       flex-direction: column;
@@ -1436,6 +1407,7 @@
       align-items: center;
     }
 
+    /* GALERIA */
     .galeria-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1489,6 +1461,7 @@
       font-style: italic;
     }
 
+    /* FAVORITOS */
     .fav-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1496,6 +1469,7 @@
       padding: 4px 0;
     }
 
+    /* SOBRE */
     .sobre-content {
       display: flex;
       flex-direction: column;
@@ -1567,6 +1541,7 @@
       text-transform: uppercase;
     }
 
+    /* CONTATO */
     .contato-content {
       display: flex;
       flex-direction: column;
@@ -1659,9 +1634,7 @@
       transform: scale(1.1);
     }
 
-    /* ============================================================
-       MODAL (mantido)
-       ============================================================ */
+    /* MODAL - ORIGINAL MANTIDO COM 3 IMAGENS */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1945,9 +1918,7 @@
       font-weight: 300;
     }
 
-    /* ============================================================
-       SCROLLBAR
-       ============================================================ */
+    /* SCROLLBAR */
     ::-webkit-scrollbar {
       width: 2px;
       height: 2px;
@@ -1962,9 +1933,7 @@
       border-radius: 4px;
     }
 
-    /* ============================================================
-       RESPONSIVIDADE
-       ============================================================ */
+    /* RESPONSIVIDADE */
     @media (max-height: 700px) {
       .app { padding: 6px 8px 3px 8px; }
       .header { padding: 3px 14px; min-height: 38px; }
@@ -2116,11 +2085,11 @@
         <div class="carousel-indicators" id="indicators"></div>
       </div>
 
-      <!-- PÁGINA DE DETALHES -->
+      <!-- PÁGINA DE DETALHES (NOVA) -->
       <div class="detail-page" id="pageDetail">
         <div class="detail-header">
           <button class="back-home" id="detailBack">← voltar</button>
-          <button class="back-home" id="detailShare" style="border-color:var(--border-gold);color:var(--gold);">↗ compartilhar</button>
+          <button class="share-btn" id="detailShare">↗ compartilhar</button>
         </div>
         <div class="detail-content" id="detailContent">
           <div class="detail-image" id="detailImage">
@@ -2247,7 +2216,7 @@
 
   </div>
 
-  <!-- MODAL -->
+  <!-- MODAL - ORIGINAL COM 3 IMAGENS -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <div class="modal-indicators" id="modalIndicators"></div>
@@ -2274,7 +2243,7 @@
   <script>
     (function() {
       // ============================================================
-      // DADOS
+      // DADOS - CADA ESTILO TEM 3 IMAGENS NO GALLERY
       // ============================================================
       const styleData = {
         'velvet bob': {
@@ -2466,12 +2435,6 @@
 
       function getFavCount() { return favorites.length; }
 
-      function getFavCountByKey(key) {
-        // Simula contagem de favoritos por estilo (baseado em quem favoritou)
-        // Como é local, cada estilo tem 0 ou 1 (se o usuário favoritou)
-        return isFavorite(key) ? 1 : 0;
-      }
-
       function updateFavUI() {
         const count = favorites.length;
         const badge = document.getElementById('menuBadge');
@@ -2510,59 +2473,12 @@
           modalBtn.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
           modalBtn.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
         }
-        // Botão de favoritar na página de detalhes
         const detailBtn = document.getElementById('detailFavBtn');
         if (detailBtn.dataset.favKey === key) {
           detailBtn.classList.toggle('favorited', fav);
           detailBtn.textContent = fav ? '♥ favoritado' : '♥ favoritar';
         }
         updateFavUI();
-      }
-
-      // ============================================================
-      // GRID DE FAVORITOS
-      // ============================================================
-      function generateFavGrid() {
-        const grid = document.getElementById('favGrid');
-        grid.innerHTML = '';
-        if (favorites.length === 0) {
-          grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
-          return;
-        }
-        let sortedFavs = [...favorites];
-        const sortOption = document.getElementById('sortFavs').value;
-        if (sortOption === 'az') {
-          sortedFavs.sort((a, b) => styleData[a].title.localeCompare(styleData[b].title));
-        } else if (sortOption === 'za') {
-          sortedFavs.sort((a, b) => styleData[b].title.localeCompare(styleData[a].title));
-        }
-        // 'recent' mantém a ordem original (mais recente primeiro)
-
-        sortedFavs.forEach(key => {
-          const data = styleData[key];
-          if (!data) return;
-          const item = document.createElement('div');
-          item.className = 'grid-item';
-          item.innerHTML = `
-            <button class="grid-fav-remove" data-fav-key="${key}">✕</button>
-            <img src="${data.img}" alt="${data.title}" loading="lazy">
-            <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
-          `;
-          item.querySelector('.grid-fav-remove').addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleFavorite(this.dataset.favKey);
-            updateAllFavButtons(this.dataset.favKey);
-            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
-              generateFavGrid();
-            }
-          });
-          item.addEventListener('click', function(e) {
-            if (e.target.closest('.grid-fav-remove')) return;
-            openDetail(this.dataset.style || key);
-          });
-          item.dataset.style = key;
-          grid.appendChild(item);
-        });
       }
 
       // ============================================================
@@ -2581,7 +2497,7 @@
         sobre: document.getElementById('pageSobre'),
         contato: document.getElementById('pageContato')
       };
-      const backButtons = document.querySelectorAll('.back-home');
+      const backButtons = document.querySelectorAll('.back-home:not(#detailBack)');
       const homeBtn = document.getElementById('homeBtn');
       const chipWrapper = document.getElementById('chipWrapper');
       const searchWrapper = document.getElementById('searchWrapper');
@@ -2640,10 +2556,8 @@
         detailFavBtn.textContent = fav ? '♥ favoritado' : '♥ favoritar';
         detailFavCount.textContent = getFavCount();
 
-        // Esconder todas as páginas e mostrar detalhe
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
         detailPage.classList.add('active-page');
-        // Esconder filtros, chips e busca
         chipWrapper.style.display = 'none';
         searchWrapper.style.display = 'none';
         document.querySelector('.filter-bar').style.display = 'none';
@@ -2651,11 +2565,11 @@
 
       function closeDetail() {
         detailPage.classList.remove('active-page');
-        // Voltar para a página anterior (home)
         navigateTo('pageHome');
       }
 
       detailBack.addEventListener('click', closeDetail);
+
       detailShare.addEventListener('click', function() {
         if (currentDetailKey) {
           const data = styleData[currentDetailKey];
@@ -2666,7 +2580,6 @@
               url: window.location.href
             }).catch(() => {});
           } else {
-            // Fallback: copiar para clipboard
             const text = `${data.title} - ${data.desc}`;
             navigator.clipboard.writeText(text).then(() => {
               alert('📋 Link copiado! Compartilhe com seus amigos.');
@@ -2847,7 +2760,6 @@
           const data = styleData[key];
           if (!data) return;
           const fav = isFavorite(key);
-          const favCount = getFavCountByKey(key);
           const item = document.createElement('div');
           item.className = `carousel-item${key === activeStyle ? ' active-item' : ''}`;
           item.dataset.style = key;
@@ -2859,15 +2771,11 @@
               <span class="item-sub">· ${data.badge} ·</span>
               <span class="item-badge">${data.badge}</span>
             </div>
-            <div class="fav-count">♥ <span>${favCount}</span></div>
           `;
           item.querySelector('.favorite-btn').addEventListener('click', function(e) {
             e.stopPropagation();
             toggleFavorite(this.dataset.favKey);
             updateAllFavButtons(this.dataset.favKey);
-            // Atualizar contador no card
-            const countEl = this.closest('.carousel-item').querySelector('.fav-count span');
-            if (countEl) countEl.textContent = getFavCountByKey(this.dataset.favKey);
           });
           item.addEventListener('click', function(e) {
             if (e.target.closest('.favorite-btn')) return;
@@ -2959,7 +2867,52 @@
       }
 
       // ============================================================
-      // MODAL
+      // FAVORITOS GRID
+      // ============================================================
+      function generateFavGrid() {
+        const grid = document.getElementById('favGrid');
+        grid.innerHTML = '';
+        if (favorites.length === 0) {
+          grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
+          return;
+        }
+        let sortedFavs = [...favorites];
+        const sortOption = document.getElementById('sortFavs').value;
+        if (sortOption === 'az') {
+          sortedFavs.sort((a, b) => styleData[a].title.localeCompare(styleData[b].title));
+        } else if (sortOption === 'za') {
+          sortedFavs.sort((a, b) => styleData[b].title.localeCompare(styleData[a].title));
+        }
+
+        sortedFavs.forEach(key => {
+          const data = styleData[key];
+          if (!data) return;
+          const item = document.createElement('div');
+          item.className = 'grid-item';
+          item.innerHTML = `
+            <button class="grid-fav-remove" data-fav-key="${key}">✕</button>
+            <img src="${data.img}" alt="${data.title}" loading="lazy">
+            <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
+          `;
+          item.querySelector('.grid-fav-remove').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleFavorite(this.dataset.favKey);
+            updateAllFavButtons(this.dataset.favKey);
+            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+              generateFavGrid();
+            }
+          });
+          item.addEventListener('click', function(e) {
+            if (e.target.closest('.grid-fav-remove')) return;
+            openDetail(this.dataset.style || key);
+          });
+          item.dataset.style = key;
+          grid.appendChild(item);
+        });
+      }
+
+      // ============================================================
+      // MODAL - ORIGINAL COM 3 IMAGENS (MANTIDO)
       // ============================================================
       let modalCurrentKey = null;
       let modalCurrentIndex = 0;
@@ -3108,7 +3061,6 @@
       // NAVEGAÇÃO
       // ============================================================
       function navigateTo(pageId) {
-        // Fechar detalhe se estiver aberto
         if (detailPage.classList.contains('active-page')) {
           detailPage.classList.remove('active-page');
         }
@@ -3179,14 +3131,13 @@
       generateFavGrid();
       updateFavUI();
       console.log('📦 HAIRBOX · Catálogo · Fase 1 Completa!');
-      console.log('✅ Funcionalidades:');
+      console.log('✅ Modal com 3 imagens preservado!');
+      console.log('✅ Novas funcionalidades:');
       console.log('  • Página de detalhes do corte');
-      console.log('  • Ordenação de favoritos (A-Z, Z-A, recentes)');
+      console.log('  • Ordenação de favoritos');
       console.log('  • Limpar todos os favoritos');
       console.log('  • Compartilhar estilo');
-      console.log('  • Contador de favoritos por card');
       console.log('  • Footer em cápsula Instagram');
-      console.log('  • Header, filtros e chips em cápsula');
     })();
   </script>
 </body>
