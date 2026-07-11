@@ -88,9 +88,6 @@
         radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
     }
 
-    /* ============================================================
-       HEADER — COMPACTO
-       ============================================================ */
     .header {
       display: flex;
       justify-content: space-between;
@@ -225,9 +222,6 @@
       transform: scale(1);
     }
 
-    /* ============================================================
-       FILTROS — COMPACTOS
-       ============================================================ */
     .filter-bar {
       display: flex;
       gap: 3px;
@@ -269,9 +263,6 @@
       background: var(--gold-glow);
     }
 
-    /* ============================================================
-       CHIPS — COMPACTOS
-       ============================================================ */
     .chip-carousel-wrapper {
       padding: 2px 0 10px 0;
       border-bottom: 1px solid var(--border-subtle);
@@ -328,9 +319,6 @@
       transform: translateY(-1px);
     }
 
-    /* ============================================================
-       BUSCADOR — COMPACTO
-       ============================================================ */
     .search-wrapper {
       margin: 8px 0 10px 0;
       display: flex;
@@ -403,9 +391,15 @@
       fill: currentColor;
     }
 
-    /* ============================================================
-       CARROSSEL — PROTAGONISTA (ocupa o espaço)
-       ============================================================ */
+    .search-feedback {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-style: italic;
+      animation: fadeIn 0.3s ease;
+    }
+
     .unified-carousel-wrapper {
       flex: 1;
       min-height: 0;
@@ -616,9 +610,6 @@
       opacity: 1;
     }
 
-    /* ============================================================
-       FOOTER — UMA LINHA, DISCRETO
-       ============================================================ */
     .footer-minimal {
       margin-top: 2px;
       padding: 6px 0 2px 0;
@@ -694,9 +685,6 @@
       color: var(--gold);
     }
 
-    /* ============================================================
-       MENU OVERLAY
-       ============================================================ */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -866,9 +854,6 @@
       color: var(--gold);
     }
 
-    /* ============================================================
-       PÁGINAS
-       ============================================================ */
     .page-container {
       flex: 1;
       overflow: hidden;
@@ -945,7 +930,6 @@
       display: none;
     }
 
-    /* ===== GRID ===== */
     .grid-cortes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1025,7 +1009,47 @@
       color: #ff4757;
     }
 
-    /* ===== TENDÊNCIAS ===== */
+    .grid-item .grid-fav-remove {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      font-size: 0.5rem;
+      cursor: pointer;
+      color: #ff4757;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-smooth);
+    }
+
+    .grid-item .grid-fav-remove:hover {
+      transform: scale(1.1);
+      background: rgba(255, 71, 87, 0.2);
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px 16px;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .empty-state .heart-big {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+      opacity: 0.2;
+    }
+
     .tendencias-list {
       display: flex;
       flex-direction: column;
@@ -1100,7 +1124,6 @@
       align-items: center;
     }
 
-    /* ===== GALERIA ===== */
     .galeria-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1154,7 +1177,6 @@
       font-style: italic;
     }
 
-    /* ===== FAVORITOS ===== */
     .fav-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1162,95 +1184,6 @@
       padding: 4px 0;
     }
 
-    .fav-grid .empty-favs {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 30px 16px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-weight: 300;
-      font-style: italic;
-    }
-
-    .fav-grid .empty-favs .heart-big {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 8px;
-      opacity: 0.2;
-    }
-
-    .fav-grid .grid-item {
-      aspect-ratio: 9/12;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--bg-card);
-      cursor: pointer;
-      transition: all var(--transition-smooth);
-      border: 1px solid var(--border-subtle);
-      position: relative;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-    }
-
-    .fav-grid .grid-item:hover {
-      border-color: var(--border-gold);
-      transform: scale(1.02) translateY(-2px);
-    }
-
-    .fav-grid .grid-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(80%) sepia(20%) contrast(1.1);
-      transition: filter 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .fav-grid .grid-item:hover img {
-      filter: grayscale(0%) sepia(0%) contrast(1);
-    }
-
-    .fav-grid .grid-item .grid-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 12px 8px 6px 8px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
-    }
-
-    .fav-grid .grid-item .grid-overlay .grid-title {
-      font-size: 0.45rem;
-      font-weight: 400;
-      color: #fff;
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-    }
-
-    .fav-grid .grid-item .grid-fav-remove {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.5rem;
-      cursor: pointer;
-      color: #ff4757;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-smooth);
-    }
-
-    .fav-grid .grid-item .grid-fav-remove:hover {
-      transform: scale(1.1);
-      background: rgba(255, 71, 87, 0.2);
-    }
-
-    /* ===== SOBRE ===== */
     .sobre-content {
       display: flex;
       flex-direction: column;
@@ -1322,7 +1255,6 @@
       text-transform: uppercase;
     }
 
-    /* ===== CONTATO ===== */
     .contato-content {
       display: flex;
       flex-direction: column;
@@ -1363,6 +1295,11 @@
     .contato-form textarea:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px var(--gold-glow);
+    }
+
+    .contato-form input.error,
+    .contato-form textarea.error {
+      border-color: #ff4757;
     }
 
     .contato-form textarea {
@@ -1410,9 +1347,6 @@
       transform: scale(1.1);
     }
 
-    /* ============================================================
-       MODAL
-       ============================================================ */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1696,9 +1630,6 @@
       font-weight: 300;
     }
 
-    /* ============================================================
-       SCROLLBAR GLOBAL
-       ============================================================ */
     ::-webkit-scrollbar {
       width: 2px;
       height: 2px;
@@ -1713,9 +1644,6 @@
       border-radius: 4px;
     }
 
-    /* ============================================================
-       RESPONSIVO — AJUSTES FINOS
-       ============================================================ */
     @media (max-height: 640px) {
       .app { padding: 10px 12px 4px 12px; }
       .header { padding: 2px 0 8px 0; min-height: 36px; }
@@ -1733,7 +1661,7 @@
       .search-wrapper input { font-size: 0.6rem; padding: 6px 6px 6px 0; min-height: 28px; }
       .search-wrapper button { padding: 6px 14px; font-size: 0.45rem; min-height: 28px; }
       .search-wrapper button svg { width: 10px; height: 10px; }
-      .carousel-item { flex: 0 0 60%; min-width: 140px; }
+      .carousel-item { flex: 0 0 55%; min-width: 120px; aspect-ratio: 9/12; }
       .item-overlay { padding: 20px 10px 10px 10px; }
       .item-overlay h3 { font-size: 0.8rem; }
       .item-overlay .item-badge { font-size: 0.35rem; padding: 2px 10px; min-height: 18px; }
@@ -1751,7 +1679,7 @@
     }
 
     @media (max-height: 560px) {
-      .carousel-item { flex: 0 0 50%; min-width: 120px; aspect-ratio: 9/11; }
+      .carousel-item { flex: 0 0 45%; min-width: 100px; aspect-ratio: 9/11; }
       .header-brand .brand-main { font-size: 1rem; }
       .filter-btn { font-size: 0.4rem; padding: 3px 8px; }
       .chip { font-size: 0.45rem; padding: 3px 10px; }
@@ -1760,7 +1688,7 @@
     @media (max-width: 360px) {
       .app { padding: 12px 10px 4px 10px; }
       .header-brand .brand-main { font-size: 1.2rem; }
-      .carousel-item { flex: 0 0 65%; min-width: 140px; }
+      .carousel-item { flex: 0 0 60%; min-width: 100px; aspect-ratio: 9/12; }
       .item-overlay h3 { font-size: 0.75rem; }
       .filter-btn { font-size: 0.45rem; padding: 4px 8px; }
       .chip { font-size: 0.5rem; padding: 4px 10px; }
@@ -1780,7 +1708,6 @@
 <body>
   <div class="app">
 
-    <!-- HEADER -->
     <header class="header">
       <div class="header-brand" id="homeBtn">
         <span class="brand-main">hairbox<span>.</span></span>
@@ -1796,7 +1723,6 @@
       </div>
     </header>
 
-    <!-- MENU -->
     <div class="menu-overlay" id="menuOverlay">
       <div class="menu-panel">
         <div class="menu-header">
@@ -1808,7 +1734,7 @@
           <span class="item-count" id="menuFavCount">0</span>
         </button>
         <div class="menu-divider"></div>
-        <button class="menu-item" data-page="pageHome"><span class="icon">✧</span> cortes</button>
+        <button class="menu-item" data-page="pageHome"><span class="icon">✧</span> home</button>
         <button class="menu-item" data-page="pageTendencias"><span class="icon">✦</span> tendências</button>
         <button class="menu-item" data-page="pageGaleria"><span class="icon">◈</span> galeria</button>
         <button class="menu-item" data-page="pageSobre"><span class="icon">◎</span> sobre</button>
@@ -1816,14 +1742,13 @@
         <div class="menu-divider"></div>
         <div class="menu-theme">
           <span>🌙 tema</span>
-          <button class="theme-switch" id="menuThemeToggle">alternar</button>
+          <button class="theme-switch" id="menuThemeToggle">dark</button>
         </div>
         <div class="menu-divider"></div>
         <div style="padding: 8px 8px 0 8px; font-size: 0.4rem; color: var(--text-muted); letter-spacing: 0.08em; text-align: center; opacity: 0.3;">hairbox · são paulo</div>
       </div>
     </div>
 
-    <!-- FILTROS -->
     <div class="filter-bar" id="filterBar">
       <button class="filter-btn active-filter" data-filter="all">todos</button>
       <button class="filter-btn" data-filter="curto">curto</button>
@@ -1831,14 +1756,14 @@
       <button class="filter-btn" data-filter="longo">longo</button>
       <button class="filter-btn" data-filter="classico">clássico</button>
       <button class="filter-btn" data-filter="moderno">moderno</button>
+      <button class="filter-btn" data-filter="alternativo">alternativo</button>
+      <button class="filter-btn" data-filter="romantico">romântico</button>
     </div>
 
-    <!-- CHIPS -->
     <div class="chip-carousel-wrapper" id="chipWrapper">
       <div class="chip-carousel" id="chipCarousel"></div>
     </div>
 
-    <!-- BUSCADOR -->
     <div class="search-wrapper" id="searchWrapper">
       <input type="text" id="searchInput" placeholder="buscar estilo..." aria-label="Buscar cortes">
       <button id="searchButton">
@@ -1847,10 +1772,8 @@
       </button>
     </div>
 
-    <!-- PÁGINAS -->
     <div class="page-container" id="pageContainer">
 
-      <!-- HOME -->
       <div class="page active-page" id="pageHome">
         <div class="unified-carousel-wrapper">
           <div class="unified-carousel" id="unifiedCarousel"></div>
@@ -1858,18 +1781,6 @@
         <div class="carousel-indicators" id="indicators"></div>
       </div>
 
-      <!-- CORTES -->
-      <div class="page" id="pageCortes">
-        <div class="page-header">
-          <h2>todos os cortes</h2>
-          <span class="back-home" id="backHome1">← voltar</span>
-        </div>
-        <div class="page-scroll">
-          <div class="grid-cortes" id="gridCortes"></div>
-        </div>
-      </div>
-
-      <!-- TENDÊNCIAS -->
       <div class="page" id="pageTendencias">
         <div class="page-header">
           <h2>tendências</h2>
@@ -1880,7 +1791,6 @@
         </div>
       </div>
 
-      <!-- GALERIA -->
       <div class="page" id="pageGaleria">
         <div class="page-header">
           <h2>galeria</h2>
@@ -1891,7 +1801,6 @@
         </div>
       </div>
 
-      <!-- FAVORITOS -->
       <div class="page" id="pageFavoritos">
         <div class="page-header">
           <h2>♥ favoritos</h2>
@@ -1902,7 +1811,6 @@
         </div>
       </div>
 
-      <!-- SOBRE -->
       <div class="page" id="pageSobre">
         <div class="page-header">
           <h2>sobre</h2>
@@ -1923,7 +1831,6 @@
         </div>
       </div>
 
-      <!-- CONTATO -->
       <div class="page" id="pageContato">
         <div class="page-header">
           <h2>contato</h2>
@@ -1932,10 +1839,10 @@
         <div class="page-scroll">
           <div class="contato-content">
             <p>Envie uma mensagem para a equipe hairbox. Respondemos em até 24h.</p>
-            <form class="contato-form" id="contatoForm">
-              <input type="text" placeholder="seu nome" required>
-              <input type="email" placeholder="seu e-mail" required>
-              <textarea placeholder="sua mensagem..." required></textarea>
+            <form class="contato-form" id="contatoForm" novalidate>
+              <input type="text" id="contatoNome" placeholder="seu nome" required>
+              <input type="email" id="contatoEmail" placeholder="seu e-mail" required>
+              <textarea id="contatoMensagem" placeholder="sua mensagem..." required></textarea>
               <button type="submit">enviar</button>
             </form>
             <div class="contato-social">
@@ -1948,10 +1855,9 @@
 
     </div>
 
-    <!-- FOOTER — UMA LINHA, DISCRETO -->
     <div class="footer-minimal">
       <div class="footer-links" id="footerLinks">
-        <a class="active-link" data-page="pageHome">cortes</a>
+        <a class="active-link" data-page="pageHome">home</a>
         <a data-page="pageTendencias">tendências</a>
         <a data-page="pageGaleria">galeria</a>
         <a data-page="pageFavoritos">♥ fav</a>
@@ -1963,7 +1869,6 @@
 
   </div>
 
-  <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <div class="modal-indicators" id="modalIndicators"></div>
@@ -2192,14 +2097,18 @@
           favCount.style.color = 'var(--text-muted)';
         }
         document.getElementById('favCountStat').textContent = count;
-        generateFavGrid();
+        if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+          generateFavGrid();
+        }
       }
 
       function updateAllFavButtons(key) {
         const fav = isFavorite(key);
         document.querySelectorAll(`[data-fav-key="${key}"]`).forEach(el => {
           el.classList.toggle('favorited', fav);
-          el.textContent = fav ? '♥' : '♡';
+          if (el.tagName === 'BUTTON') {
+            el.textContent = fav ? '♥' : '♡';
+          }
         });
         const modalBtn = document.getElementById('modalFavBtn');
         if (modalBtn.dataset.favKey === key) {
@@ -2214,7 +2123,7 @@
         const grid = document.getElementById('favGrid');
         grid.innerHTML = '';
         if (favorites.length === 0) {
-          grid.innerHTML = `<div class="empty-favs"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
+          grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
           return;
         }
         favorites.forEach(key => {
@@ -2231,6 +2140,9 @@
             e.stopPropagation();
             toggleFavorite(this.dataset.favKey);
             updateAllFavButtons(this.dataset.favKey);
+            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+              generateFavGrid();
+            }
           });
           item.addEventListener('click', function(e) {
             if (e.target.closest('.grid-fav-remove')) return;
@@ -2247,7 +2159,6 @@
       const footerLinks = document.querySelectorAll('.footer-links a');
       const pages = {
         home: document.getElementById('pageHome'),
-        cortes: document.getElementById('pageCortes'),
         tendencias: document.getElementById('pageTendencias'),
         galeria: document.getElementById('pageGaleria'),
         favoritos: document.getElementById('pageFavoritos'),
@@ -2282,20 +2193,18 @@
       let modalCurrentIndex = 0;
       let modalImages = [];
 
-      // TEMA
       let currentTheme = localStorage.getItem('hairbox_theme') || 'dark';
       const themeToggle = document.getElementById('menuThemeToggle');
 
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '🌙 escuro' : '☀️ claro';
+        themeToggle.textContent = theme === 'dark' ? '🌙 dark' : '☀️ light';
         localStorage.setItem('hairbox_theme', theme);
         currentTheme = theme;
       }
       applyTheme(currentTheme);
       themeToggle.addEventListener('click', () => { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); closeMenu(); });
 
-      // MENU
       function openMenu() { menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
       function closeMenu() { menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
       hamburgerBtn.addEventListener('click', openMenu);
@@ -2306,26 +2215,40 @@
       });
       menuFavs.addEventListener('click', function() { navigateTo('pageFavoritos'); closeMenu(); });
 
-      // CHIPS
       function generateChips() {
         chipCarousel.innerHTML = '';
-        Object.keys(styleData).forEach(key => {
+        const keys = getFilteredKeys();
+        keys.forEach(key => {
           const data = styleData[key];
+          if (!data) return;
           const chip = document.createElement('span');
           chip.className = `chip ${key === currentStyle ? 'active-chip' : ''}`;
           chip.dataset.style = key;
           chip.textContent = data.title;
-          chip.addEventListener('click', () => { searchInput.value = key; updateContent(key); });
+          chip.addEventListener('click', function() {
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active-chip'));
+            this.classList.add('active-chip');
+            currentStyle = this.dataset.style;
+            if (document.getElementById('pageHome').classList.contains('active-page')) {
+              generateCarousel(currentStyle);
+            } else {
+              navigateTo('pageHome');
+              setTimeout(() => generateCarousel(currentStyle), 100);
+            }
+          });
           chipCarousel.appendChild(chip);
         });
       }
 
-      // FILTROS
       function getFilteredKeys() {
         let keys = Object.keys(styleData);
         if (currentFilter !== 'all') {
-          keys = keys.filter(k => styleData[k].size === currentFilter || styleData[k].style === currentFilter);
+          keys = keys.filter(k => {
+            const data = styleData[k];
+            return data.size === currentFilter || data.style === currentFilter;
+          });
         }
+        if (keys.length === 0) keys = Object.keys(styleData);
         return keys;
       }
 
@@ -2334,20 +2257,34 @@
           filterBtns.forEach(b => b.classList.remove('active-filter'));
           this.classList.add('active-filter');
           currentFilter = this.dataset.filter;
-          if (document.getElementById('pageHome').classList.contains('active-page')) generateCarousel(currentStyle);
-          if (document.getElementById('pageCortes').classList.contains('active-page')) generateGrid();
+          
+          if (document.getElementById('pageHome').classList.contains('active-page')) {
+            generateCarousel(currentStyle);
+          } else if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+            // Não faz nada nos favoritos
+          } else {
+            navigateTo('pageHome');
+            setTimeout(() => generateCarousel(currentStyle), 100);
+          }
         });
       });
 
-      // CARROSSEL
       function generateCarousel(activeStyle) {
         let keys = getFilteredKeys();
-        if (!keys.includes(activeStyle) && keys.length) activeStyle = keys[0];
-        if (!activeStyle || !keys.includes(activeStyle)) activeStyle = 'velvet bob';
+        if (keys.length === 0) keys = Object.keys(styleData);
+        
+        if (!keys.includes(activeStyle) && keys.length) {
+          activeStyle = keys[0];
+        }
+        if (!activeStyle || !keys.includes(activeStyle)) {
+          activeStyle = 'velvet bob';
+        }
         currentStyle = activeStyle;
+        
         const sorted = [activeStyle, ...keys.filter(k => k !== activeStyle)];
         unifiedCarousel.innerHTML = '';
         carouselItems = [];
+        
         sorted.forEach(key => {
           const data = styleData[key];
           if (!data) return;
@@ -2376,19 +2313,22 @@
           unifiedCarousel.appendChild(item);
           carouselItems.push(item);
         });
+        
         updateIndicators();
         setTimeout(() => {
           const idx = sorted.indexOf(activeStyle);
-          if (idx >= 0 && carouselItems[idx]) carouselItems[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          if (idx >= 0 && carouselItems[idx]) {
+            carouselItems[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
         }, 80);
         updateFavUI();
         generateChips();
       }
 
       function updateIndicators() {
-        const total = Math.ceil(carouselItems.length / 2.5);
+        const total = Math.max(Math.ceil(carouselItems.length / 2.5), 1);
         indicators.innerHTML = '';
-        for (let i = 0; i < Math.max(total, 1); i++) {
+        for (let i = 0; i < total; i++) {
           const dot = document.createElement('span');
           dot.className = `dot${i === 0 ? ' active-dot' : ''}`;
           dot.addEventListener('click', () => { if (carouselItems[i]) carouselItems[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); });
@@ -2409,39 +2349,11 @@
         Array.from(indicators.children).forEach((dot, i) => dot.classList.toggle('active-dot', i === active));
       });
 
-      // GRID
-      function generateGrid() {
-        const grid = document.getElementById('gridCortes');
-        grid.innerHTML = '';
-        getFilteredKeys().forEach(key => {
-          const data = styleData[key];
-          if (!data) return;
-          const fav = isFavorite(key);
-          const item = document.createElement('div');
-          item.className = 'grid-item';
-          item.innerHTML = `
-            <button class="grid-fav ${fav ? 'favorited' : ''}" data-fav-key="${key}">${fav ? '♥' : '♡'}</button>
-            <img src="${data.img}" alt="${data.title}" loading="lazy">
-            <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
-          `;
-          item.querySelector('.grid-fav').addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleFavorite(this.dataset.favKey);
-            updateAllFavButtons(this.dataset.favKey);
-          });
-          item.addEventListener('click', function(e) {
-            if (e.target.closest('.grid-fav')) return;
-            openModal(key);
-          });
-          grid.appendChild(item);
-        });
-      }
-
-      // TENDÊNCIAS
       function generateTendencias() {
         const list = document.getElementById('tendenciasList');
         list.innerHTML = '';
-        ['wolf cut', 'butterfly cut', 'pixie cut', 'curtain bangs', 'long bob', 'kitty cut'].forEach(key => {
+        const tendencias = ['wolf cut', 'butterfly cut', 'pixie cut', 'curtain bangs', 'long bob', 'kitty cut'];
+        tendencias.forEach(key => {
           const data = styleData[key];
           if (!data) return;
           const item = document.createElement('div');
@@ -2454,12 +2366,15 @@
               <span class="tendencia-tag">${data.badge}</span>
             </div>
           `;
-          item.addEventListener('click', () => { searchInput.value = key; updateContent(key); navigateTo('pageHome'); });
+          item.addEventListener('click', () => { 
+            searchInput.value = key; 
+            updateContent(key); 
+            navigateTo('pageHome'); 
+          });
           list.appendChild(item);
         });
       }
 
-      // GALERIA
       function generateGaleria() {
         const grid = document.getElementById('galeriaGrid');
         grid.innerHTML = '';
@@ -2474,7 +2389,6 @@
         });
       }
 
-      // MODAL
       function openModal(key) {
         const data = styleData[key];
         if (!data) return;
@@ -2568,17 +2482,59 @@
         if (e.key === 'ArrowRight') goToModalImage(modalCurrentIndex + 1);
       });
 
-      // NAVEGAÇÃO
+      function updateContent(term) {
+        const clean = term.trim().toLowerCase();
+        let found = null;
+        
+        if (clean) {
+          const keys = Object.keys(styleData);
+          found = keys.find(k => k === clean);
+          if (!found) {
+            found = keys.find(k => k.includes(clean) || clean.includes(k));
+          }
+          if (!found) {
+            const feedback = document.createElement('div');
+            feedback.className = 'search-feedback';
+            feedback.textContent = `"${term}" não encontrado. Mostrando todos os estilos.`;
+            const wrapper = document.querySelector('.unified-carousel-wrapper');
+            const existing = wrapper.querySelector('.search-feedback');
+            if (existing) existing.remove();
+            wrapper.appendChild(feedback);
+            setTimeout(() => feedback.remove(), 2500);
+            found = 'velvet bob';
+          }
+        }
+        
+        currentStyle = found || 'velvet bob';
+        if (document.getElementById('pageHome').classList.contains('active-page')) {
+          generateCarousel(currentStyle);
+        } else {
+          navigateTo('pageHome');
+          setTimeout(() => generateCarousel(currentStyle), 100);
+        }
+        generateChips();
+      }
+
+      function handleSearch() {
+        const val = searchInput.value;
+        if (val.trim()) {
+          updateContent(val);
+        } else {
+          generateCarousel(currentStyle);
+        }
+        if (window.innerWidth < 600) searchInput.blur();
+      }
+
       function navigateTo(pageId) {
         const current = document.querySelector('.page.active-page');
-        if (current) {
+        if (current && current.id !== pageId) {
           current.style.animation = 'none';
           void current.offsetHeight;
           current.style.animation = 'fadeOut 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards';
           setTimeout(() => { current.classList.remove('active-page'); current.style.animation = ''; }, 250);
         }
         setTimeout(() => {
-          Object.values(pages).forEach(p => p.classList.remove('active-page'));
+          Object.values(pages).forEach(p => { if (p) p.classList.remove('active-page'); });
           const target = document.getElementById(pageId);
           if (target) target.classList.add('active-page');
           const isHome = pageId === 'pageHome';
@@ -2591,28 +2547,6 @@
         }, 300);
       }
 
-      function updateContent(term) {
-        const clean = term.trim().toLowerCase();
-        let found = 'velvet bob';
-        if (clean) {
-          const keys = Object.keys(styleData);
-          for (let k of keys) {
-            if (k.includes(clean) || clean.includes(k)) { found = k; break; }
-          }
-        }
-        currentStyle = found;
-        if (document.getElementById('pageHome').classList.contains('active-page')) generateCarousel(currentStyle);
-        generateChips();
-      }
-
-      function handleSearch() {
-        const val = searchInput.value;
-        updateContent(val);
-        navigateTo('pageHome');
-        if (window.innerWidth < 600) searchInput.blur();
-      }
-
-      // EVENTOS
       footerLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -2624,18 +2558,35 @@
       homeBtn.addEventListener('click', () => navigateTo('pageHome'));
       searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } });
       searchButton.addEventListener('click', e => { e.preventDefault(); handleSearch(); });
-      searchInput.addEventListener('blur', () => { if (!searchInput.value.trim()) updateContent(''); });
-      document.getElementById('contatoForm').addEventListener('submit', e => { e.preventDefault(); alert('📨 Mensagem enviada com sucesso!'); e.target.reset(); });
+      searchInput.addEventListener('blur', () => { if (!searchInput.value.trim()) generateCarousel(currentStyle); });
 
-      // INICIALIZA
+      document.getElementById('contatoForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const inputs = this.querySelectorAll('input, textarea');
+        let valid = true;
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            input.classList.add('error');
+            valid = false;
+          } else {
+            input.classList.remove('error');
+          }
+        });
+        if (!valid) {
+          alert('⚠️ Por favor, preencha todos os campos.');
+          return;
+        }
+        alert('📨 Mensagem enviada com sucesso!');
+        this.reset();
+      });
+
       generateChips();
-      generateGrid();
       generateTendencias();
       generateGaleria();
       generateCarousel('velvet bob');
       generateFavGrid();
       updateFavUI();
-      console.log('📦 HAIRBOX · Catálogo · Pronto!');
+      console.log('📦 HAIRBOX · Catálogo · Versão final revisada!');
     })();
   </script>
 </body>
