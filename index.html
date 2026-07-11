@@ -88,27 +88,22 @@
         radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
     }
 
+    /* ============================================================
+       HEADER - CÁPSULA INSTAGRAM
+       ============================================================ */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 2px 0 8px 0;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 4px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
       flex-shrink: 0;
-      position: relative;
-      min-height: 32px;
-    }
-
-    .header::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 30px;
-      height: 2px;
-      background: var(--gold);
-      opacity: 0.3;
-      border-radius: 2px;
+      min-height: 44px;
+      margin-bottom: 4px;
     }
 
     .header-brand {
@@ -222,14 +217,23 @@
       transform: scale(1);
     }
 
+    /* ============================================================
+       FILTROS - CÁPSULA ROLÁVEL
+       ============================================================ */
     .filter-bar {
       display: flex;
       gap: 2px;
-      padding: 5px 0 4px 0;
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
       flex-shrink: 0;
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
+      margin-bottom: 4px;
     }
 
     .filter-bar::-webkit-scrollbar {
@@ -239,8 +243,8 @@
     .filter-btn {
       background: transparent;
       border: none;
-      padding: 4px 10px;
-      font-size: 0.55rem;
+      padding: 4px 12px;
+      font-size: 0.5rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -263,10 +267,18 @@
       background: var(--gold-glow);
     }
 
+    /* ============================================================
+       CHIPS - CÁPSULA
+       ============================================================ */
     .chip-carousel-wrapper {
-      padding: 2px 0 8px 0;
-      border-bottom: 1px solid var(--border-subtle);
+      padding: 2px 8px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
       flex-shrink: 0;
+      margin-bottom: 4px;
     }
 
     .chip-carousel {
@@ -286,10 +298,10 @@
 
     .chip {
       flex: 0 0 auto;
-      background: var(--bg-card);
+      background: transparent;
       padding: 4px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 300;
       color: var(--text-secondary);
       border: 1px solid var(--border-subtle);
@@ -299,7 +311,7 @@
       white-space: nowrap;
       font-family: 'Inter', sans-serif;
       letter-spacing: 0.02em;
-      min-height: 28px;
+      min-height: 26px;
       display: flex;
       align-items: center;
     }
@@ -319,23 +331,27 @@
       transform: translateY(-1px);
     }
 
+    /* ============================================================
+       BUSCA - PILL COM BLUR
+       ============================================================ */
     .search-wrapper {
-      margin: 6px 0 8px 0;
+      margin: 4px 0 6px 0;
       display: flex;
       align-items: center;
-      background: var(--bg-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: var(--radius-pill);
-      padding: 2px 2px 2px 14px;
+      padding: 2px 2px 2px 16px;
       border: 1px solid var(--border-subtle);
       transition: all var(--transition-smooth);
       flex-shrink: 0;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
       min-height: 34px;
     }
 
     .search-wrapper:focus-within {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px var(--gold-glow), 0 2px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 0 0 3px var(--gold-glow);
     }
 
     .search-wrapper input {
@@ -343,7 +359,7 @@
       border: none;
       background: transparent;
       padding: 6px 6px 6px 0;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-primary);
       outline: none;
       font-family: 'Inter', sans-serif;
@@ -355,7 +371,7 @@
     .search-wrapper input::placeholder {
       color: var(--text-muted);
       font-weight: 200;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-style: italic;
       letter-spacing: 0.02em;
     }
@@ -367,7 +383,7 @@
       padding: 6px 16px;
       color: #0a0808;
       font-weight: 500;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       white-space: nowrap;
@@ -400,6 +416,9 @@
       animation: fadeIn 0.3s ease;
     }
 
+    /* ============================================================
+       CARROSSEL
+       ============================================================ */
     .unified-carousel-wrapper {
       flex: 1;
       min-height: 0;
@@ -440,7 +459,7 @@
       position: relative;
       aspect-ratio: 9/12;
       height: auto;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
     .carousel-item:last-child {
@@ -450,12 +469,12 @@
     .carousel-item:hover {
       border-color: var(--border-gold);
       transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
     }
 
     .carousel-item.active-item {
       border-color: var(--gold);
-      box-shadow: 0 4px 30px rgba(201, 169, 110, 0.08), 0 2px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 30px rgba(201, 169, 110, 0.08), 0 8px 40px rgba(0, 0, 0, 0.3);
     }
 
     .carousel-item .img-container {
@@ -585,6 +604,32 @@
       align-items: center;
     }
 
+    /* ============================================================
+       CONTADOR DE FAVORITOS NO CARD
+       ============================================================ */
+    .carousel-item .fav-count {
+      position: absolute;
+      bottom: 70px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 0.45rem;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 10;
+    }
+
+    .carousel-item .fav-count span {
+      color: #ff4757;
+    }
+
+    /* ============================================================
+       INDICADORES
+       ============================================================ */
     .carousel-indicators {
       display: flex;
       justify-content: center;
@@ -610,10 +655,12 @@
       opacity: 1;
     }
 
+    /* ============================================================
+       FOOTER - CÁPSULA INSTAGRAM
+       ============================================================ */
     .footer-minimal {
       margin-top: 2px;
-      padding: 5px 0 2px 0;
-      border-top: 1px solid var(--border-subtle);
+      padding: 4px 0 2px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -630,6 +677,14 @@
       overflow-x: auto;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius-pill);
+      padding: 4px 6px;
+      border: 1px solid var(--border-subtle);
+      max-width: 320px;
+      margin: 0 auto;
     }
 
     .footer-links::-webkit-scrollbar {
@@ -638,7 +693,7 @@
 
     .footer-links a {
       color: var(--text-muted);
-      font-size: 0.5rem;
+      font-size: 0.45rem;
       text-decoration: none;
       transition: all var(--transition-smooth);
       font-weight: 300;
@@ -646,12 +701,13 @@
       text-transform: uppercase;
       cursor: pointer;
       font-family: 'Inter', sans-serif;
-      padding: 3px 10px;
-      border-radius: 4px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
       white-space: nowrap;
-      min-height: 24px;
+      min-height: 28px;
       display: flex;
       align-items: center;
+      background: transparent;
     }
 
     .footer-links a:hover {
@@ -661,13 +717,14 @@
 
     .footer-links a.active-link {
       color: var(--gold);
-      font-weight: 400;
+      font-weight: 500;
       background: var(--gold-glow);
+      border: 1px solid var(--border-gold);
     }
 
     .footer-copy {
       color: var(--text-muted);
-      font-size: 0.38rem;
+      font-size: 0.32rem;
       letter-spacing: 0.12em;
       text-align: center;
       opacity: 0.25;
@@ -685,6 +742,9 @@
       color: var(--gold);
     }
 
+    /* ============================================================
+       MENU OVERLAY
+       ============================================================ */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -712,7 +772,9 @@
     }
 
     .menu-panel {
-      background: var(--bg-secondary);
+      background: rgba(18, 16, 14, 0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       border-radius: 16px;
       padding: 18px 16px;
       width: 100%;
@@ -854,6 +916,9 @@
       color: var(--gold);
     }
 
+    /* ============================================================
+       PÁGINAS
+       ============================================================ */
     .page-container {
       flex: 1;
       overflow: hidden;
@@ -896,6 +961,12 @@
       letter-spacing: 0.01em;
     }
 
+    .page-header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
     .back-home {
       color: var(--text-muted);
       font-size: 0.5rem;
@@ -918,6 +989,28 @@
       transform: translateX(-3px);
     }
 
+    .clear-favs-btn {
+      color: #ff4757;
+      font-size: 0.4rem;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 71, 87, 0.2);
+      min-height: 26px;
+      display: flex;
+      align-items: center;
+      background: transparent;
+    }
+
+    .clear-favs-btn:hover {
+      background: rgba(255, 71, 87, 0.1);
+      border-color: #ff4757;
+    }
+
     .page-scroll {
       flex: 1;
       overflow-y: auto;
@@ -930,6 +1023,9 @@
       display: none;
     }
 
+    /* ============================================================
+       GRID
+       ============================================================ */
     .grid-cortes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1050,6 +1146,222 @@
       opacity: 0.2;
     }
 
+    /* ============================================================
+       ORDENAÇÃO
+       ============================================================ */
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 0 6px 0;
+      flex-shrink: 0;
+    }
+
+    .sort-wrapper label {
+      font-size: 0.45rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .sort-wrapper select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 4px 12px;
+      color: var(--text-secondary);
+      font-size: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      cursor: pointer;
+      min-height: 28px;
+    }
+
+    .sort-wrapper select:focus {
+      border-color: var(--gold);
+    }
+
+    .sort-wrapper select option {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    /* ============================================================
+       PÁGINA DE DETALHES
+       ============================================================ */
+    .detail-page {
+      display: none;
+      flex-direction: column;
+      height: 100%;
+      padding: 0;
+    }
+
+    .detail-page.active-page {
+      display: flex;
+      animation: fadeIn 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px 0 6px 0;
+      flex-shrink: 0;
+    }
+
+    .detail-header .back-home {
+      font-size: 0.5rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      min-height: 26px;
+      display: flex;
+      align-items: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      background: transparent;
+    }
+
+    .detail-header .back-home:hover {
+      color: var(--gold);
+      border-color: var(--border-gold);
+    }
+
+    .detail-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 0 10px 0;
+    }
+
+    .detail-image {
+      width: 100%;
+      aspect-ratio: 9/12;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .detail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .detail-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .detail-info .detail-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    .detail-info .detail-badge {
+      display: inline-block;
+      background: rgba(201, 169, 110, 0.12);
+      padding: 2px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.5rem;
+      color: var(--gold-light);
+      border: 1px solid rgba(201, 169, 110, 0.08);
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      align-self: flex-start;
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    .detail-info .detail-desc {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-top: 4px;
+    }
+
+    .detail-info .detail-meta {
+      display: flex;
+      gap: 16px;
+      padding: 8px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin: 4px 0;
+    }
+
+    .detail-info .detail-meta span {
+      font-size: 0.5rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-info .detail-meta span strong {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .detail-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .detail-actions button {
+      flex: 1;
+      padding: 10px;
+      border-radius: var(--radius-pill);
+      border: none;
+      font-size: 0.6rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-height: 40px;
+    }
+
+    .detail-actions .fav-detail-btn {
+      background: var(--gold);
+      color: #0a0808;
+      flex: 1;
+    }
+
+    .detail-actions .fav-detail-btn:hover {
+      background: var(--gold-light);
+      transform: scale(1.02);
+    }
+
+    .detail-actions .fav-detail-btn.favorited {
+      background: rgba(255, 71, 87, 0.15);
+      color: #ff4757;
+      border: 1px solid rgba(255, 71, 87, 0.2);
+    }
+
+    .detail-actions .share-detail-btn {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      flex: 0.5;
+    }
+
+    .detail-actions .share-detail-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       TENDÊNCIAS, GALERIA, FAVORITOS, SOBRE, CONTATO (mantidos)
+       ============================================================ */
     .tendencias-list {
       display: flex;
       flex-direction: column;
@@ -1347,6 +1659,9 @@
       transform: scale(1.1);
     }
 
+    /* ============================================================
+       MODAL (mantido)
+       ============================================================ */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1630,6 +1945,9 @@
       font-weight: 300;
     }
 
+    /* ============================================================
+       SCROLLBAR
+       ============================================================ */
     ::-webkit-scrollbar {
       width: 2px;
       height: 2px;
@@ -1644,20 +1962,23 @@
       border-radius: 4px;
     }
 
+    /* ============================================================
+       RESPONSIVIDADE
+       ============================================================ */
     @media (max-height: 700px) {
       .app { padding: 6px 8px 3px 8px; }
-      .header { padding: 1px 0 6px 0; min-height: 28px; }
+      .header { padding: 3px 14px; min-height: 38px; }
       .header-brand .brand-main { font-size: 1.1rem; }
       .header-brand .brand-sub { font-size: 0.35rem; }
       .hamburger { width: 28px; height: 28px; padding: 6px; }
       .hamburger .bar { width: 12px; }
       .hamburger .bar:nth-child(2) { width: 9px; }
       .hamburger .bar:nth-child(3) { width: 7px; }
-      .filter-bar { padding: 3px 0 3px 0; }
-      .filter-btn { font-size: 0.45rem; padding: 3px 8px; min-height: 22px; }
-      .chip-carousel-wrapper { padding: 1px 0 5px 0; }
-      .chip { font-size: 0.5rem; padding: 3px 11px; min-height: 24px; }
-      .search-wrapper { margin: 4px 0 6px 0; min-height: 30px; }
+      .filter-bar { padding: 3px 6px; }
+      .filter-btn { font-size: 0.45rem; padding: 3px 10px; min-height: 24px; }
+      .chip-carousel-wrapper { padding: 2px 6px; }
+      .chip { font-size: 0.5rem; padding: 3px 12px; min-height: 24px; }
+      .search-wrapper { margin: 3px 0 4px 0; min-height: 30px; }
       .search-wrapper input { font-size: 0.6rem; padding: 5px 5px 5px 0; min-height: 24px; }
       .search-wrapper input::placeholder { font-size: 0.55rem; }
       .search-wrapper button { padding: 5px 14px; font-size: 0.45rem; min-height: 24px; }
@@ -1671,20 +1992,23 @@
       .carousel-indicators { padding: 2px 0 0 0; gap: 6px; }
       .carousel-indicators .dot { width: 3px; height: 3px; }
       .carousel-indicators .dot.active-dot { width: 16px; }
-      .footer-links a { font-size: 0.42rem; padding: 2px 8px; min-height: 20px; }
+      .footer-links { padding: 3px 4px; max-width: 280px; }
+      .footer-links a { font-size: 0.4rem; padding: 3px 10px; min-height: 24px; }
       .footer-copy { font-size: 0.3rem; }
       .modal-content { height: min(70vh, 480px); }
       .modal-title { font-size: 0.95rem; }
       .modal-desc { font-size: 0.5rem; }
       .modal-fav-btn .fav-icon { width: 34px; height: 34px; font-size: 0.9rem; }
+      .detail-info .detail-title { font-size: 1.1rem; }
     }
 
     @media (max-height: 600px) {
       .carousel-item { flex: 0 0 65%; min-width: 120px; aspect-ratio: 9/11; }
       .header-brand .brand-main { font-size: 0.95rem; }
-      .filter-btn { font-size: 0.4rem; padding: 2px 7px; }
+      .filter-btn { font-size: 0.4rem; padding: 2px 8px; }
       .chip { font-size: 0.45rem; padding: 2px 10px; }
       .item-overlay h3 { font-size: 0.75rem; }
+      .detail-info .detail-title { font-size: 0.95rem; }
     }
 
     @media (max-width: 360px) {
@@ -1692,8 +2016,10 @@
       .header-brand .brand-main { font-size: 1rem; }
       .carousel-item { flex: 0 0 72%; min-width: 120px; aspect-ratio: 9/12; }
       .item-overlay h3 { font-size: 0.8rem; }
-      .filter-btn { font-size: 0.4rem; padding: 2px 6px; }
-      .chip { font-size: 0.45rem; padding: 3px 9px; }
+      .filter-btn { font-size: 0.4rem; padding: 2px 7px; }
+      .chip { font-size: 0.45rem; padding: 3px 10px; }
+      .footer-links { max-width: 240px; }
+      .footer-links a { font-size: 0.35rem; padding: 2px 8px; }
     }
 
     @media (min-width: 500px) {
@@ -1710,6 +2036,7 @@
 <body>
   <div class="app">
 
+    <!-- HEADER -->
     <header class="header">
       <div class="header-brand" id="homeBtn">
         <span class="brand-main">hairbox<span>.</span></span>
@@ -1725,6 +2052,7 @@
       </div>
     </header>
 
+    <!-- MENU -->
     <div class="menu-overlay" id="menuOverlay">
       <div class="menu-panel">
         <div class="menu-header">
@@ -1751,6 +2079,7 @@
       </div>
     </div>
 
+    <!-- FILTROS -->
     <div class="filter-bar" id="filterBar">
       <button class="filter-btn active-filter" data-filter="all">todos</button>
       <button class="filter-btn" data-filter="curto">curto</button>
@@ -1762,10 +2091,12 @@
       <button class="filter-btn" data-filter="romantico">romântico</button>
     </div>
 
+    <!-- CHIPS -->
     <div class="chip-carousel-wrapper" id="chipWrapper">
       <div class="chip-carousel" id="chipCarousel"></div>
     </div>
 
+    <!-- BUSCA -->
     <div class="search-wrapper" id="searchWrapper">
       <input type="text" id="searchInput" placeholder="buscar estilo..." aria-label="Buscar cortes">
       <button id="searchButton">
@@ -1774,8 +2105,10 @@
       </button>
     </div>
 
+    <!-- CONTAINER DE PÁGINAS -->
     <div class="page-container" id="pageContainer">
 
+      <!-- HOME -->
       <div class="page active-page" id="pageHome">
         <div class="unified-carousel-wrapper">
           <div class="unified-carousel" id="unifiedCarousel"></div>
@@ -1783,6 +2116,34 @@
         <div class="carousel-indicators" id="indicators"></div>
       </div>
 
+      <!-- PÁGINA DE DETALHES -->
+      <div class="detail-page" id="pageDetail">
+        <div class="detail-header">
+          <button class="back-home" id="detailBack">← voltar</button>
+          <button class="back-home" id="detailShare" style="border-color:var(--border-gold);color:var(--gold);">↗ compartilhar</button>
+        </div>
+        <div class="detail-content" id="detailContent">
+          <div class="detail-image" id="detailImage">
+            <img src="" alt="" id="detailImg">
+          </div>
+          <div class="detail-info">
+            <span class="detail-badge" id="detailBadge">tendência</span>
+            <h1 class="detail-title" id="detailTitle">Velvet Bob</h1>
+            <p class="detail-desc" id="detailDesc">Descrição do corte</p>
+            <div class="detail-meta">
+              <span><strong id="detailSize">médio</strong> · tamanho</span>
+              <span><strong id="detailStyle">clássico</strong> · estilo</span>
+              <span><strong id="detailFavCount">0</strong> ♥ favoritos</span>
+            </div>
+            <div class="detail-actions">
+              <button class="fav-detail-btn" id="detailFavBtn">♥ favoritar</button>
+              <button class="share-detail-btn" id="detailShareBtn">↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TENDÊNCIAS -->
       <div class="page" id="pageTendencias">
         <div class="page-header">
           <h2>tendências</h2>
@@ -1793,6 +2154,7 @@
         </div>
       </div>
 
+      <!-- GALERIA -->
       <div class="page" id="pageGaleria">
         <div class="page-header">
           <h2>galeria</h2>
@@ -1803,16 +2165,29 @@
         </div>
       </div>
 
+      <!-- FAVORITOS -->
       <div class="page" id="pageFavoritos">
         <div class="page-header">
           <h2>♥ favoritos</h2>
-          <span class="back-home" id="backHomeFav">← voltar</span>
+          <div class="page-header-actions">
+            <button class="clear-favs-btn" id="clearFavsBtn">✕ limpar todos</button>
+            <span class="back-home" id="backHomeFav">← voltar</span>
+          </div>
+        </div>
+        <div class="sort-wrapper">
+          <label for="sortFavs">ordenar:</label>
+          <select id="sortFavs">
+            <option value="recent">mais recentes</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+          </select>
         </div>
         <div class="page-scroll">
           <div class="fav-grid" id="favGrid"></div>
         </div>
       </div>
 
+      <!-- SOBRE -->
       <div class="page" id="pageSobre">
         <div class="page-header">
           <h2>sobre</h2>
@@ -1832,6 +2207,7 @@
         </div>
       </div>
 
+      <!-- CONTATO -->
       <div class="page" id="pageContato">
         <div class="page-header">
           <h2>contato</h2>
@@ -1856,6 +2232,7 @@
 
     </div>
 
+    <!-- FOOTER -->
     <div class="footer-minimal">
       <div class="footer-links" id="footerLinks">
         <a class="active-link" data-page="pageHome">home</a>
@@ -1870,6 +2247,7 @@
 
   </div>
 
+  <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <div class="modal-indicators" id="modalIndicators"></div>
@@ -1895,10 +2273,13 @@
 
   <script>
     (function() {
+      // ============================================================
+      // DADOS
+      // ============================================================
       const styleData = {
         'velvet bob': {
           title: 'Velvet Bob',
-          desc: 'Clássico moderno com camadas suaves que emolduram o rosto.',
+          desc: 'Clássico moderno com camadas suaves que emolduram o rosto. Perfeito para quem busca elegância e movimento.',
           badge: 'tendência',
           size: 'medio',
           style: 'classico',
@@ -1911,7 +2292,7 @@
         },
         'pixie cut': {
           title: 'Pixie Cut',
-          desc: 'Corte curto e prático que valoriza os traços faciais.',
+          desc: 'Corte curto e prático que valoriza os traços faciais. Moderno e cheio de personalidade.',
           badge: 'ousado',
           size: 'curto',
           style: 'moderno',
@@ -1924,7 +2305,7 @@
         },
         'wolf cut': {
           title: 'Wolf Cut',
-          desc: 'Camadas intensas e movimento selvagem. Atitude moderna.',
+          desc: 'Camadas intensas e movimento selvagem. Atitude moderna com um toque de rebeldia.',
           badge: 'selvagem',
           size: 'medio',
           style: 'moderno',
@@ -1937,7 +2318,7 @@
         },
         'side cut': {
           title: 'Side Cut',
-          desc: 'Rasurado de um lado com contraste marcante. Estilo ousado.',
+          desc: 'Rasurado de um lado com contraste marcante. Estilo ousado e cheio de atitude.',
           badge: 'radical',
           size: 'curto',
           style: 'alternativo',
@@ -1950,7 +2331,7 @@
         },
         'short bob': {
           title: 'Short Bob',
-          desc: 'Bob curto na altura do queixo. Linhas retas e elegância.',
+          desc: 'Bob curto na altura do queixo. Linhas retas e elegância minimalista.',
           badge: 'clássico',
           size: 'curto',
           style: 'classico',
@@ -1963,7 +2344,7 @@
         },
         'kitty cut': {
           title: 'Kitty Cut',
-          desc: 'Camadas suaves e franja lateral. Estilo doce e moderno.',
+          desc: 'Camadas suaves e franja lateral. Estilo doce e moderno com um toque feminino.',
           badge: 'doce',
           size: 'medio',
           style: 'romantico',
@@ -1976,7 +2357,7 @@
         },
         'nirvana cut': {
           title: 'Nirvana Cut',
-          desc: 'Grunge com desconexão e textura. Atitude rock.',
+          desc: 'Grunge com desconexão e textura. Atitude rock para quem não segue regras.',
           badge: 'grunge',
           size: 'medio',
           style: 'alternativo',
@@ -1989,7 +2370,7 @@
         },
         'long bob': {
           title: 'Long Bob',
-          desc: 'Bob alongado entre o queixo e os ombros. Versátil.',
+          desc: 'Bob alongado entre o queixo e os ombros. Versátil e atemporal.',
           badge: 'elegante',
           size: 'longo',
           style: 'classico',
@@ -2002,7 +2383,7 @@
         },
         'butterfly cut': {
           title: 'Butterfly Cut',
-          desc: 'Camadas leves que criam movimento, como asas de borboleta.',
+          desc: 'Camadas leves que criam movimento, como asas de borboleta. Leveza e fluidez.',
           badge: 'leve',
           size: 'longo',
           style: 'romantico',
@@ -2015,7 +2396,7 @@
         },
         'blunt cut': {
           title: 'Blunt Cut',
-          desc: 'Corte reto e marcante, sem camadas. Visual moderno.',
+          desc: 'Corte reto e marcante, sem camadas. Visual moderno e impactante.',
           badge: 'reto',
           size: 'medio',
           style: 'moderno',
@@ -2028,7 +2409,7 @@
         },
         'octopus cut': {
           title: 'Octopus Cut',
-          desc: 'Camadas curtas no topo e longas nas pontas. Volume.',
+          desc: 'Camadas curtas no topo e longas nas pontas. Volume e movimento em camadas.',
           badge: 'volumoso',
           size: 'longo',
           style: 'alternativo',
@@ -2041,7 +2422,7 @@
         },
         'shaggy hair': {
           title: 'Shaggy Hair',
-          desc: 'Visual despojado com muitas camadas e textura.',
+          desc: 'Visual despojado com muitas camadas e textura. Estilo anos 70 repaginado.',
           badge: 'despojado',
           size: 'medio',
           style: 'alternativo',
@@ -2054,7 +2435,7 @@
         },
         'curtain bangs': {
           title: 'Curtain Bangs',
-          desc: 'Franja cortina que abre no meio, emoldurando o rosto.',
+          desc: 'Franja cortina que abre no meio, emoldurando o rosto. Retrô e moderno ao mesmo tempo.',
           badge: 'retrô',
           size: 'longo',
           style: 'romantico',
@@ -2067,6 +2448,9 @@
         }
       };
 
+      // ============================================================
+      // FAVORITOS
+      // ============================================================
       let favorites = JSON.parse(localStorage.getItem('hairbox_favorites') || '[]');
 
       function toggleFavorite(key) {
@@ -2079,6 +2463,14 @@
       }
 
       function isFavorite(key) { return favorites.includes(key); }
+
+      function getFavCount() { return favorites.length; }
+
+      function getFavCountByKey(key) {
+        // Simula contagem de favoritos por estilo (baseado em quem favoritou)
+        // Como é local, cada estilo tem 0 ou 1 (se o usuário favoritou)
+        return isFavorite(key) ? 1 : 0;
+      }
 
       function updateFavUI() {
         const count = favorites.length;
@@ -2098,6 +2490,7 @@
           favCount.style.color = 'var(--text-muted)';
         }
         document.getElementById('favCountStat').textContent = count;
+        document.getElementById('detailFavCount').textContent = count;
         if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
           generateFavGrid();
         }
@@ -2107,7 +2500,7 @@
         const fav = isFavorite(key);
         document.querySelectorAll(`[data-fav-key="${key}"]`).forEach(el => {
           el.classList.toggle('favorited', fav);
-          if (el.tagName === 'BUTTON') {
+          if (el.tagName === 'BUTTON' && !el.classList.contains('fav-detail-btn')) {
             el.textContent = fav ? '♥' : '♡';
           }
         });
@@ -2117,9 +2510,18 @@
           modalBtn.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
           modalBtn.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
         }
+        // Botão de favoritar na página de detalhes
+        const detailBtn = document.getElementById('detailFavBtn');
+        if (detailBtn.dataset.favKey === key) {
+          detailBtn.classList.toggle('favorited', fav);
+          detailBtn.textContent = fav ? '♥ favoritado' : '♥ favoritar';
+        }
         updateFavUI();
       }
 
+      // ============================================================
+      // GRID DE FAVORITOS
+      // ============================================================
       function generateFavGrid() {
         const grid = document.getElementById('favGrid');
         grid.innerHTML = '';
@@ -2127,7 +2529,16 @@
           grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
           return;
         }
-        favorites.forEach(key => {
+        let sortedFavs = [...favorites];
+        const sortOption = document.getElementById('sortFavs').value;
+        if (sortOption === 'az') {
+          sortedFavs.sort((a, b) => styleData[a].title.localeCompare(styleData[b].title));
+        } else if (sortOption === 'za') {
+          sortedFavs.sort((a, b) => styleData[b].title.localeCompare(styleData[a].title));
+        }
+        // 'recent' mantém a ordem original (mais recente primeiro)
+
+        sortedFavs.forEach(key => {
           const data = styleData[key];
           if (!data) return;
           const item = document.createElement('div');
@@ -2147,12 +2558,16 @@
           });
           item.addEventListener('click', function(e) {
             if (e.target.closest('.grid-fav-remove')) return;
-            openModal(key);
+            openDetail(this.dataset.style || key);
           });
+          item.dataset.style = key;
           grid.appendChild(item);
         });
       }
 
+      // ============================================================
+      // DOM REFS
+      // ============================================================
       const searchInput = document.getElementById('searchInput');
       const searchButton = document.getElementById('searchButton');
       const unifiedCarousel = document.getElementById('unifiedCarousel');
@@ -2186,14 +2601,117 @@
       const menuOverlay = document.getElementById('menuOverlay');
       const menuClose = document.getElementById('menuClose');
       const menuFavs = document.getElementById('menuFavs');
+      const clearFavsBtn = document.getElementById('clearFavsBtn');
+      const sortFavs = document.getElementById('sortFavs');
 
-      let currentStyle = 'velvet bob';
-      let currentFilter = 'all';
-      let carouselItems = [];
-      let modalCurrentKey = null;
-      let modalCurrentIndex = 0;
-      let modalImages = [];
+      // ============================================================
+      // PÁGINA DE DETALHES
+      // ============================================================
+      const detailPage = document.getElementById('pageDetail');
+      const detailBack = document.getElementById('detailBack');
+      const detailShare = document.getElementById('detailShare');
+      const detailImg = document.getElementById('detailImg');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailBadgeEl = document.getElementById('detailBadge');
+      const detailDesc = document.getElementById('detailDesc');
+      const detailSize = document.getElementById('detailSize');
+      const detailStyle = document.getElementById('detailStyle');
+      const detailFavCount = document.getElementById('detailFavCount');
+      const detailFavBtn = document.getElementById('detailFavBtn');
+      const detailShareBtn = document.getElementById('detailShareBtn');
+      let currentDetailKey = null;
 
+      function openDetail(key) {
+        const data = styleData[key];
+        if (!data) return;
+        currentDetailKey = key;
+        detailImg.src = data.img;
+        detailImg.alt = data.title;
+        detailTitle.textContent = data.title;
+        detailBadgeEl.textContent = data.badge;
+        detailDesc.textContent = data.desc;
+        const sizeMap = { curto: 'curto', medio: 'médio', longo: 'longo' };
+        detailSize.textContent = sizeMap[data.size] || data.size;
+        const styleMap = { classico: 'clássico', moderno: 'moderno', alternativo: 'alternativo', romantico: 'romântico' };
+        detailStyle.textContent = styleMap[data.style] || data.style;
+        const fav = isFavorite(key);
+        detailFavBtn.dataset.favKey = key;
+        detailFavBtn.classList.toggle('favorited', fav);
+        detailFavBtn.textContent = fav ? '♥ favoritado' : '♥ favoritar';
+        detailFavCount.textContent = getFavCount();
+
+        // Esconder todas as páginas e mostrar detalhe
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+        detailPage.classList.add('active-page');
+        // Esconder filtros, chips e busca
+        chipWrapper.style.display = 'none';
+        searchWrapper.style.display = 'none';
+        document.querySelector('.filter-bar').style.display = 'none';
+      }
+
+      function closeDetail() {
+        detailPage.classList.remove('active-page');
+        // Voltar para a página anterior (home)
+        navigateTo('pageHome');
+      }
+
+      detailBack.addEventListener('click', closeDetail);
+      detailShare.addEventListener('click', function() {
+        if (currentDetailKey) {
+          const data = styleData[currentDetailKey];
+          if (navigator.share) {
+            navigator.share({
+              title: `${data.title} - HairBox`,
+              text: `Confira o corte ${data.title} no HairBox! ${data.desc}`,
+              url: window.location.href
+            }).catch(() => {});
+          } else {
+            // Fallback: copiar para clipboard
+            const text = `${data.title} - ${data.desc}`;
+            navigator.clipboard.writeText(text).then(() => {
+              alert('📋 Link copiado! Compartilhe com seus amigos.');
+            }).catch(() => {
+              alert('📋 Copie o link: ' + window.location.href);
+            });
+          }
+        }
+      });
+
+      detailFavBtn.addEventListener('click', function() {
+        const key = this.dataset.favKey;
+        if (key) {
+          toggleFavorite(key);
+          updateAllFavButtons(key);
+          const fav = isFavorite(key);
+          this.classList.toggle('favorited', fav);
+          this.textContent = fav ? '♥ favoritado' : '♥ favoritar';
+          detailFavCount.textContent = getFavCount();
+        }
+      });
+
+      detailShareBtn.addEventListener('click', function() {
+        if (currentDetailKey) {
+          const data = styleData[currentDetailKey];
+          if (navigator.share) {
+            navigator.share({
+              title: `${data.title} - HairBox`,
+              text: `Confira o corte ${data.title} no HairBox! ${data.desc}`,
+              url: window.location.href
+            }).catch(() => {});
+          } else {
+            const text = `${data.title} - ${data.desc}`;
+            navigator.clipboard.writeText(text).then(() => {
+              alert('📋 Link copiado! Compartilhe com seus amigos.');
+            }).catch(() => {
+              alert('📋 Copie o link: ' + window.location.href);
+            });
+          }
+        }
+      });
+
+      // ============================================================
+      // TEMA
+      // ============================================================
       let currentTheme = localStorage.getItem('hairbox_theme') || 'dark';
       const themeToggle = document.getElementById('menuThemeToggle');
 
@@ -2206,6 +2724,9 @@
       applyTheme(currentTheme);
       themeToggle.addEventListener('click', () => { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); closeMenu(); });
 
+      // ============================================================
+      // MENU
+      // ============================================================
       function openMenu() { menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
       function closeMenu() { menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
       hamburgerBtn.addEventListener('click', openMenu);
@@ -2216,6 +2737,32 @@
       });
       menuFavs.addEventListener('click', function() { navigateTo('pageFavoritos'); closeMenu(); });
 
+      // ============================================================
+      // LIMPAR FAVORITOS
+      // ============================================================
+      clearFavsBtn.addEventListener('click', function() {
+        if (favorites.length === 0) return;
+        if (confirm('Tem certeza que deseja remover todos os favoritos?')) {
+          favorites = [];
+          localStorage.setItem('hairbox_favorites', JSON.stringify(favorites));
+          updateFavUI();
+          generateFavGrid();
+          updateAllFavButtons();
+        }
+      });
+
+      // ============================================================
+      // ORDENAÇÃO
+      // ============================================================
+      sortFavs.addEventListener('change', function() {
+        if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+          generateFavGrid();
+        }
+      });
+
+      // ============================================================
+      // CHIPS
+      // ============================================================
       function generateChips() {
         chipCarousel.innerHTML = '';
         const keys = getFilteredKeys();
@@ -2241,6 +2788,9 @@
         });
       }
 
+      // ============================================================
+      // FILTROS
+      // ============================================================
       function getFilteredKeys() {
         let keys = Object.keys(styleData);
         if (currentFilter !== 'all') {
@@ -2253,6 +2803,7 @@
         return keys;
       }
 
+      let currentFilter = 'all';
       filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           filterBtns.forEach(b => b.classList.remove('active-filter'));
@@ -2269,6 +2820,12 @@
           }
         });
       });
+
+      // ============================================================
+      // CARROSSEL
+      // ============================================================
+      let currentStyle = 'velvet bob';
+      let carouselItems = [];
 
       function generateCarousel(activeStyle) {
         let keys = getFilteredKeys();
@@ -2290,6 +2847,7 @@
           const data = styleData[key];
           if (!data) return;
           const fav = isFavorite(key);
+          const favCount = getFavCountByKey(key);
           const item = document.createElement('div');
           item.className = `carousel-item${key === activeStyle ? ' active-item' : ''}`;
           item.dataset.style = key;
@@ -2301,15 +2859,19 @@
               <span class="item-sub">· ${data.badge} ·</span>
               <span class="item-badge">${data.badge}</span>
             </div>
+            <div class="fav-count">♥ <span>${favCount}</span></div>
           `;
           item.querySelector('.favorite-btn').addEventListener('click', function(e) {
             e.stopPropagation();
             toggleFavorite(this.dataset.favKey);
             updateAllFavButtons(this.dataset.favKey);
+            // Atualizar contador no card
+            const countEl = this.closest('.carousel-item').querySelector('.fav-count span');
+            if (countEl) countEl.textContent = getFavCountByKey(this.dataset.favKey);
           });
           item.addEventListener('click', function(e) {
             if (e.target.closest('.favorite-btn')) return;
-            openModal(this.dataset.style);
+            openDetail(this.dataset.style);
           });
           unifiedCarousel.appendChild(item);
           carouselItems.push(item);
@@ -2350,6 +2912,9 @@
         Array.from(indicators.children).forEach((dot, i) => dot.classList.toggle('active-dot', i === active));
       });
 
+      // ============================================================
+      // TENDÊNCIAS
+      // ============================================================
       function generateTendencias() {
         const list = document.getElementById('tendenciasList');
         list.innerHTML = '';
@@ -2376,6 +2941,9 @@
         });
       }
 
+      // ============================================================
+      // GALERIA
+      // ============================================================
       function generateGaleria() {
         const grid = document.getElementById('galeriaGrid');
         grid.innerHTML = '';
@@ -2385,10 +2953,17 @@
           const item = document.createElement('div');
           item.className = 'galeria-item';
           item.innerHTML = `<img src="${data.img}" alt="${data.title}" loading="lazy"><div class="galeria-overlay"><span>${data.title}</span></div>`;
-          item.addEventListener('click', () => openModal(key));
+          item.addEventListener('click', () => openDetail(key));
           grid.appendChild(item);
         });
       }
+
+      // ============================================================
+      // MODAL
+      // ============================================================
+      let modalCurrentKey = null;
+      let modalCurrentIndex = 0;
+      let modalImages = [];
 
       function openModal(key) {
         const data = styleData[key];
@@ -2483,6 +3058,9 @@
         if (e.key === 'ArrowRight') goToModalImage(modalCurrentIndex + 1);
       });
 
+      // ============================================================
+      // BUSCA
+      // ============================================================
       function updateContent(term) {
         const clean = term.trim().toLowerCase();
         let found = null;
@@ -2526,7 +3104,14 @@
         if (window.innerWidth < 600) searchInput.blur();
       }
 
+      // ============================================================
+      // NAVEGAÇÃO
+      // ============================================================
       function navigateTo(pageId) {
+        // Fechar detalhe se estiver aberto
+        if (detailPage.classList.contains('active-page')) {
+          detailPage.classList.remove('active-page');
+        }
         const current = document.querySelector('.page.active-page');
         if (current && current.id !== pageId) {
           current.style.animation = 'none';
@@ -2548,6 +3133,9 @@
         }, 250);
       }
 
+      // ============================================================
+      // EVENTOS
+      // ============================================================
       footerLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -2581,13 +3169,24 @@
         this.reset();
       });
 
+      // ============================================================
+      // INICIALIZAÇÃO
+      // ============================================================
       generateChips();
       generateTendencias();
       generateGaleria();
       generateCarousel('velvet bob');
       generateFavGrid();
       updateFavUI();
-      console.log('📦 HAIRBOX · Catálogo · Versão com zoom aplicado!');
+      console.log('📦 HAIRBOX · Catálogo · Fase 1 Completa!');
+      console.log('✅ Funcionalidades:');
+      console.log('  • Página de detalhes do corte');
+      console.log('  • Ordenação de favoritos (A-Z, Z-A, recentes)');
+      console.log('  • Limpar todos os favoritos');
+      console.log('  • Compartilhar estilo');
+      console.log('  • Contador de favoritos por card');
+      console.log('  • Footer em cápsula Instagram');
+      console.log('  • Header, filtros e chips em cápsula');
     })();
   </script>
 </body>
