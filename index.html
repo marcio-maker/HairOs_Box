@@ -193,8 +193,40 @@
       transform: scale(1);
     }
 
+    .category-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 0 4px 0;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cat-tab {
+      background: transparent;
+      border: 1px solid var(--border-gold);
+      padding: 7px 18px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      white-space: nowrap;
+      border-radius: var(--radius-pill);
+      min-height: 30px;
+    }
+
+    .cat-tab.active-cat {
+      color: var(--bg-primary);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
     .filter-bar {
       display: flex;
+      align-items: center;
       gap: 3px;
       padding: 8px 0 6px 0;
       flex-shrink: 0;
@@ -204,6 +236,25 @@
     }
 
     .filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-group-label {
+      font-size: 0.4rem;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 0 6px 0 4px;
+      opacity: 0.55;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border-gold);
+      margin: 0 2px 0 6px;
+      flex-shrink: 0;
+    }
 
     .filter-btn {
       background: transparent;
@@ -529,6 +580,29 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       font-family: 'Inter', sans-serif;
+    }
+
+    .item-overlay .item-colors {
+      display: flex;
+      gap: 4px;
+      margin: 3px 0 2px 0;
+      flex-wrap: wrap;
+      min-height: 20px;
+    }
+
+    .item-overlay .color-chip {
+      background: rgba(201, 169, 110, 0.15);
+      border: 1px solid rgba(201, 169, 110, 0.12);
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 0.4rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      font-family: 'Inter', monospace;
+      letter-spacing: 0.04em;
+      min-height: 18px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .item-overlay .item-badge {
@@ -1599,6 +1673,166 @@
       font-weight: 300;
     }
 
+    .modal-classification {
+      font-size: 0.4rem;
+      color: rgba(201, 169, 110, 0.75);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-colors {
+      display: flex;
+      gap: 4px;
+      margin: 2px 0 1px 0;
+      flex-wrap: wrap;
+      min-height: 22px;
+    }
+
+    .modal-colors .color-chip-modal {
+      background: rgba(201, 169, 110, 0.2);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: 'Inter', monospace;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(4px);
+      min-height: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .modal-actions {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-info-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+      color: #fff;
+      transition: all var(--transition-smooth);
+    }
+
+    .modal-info-btn .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold-light);
+      transition: all var(--transition-smooth);
+    }
+
+    .modal-info-btn:hover .info-icon,
+    .modal-info-btn.info-active .info-icon {
+      transform: scale(1.06);
+      background: var(--gold);
+      color: var(--bg-primary);
+    }
+
+    .modal-info-btn .info-label {
+      font-size: 0.32rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 300;
+      text-align: center;
+      max-width: 46px;
+      line-height: 1.2;
+    }
+
+    .tech-drawer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      max-height: 78%;
+      overflow-y: auto;
+      background: linear-gradient(180deg, rgba(10, 8, 8, 0.98) 0%, var(--bg-primary) 40%);
+      border-top: 1px solid var(--border-gold);
+      border-radius: 18px 18px 0 0;
+      padding: 10px 18px 22px 18px;
+      transform: translateY(100%);
+      transition: transform var(--transition-smooth);
+    }
+
+    .tech-drawer.tech-drawer-open { transform: translateY(0); }
+
+    .tech-drawer-handle {
+      width: 32px;
+      height: 3px;
+      border-radius: 4px;
+      background: var(--border-gold);
+      margin: 2px auto 14px auto;
+    }
+
+    .tech-drawer-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .tech-chip {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.42rem;
+      letter-spacing: 0.06em;
+      color: var(--gold-light);
+      background: var(--gold-glow);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      white-space: nowrap;
+    }
+
+    .tech-chip strong {
+      color: var(--gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-right: 4px;
+    }
+
+    .tech-drawer-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.72rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+
+    .tech-drawer-text::before {
+      content: '"porquê funciona" — ';
+      color: var(--gold);
+      font-weight: 600;
+      font-style: normal;
+      font-size: 0.4rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
     ::-webkit-scrollbar { width: 2px; height: 2px; }
     ::-webkit-scrollbar-track { background: var(--bg-secondary); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
@@ -1614,6 +1848,9 @@
       .hamburger .bar:nth-child(2) { width: 11px; }
       .hamburger .bar:nth-child(3) { width: 8px; }
       .filter-bar { padding: 4px 0 4px 0; }
+      .category-tabs { padding: 6px 0 3px 0; }
+      .cat-tab { font-size: 0.55rem; padding: 5px 14px; min-height: 24px; }
+      .filter-group-label { font-size: 0.36rem; }
       .filter-btn { font-size: 0.45rem; padding: 4px 10px; min-height: 24px; }
       .chip-carousel-wrapper { padding: 2px 0 6px 0; }
       .chip { font-size: 0.5rem; padding: 4px 12px; min-height: 24px; }
@@ -1627,6 +1864,7 @@
       .item-overlay h3 { font-size: 0.8rem; }
       .item-overlay .item-badge { font-size: 0.35rem; padding: 2px 10px; min-height: 18px; }
       .item-overlay .item-sub { font-size: 0.35rem; }
+      .item-overlay .color-chip { font-size: 0.35rem; padding: 1px 6px; min-height: 14px; }
       .carousel-item .favorite-btn { width: 28px; height: 28px; font-size: 0.7rem; top: 8px; right: 8px; }
       .carousel-indicators { padding: 2px 0 0 0; gap: 6px; }
       .carousel-indicators .dot { width: 3px; height: 3px; }
@@ -1636,7 +1874,11 @@
       .modal-content { height: min(70vh, 480px); }
       .modal-title { font-size: 0.95rem; }
       .modal-desc { font-size: 0.55rem; }
+      .modal-colors .color-chip-modal { font-size: 0.4rem; padding: 1px 8px; min-height: 16px; }
       .modal-fav-btn .fav-icon { width: 34px; height: 34px; font-size: 0.9rem; }
+      .modal-info-btn .info-icon { width: 34px; height: 34px; font-size: 0.75rem; }
+      .modal-classification { font-size: 0.36rem; }
+      .tech-drawer-text { font-size: 0.65rem; }
     }
 
     @media (max-height: 560px) {
@@ -1713,16 +1955,22 @@
       </div>
     </div>
 
-    <!-- FILTER BAR com 12 botões -->
+    <!-- FILTER BAR: comprimento / estilo / família, agrupados -->
     <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filtros de estilo">
       <button class="filter-btn active-filter" data-filter="all" role="tab" aria-selected="true">todos</button>
+      <span class="filter-divider"></span>
+      <span class="filter-group-label" data-group="size">comprimento</span>
       <button class="filter-btn" data-filter="curto" role="tab" aria-selected="false">curto</button>
       <button class="filter-btn" data-filter="medio" role="tab" aria-selected="false">médio</button>
       <button class="filter-btn" data-filter="longo" role="tab" aria-selected="false">longo</button>
+      <span class="filter-divider" data-group="style"></span>
+      <span class="filter-group-label" data-group="style">estilo</span>
       <button class="filter-btn" data-filter="classico" role="tab" aria-selected="false">clássico</button>
       <button class="filter-btn" data-filter="moderno" role="tab" aria-selected="false">moderno</button>
       <button class="filter-btn" data-filter="alternativo" role="tab" aria-selected="false">alternativo</button>
       <button class="filter-btn" data-filter="romantico" role="tab" aria-selected="false">romântico</button>
+      <span class="filter-divider" data-group="familia"></span>
+      <span class="filter-group-label" data-group="familia">família</span>
       <button class="filter-btn" data-filter="morenas" role="tab" aria-selected="false">morenas</button>
       <button class="filter-btn" data-filter="loiras" role="tab" aria-selected="false">loiras</button>
       <button class="filter-btn" data-filter="ruivas" role="tab" aria-selected="false">ruivas</button>
@@ -1850,15 +2098,29 @@
         <button class="modal-nav next" id="modalNext" aria-label="Próximo">›</button>
         <div class="modal-info-overlay">
           <div class="modal-text-block">
+            <span class="modal-classification" id="modalClassification">corte · médio · clássico</span>
+            <div class="modal-colors" id="modalColors"></div>
             <span class="modal-badge" id="modalBadge">tendência</span>
             <span class="modal-title" id="modalTitle">Velvet Bob</span>
             <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves que emolduram o rosto.</span>
           </div>
-          <button class="modal-fav-btn" id="modalFavBtn" aria-label="Favoritar">
-            <span class="fav-icon">♡</span>
-            <span class="fav-label">favoritar</span>
-          </button>
+          <div class="modal-actions">
+            <button class="modal-fav-btn" id="modalFavBtn" aria-label="Favoritar">
+              <span class="fav-icon">♡</span>
+              <span class="fav-label">favoritar</span>
+            </button>
+            <button class="modal-info-btn" id="modalInfoBtn" aria-label="Ver ficha técnica" aria-expanded="false">
+              <span class="info-icon">i</span>
+              <span class="info-label">porquê funciona</span>
+            </button>
+          </div>
         </div>
+      </div>
+
+      <div class="tech-drawer" id="techDrawer" role="region" aria-label="Ficha técnica">
+        <div class="tech-drawer-handle" id="techDrawerHandle"></div>
+        <div class="tech-drawer-chips" id="techDrawerChips"></div>
+        <p class="tech-drawer-text" id="techDrawerText"></p>
       </div>
     </div>
   </div>
@@ -1879,6 +2141,11 @@
           size: 'medio',
           style: 'classico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais e quadrados',
+          manutencao: 'baixa',
+          porque: 'As camadas internas suavizam o ângulo da mandíbula sem tirar volume. O comprimento na altura dos ombros permite manutenção simples, sem depender de escova diária.',
+          cores: ['6.0', '7.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1893,6 +2160,11 @@
           size: 'curto',
           style: 'moderno',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais e alongados',
+          manutencao: 'alta',
+          porque: 'Sem comprimento para distrair, o foco visual migra para os olhos e a estrutura óssea — por isso pede traços bem definidos. Exige retoque a cada 4 a 6 semanas para manter a forma.',
+          cores: ['5.0', '6.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1907,6 +2179,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos redondos, fios com volume natural',
+          manutencao: 'média',
+          porque: 'As camadas curtas no topo criam textura que afina visualmente o contorno do rosto redondo. Funciona melhor em fios com ondulação natural, que sustentam o movimento sem esforço.',
+          cores: ['7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1921,6 +2198,11 @@
           size: 'curto',
           style: 'alternativo',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais, fios grossos',
+          manutencao: 'alta',
+          porque: 'O rapado lateral expõe a linha do crânio, por isso pede fios mais grossos para que o contraste com o comprimento oposto tenha definição. Requer raspagem de manutenção a cada 2 a 3 semanas.',
+          cores: ['5.0', '6.1', '7.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1935,6 +2217,11 @@
           size: 'curto',
           style: 'classico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais e quadrados',
+          manutencao: 'média',
+          porque: 'O corte reto na altura do queixo cria uma linha horizontal que estrutura o rosto. Fios lisos ou levemente ondulados sustentam melhor o acabamento geométrico.',
+          cores: ['6.0', '7.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1949,6 +2236,11 @@
           size: 'medio',
           style: 'romantico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais, fios finos a médios',
+          manutencao: 'baixa',
+          porque: 'A franja lateral suaviza a testa e as camadas leves dão movimento sem exigir escova estruturada — ideal para quem busca praticidade com delicadeza no dia a dia.',
+          cores: ['7.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1963,6 +2255,11 @@
           size: 'medio',
           style: 'alternativo',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos ovais e alongados, fios com textura natural',
+          manutencao: 'média',
+          porque: 'A desconexão entre camadas cria contraste de comprimento que quebra a uniformidade do fio liso. Funciona melhor em cabelos que já têm alguma textura natural.',
+          cores: ['5.0', '6.0', '7.4'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1977,6 +2274,11 @@
           size: 'longo',
           style: 'classico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'todos os formatos de rosto',
+          manutencao: 'baixa',
+          porque: 'Por ficar entre o queixo e os ombros, é o comprimento mais versátil da categoria bob — alonga levemente o rosto redondo e mantém a estrutura em rostos ovais, com manutenção simples.',
+          cores: ['7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1991,6 +2293,11 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'rostos redondos e quadrados',
+          manutencao: 'média',
+          porque: 'Camadas em ângulo ascendente ao redor do rosto criam movimento e afinam o contorno — especialmente eficazes para reduzir volume nas laterais sem perder comprimento.',
+          cores: ['7.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2005,6 +2312,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'fios lisos e saudáveis, rostos ovais e alongados',
+          manutencao: 'baixa',
+          porque: 'A ausência de camadas concentra a densidade nas pontas, o que exige fios saudáveis — o corte reto evidencia qualquer irregularidade na saúde capilar.',
+          cores: ['6.0', '7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2019,6 +2331,11 @@
           size: 'longo',
           style: 'alternativo',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'fios finos que precisam de volume',
+          manutencao: 'média',
+          porque: 'Camadas curtas concentradas no topo criam volume na raiz enquanto o comprimento é preservado nas pontas — resolve o "murchamento" comum em cortes muito uniformes.',
+          cores: ['5.0', '6.34', '7.4'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2033,6 +2350,11 @@
           size: 'medio',
           style: 'alternativo',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'fios ondulados ou cacheados',
+          manutencao: 'média',
+          porque: 'Múltiplas camadas soltas dependem de uma textura natural para não parecer desalinhado. Em fios lisos, costuma precisar de finalização com babyliss para reproduzir o movimento.',
+          cores: ['6.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2047,6 +2369,11 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: null,
+          categoria: 'Corte',
+          indicado: 'testas largas, rostos redondos e quadrados',
+          manutencao: 'média',
+          porque: 'A franja central dividida ao meio quebra visualmente a largura da testa e suaviza ângulos, mas pede escova ou babyliss regular para manter a abertura nas pontas.',
+          cores: ['7.0', '7.3', '8.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2063,6 +2390,11 @@
           size: 'longo',
           style: 'moderno',
           colorCategory: 'morenas',
+          categoria: 'Coloração',
+          indicado: 'subtom quente',
+          manutencao: 'baixa',
+          porque: 'A transição gradual do escuro para o dourado nasce sem marcação de raiz, o que espaça o retoque para 3 a 4 meses. A técnica harmoniza melhor em subtom quente.',
+          cores: ['5.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2077,6 +2409,11 @@
           size: 'medio',
           style: 'classico',
           colorCategory: 'morenas',
+          categoria: 'Coloração',
+          indicado: 'todos os subtons',
+          manutencao: 'média',
+          porque: 'Mechas finíssimas aplicadas fio a fio imitam o clareamento solar natural. Por serem sutis, o retoque de raiz pode ser espaçado a cada 3 meses sem comprometer o efeito.',
+          cores: ['6.0', '7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2091,6 +2428,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'morenas',
+          categoria: 'Coloração',
+          indicado: 'subtom neutro a quente',
+          manutencao: 'média',
+          porque: 'As luzes são posicionadas estrategicamente ao redor do rosto — testa, têmporas e queixo — em uma técnica de colorimetria aplicada, e não apenas mechas soltas.',
+          cores: ['5.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2107,6 +2449,11 @@
           size: 'longo',
           style: 'moderno',
           colorCategory: 'loiras',
+          categoria: 'Coloração',
+          indicado: 'subtom quente a neutro',
+          manutencao: 'baixa',
+          porque: 'A técnica pintada à mão livre, sem papel alumínio, cria uma transição orgânica que cresce sem marcação abrupta de raiz — ideal para espaçar as visitas ao salão.',
+          cores: ['7.0', '8.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2121,6 +2468,11 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: 'loiras',
+          categoria: 'Coloração',
+          indicado: 'subtom quente, fios morenos claros a médios',
+          manutencao: 'baixa',
+          porque: 'Mechas claras concentradas nas pontas e no contorno do rosto recriam o clareamento natural do sol, com a raiz preservada — resultado suave que dispensa retoque frequente.',
+          cores: ['7.0', '8.0', '8.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2135,6 +2487,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'loiras',
+          categoria: 'Coloração',
+          indicado: 'rostos ovais e redondos, subtom quente',
+          manutencao: 'média',
+          porque: 'Luzes concentradas nas linhas do rosto — moldura, mandíbula, têmporas — usam a colorimetria para reduzir o volume aparente em áreas específicas.',
+          cores: ['8.0', '8.1', '10.12'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2149,6 +2506,11 @@
           size: 'medio',
           style: 'classico',
           colorCategory: 'loiras',
+          categoria: 'Coloração',
+          indicado: 'subtom frio a neutro',
+          manutencao: 'alta',
+          porque: 'Mechas tradicionais com papel alumínio distribuídas por toda a cabeça criam contraste uniforme, mas exigem retoque de raiz a cada 6 a 8 semanas.',
+          cores: ['7.0', '8.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2165,6 +2527,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'ruivas',
+          categoria: 'Coloração',
+          indicado: 'subtom frio a neutro, pele clara a média',
+          manutencao: 'alta',
+          porque: 'Pigmentos vermelhos são os que mais desbotam com lavagem e sol. A intensidade do cherry cola exige shampoo sem sulfato e reaplicação de cor a cada 4 a 5 semanas.',
+          cores: ['5.0', '6.34', '7.4'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2179,6 +2546,11 @@
           size: 'longo',
           style: 'alternativo',
           colorCategory: 'ruivas',
+          categoria: 'Coloração',
+          indicado: 'subtom quente, pele média a morena',
+          manutencao: 'alta',
+          porque: 'O cobre é um dos tons mais instáveis em colorimetria — desbota rápido em cabelos porosos, por isso pede matização e reforço de cor a cada mês.',
+          cores: ['6.0', '7.4', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2193,6 +2565,11 @@
           size: 'medio',
           style: 'romantico',
           colorCategory: 'ruivas',
+          categoria: 'Coloração',
+          indicado: 'subtom quente, pele clara a média',
+          manutencao: 'média',
+          porque: 'O tom caramelado nasce da mistura de pigmentos ruivos com dourados, o que suaviza o contraste com a raiz e permite um crescimento menos perceptível que ruivos puros.',
+          cores: ['6.34', '7.3', '7.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2209,6 +2586,11 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'grisalhas',
+          categoria: 'Coloração',
+          indicado: 'subtom frio, fios brancos ou grisalhos',
+          manutencao: 'média',
+          porque: 'A matização com base violeta neutraliza o amarelamento natural do fio branco, mantendo o efeito "prateado" — requer shampoo matizador quinzenal.',
+          cores: ['7.1', '8.1', '10.12'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2223,6 +2605,11 @@
           size: 'curto',
           style: 'classico',
           colorCategory: 'grisalhas',
+          categoria: 'Coloração',
+          indicado: 'subtom quente, em transição capilar',
+          manutencao: 'média',
+          porque: 'Mechas com base dourada suavizam a transição entre o cabelo pigmentado e o grisalho nascente, tornando o processo de "des-tintura" menos abrupto visualmente.',
+          cores: ['7.1', '7.3', '8.1'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -2239,6 +2626,7 @@
         favorites: JSON.parse(localStorage.getItem('hairos_favorites') || '[]'),
         currentStyle: 'velvet bob',
         currentFilter: 'all',
+        currentCategory: 'all',
         theme: localStorage.getItem('hairos_theme') || 'dark',
         modalKey: null,
         modalIndex: 0
@@ -2284,6 +2672,9 @@
 
       function getFilteredKeys() {
         let keys = Object.keys(styleData);
+        if (STATE.currentCategory !== 'all') {
+          keys = keys.filter(k => styleData[k].categoria === STATE.currentCategory);
+        }
         if (STATE.currentFilter !== 'all') {
           keys = keys.filter(k => {
             const data = styleData[k];
@@ -2293,6 +2684,16 @@
           });
         }
         return keys.length ? keys : Object.keys(styleData);
+      }
+
+      function updateFilterGroupVisibility() {
+        const cat = STATE.currentCategory;
+        document.querySelectorAll('[data-group="size"], [data-group="style"]').forEach(el => {
+          el.style.display = (cat === 'all' || cat === 'Corte') ? '' : 'none';
+        });
+        document.querySelectorAll('[data-group="familia"]').forEach(el => {
+          el.style.display = (cat === 'all' || cat === 'Coloração') ? '' : 'none';
+        });
       }
 
       // ============================================================
@@ -2327,6 +2728,27 @@
         });
       }
 
+      const SIZE_LABELS = { curto: 'curto', medio: 'médio', longo: 'longo' };
+      const STYLE_LABELS = { classico: 'clássico', moderno: 'moderno', alternativo: 'alternativo', romantico: 'romântico' };
+      const FAMILIA_LABELS = { morenas: 'morenas', loiras: 'loiras', ruivas: 'ruivas', grisalhas: 'grisalhas' };
+
+      function classificationLabel(data) {
+        if (data.categoria === 'Coloração') {
+          return `coloração · ${FAMILIA_LABELS[data.colorCategory] || data.colorCategory}`;
+        }
+        return `corte · ${SIZE_LABELS[data.size] || data.size} · ${STYLE_LABELS[data.style] || data.style}`;
+      }
+
+      function renderChipColors(cores) {
+        if (!cores || cores.length === 0) return '';
+        return cores.map(c => `<span class="color-chip">${c}</span>`).join('');
+      }
+
+      function renderModalChipColors(cores) {
+        if (!cores || cores.length === 0) return '';
+        return cores.map(c => `<span class="color-chip-modal">${c}</span>`).join('');
+      }
+
       function generateCarousel(activeStyle) {
         let keys = getFilteredKeys();
         if (!keys.includes(activeStyle) && keys.length) activeStyle = keys[0];
@@ -2342,6 +2764,7 @@
           const data = styleData[key];
           if (!data) return;
           const fav = isFavorite(key);
+          const coresHtml = renderChipColors(data.cores);
           const item = document.createElement('div');
           item.className = `carousel-item${key === activeStyle ? ' active-item' : ''}`;
           item.dataset.style = key;
@@ -2350,8 +2773,9 @@
             <button class="favorite-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}" aria-label="${fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${fav ? '♥' : '♡'}</button>
             <div class="img-container"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
             <div class="item-overlay">
+              <span class="item-sub">${classificationLabel(data)}</span>
               <h3>${data.title}</h3>
-              <span class="item-sub">· ${data.badge} ·</span>
+              <div class="item-colors">${coresHtml}</div>
               <span class="item-badge">${data.badge}</span>
             </div>
           `;
@@ -2502,6 +2926,9 @@
         document.getElementById('modalTitle').textContent = data.title;
         document.getElementById('modalBadge').textContent = data.badge;
         document.getElementById('modalDesc').textContent = data.desc;
+        document.getElementById('modalClassification').textContent = classificationLabel(data);
+        document.getElementById('modalColors').innerHTML = renderModalChipColors(data.cores);
+        renderTechDrawer(data);
         const fav = isFavorite(key);
         const modalBtn = document.getElementById('modalFavBtn');
         modalBtn.dataset.favKey = key;
@@ -2559,6 +2986,40 @@
       function closeModal() {
         document.getElementById('modalOverlay').classList.remove('active');
         document.body.style.overflow = '';
+        closeTechDrawer();
+      }
+
+      function renderTechDrawer(data) {
+        const chipsEl = document.getElementById('techDrawerChips');
+        const textEl = document.getElementById('techDrawerText');
+        const familia = data.categoria === 'Coloração' ? (FAMILIA_LABELS[data.colorCategory] || data.colorCategory) : null;
+        const chips = [
+          `<span class="tech-chip"><strong>categoria</strong>${data.categoria}</span>`,
+          data.categoria === 'Coloração'
+            ? `<span class="tech-chip"><strong>família</strong>${familia}</span>`
+            : `<span class="tech-chip"><strong>comprimento</strong>${SIZE_LABELS[data.size] || data.size}</span>`,
+          data.categoria !== 'Coloração' ? `<span class="tech-chip"><strong>estilo</strong>${STYLE_LABELS[data.style] || data.style}</span>` : '',
+          `<span class="tech-chip"><strong>indicado</strong>${data.indicado || '—'}</span>`,
+          `<span class="tech-chip"><strong>manutenção</strong>${data.manutencao || '—'}</span>`,
+          data.cores && data.cores.length ? `<span class="tech-chip"><strong>fórmula</strong>${data.cores.join(' / ')}</span>` : ''
+        ].filter(Boolean).join('');
+        chipsEl.innerHTML = chips;
+        textEl.textContent = data.porque || data.desc;
+      }
+
+      function toggleTechDrawer() {
+        const drawer = document.getElementById('techDrawer');
+        const btn = document.getElementById('modalInfoBtn');
+        const isOpen = drawer.classList.toggle('tech-drawer-open');
+        btn.classList.toggle('info-active', isOpen);
+        btn.setAttribute('aria-expanded', isOpen);
+      }
+
+      function closeTechDrawer() {
+        document.getElementById('techDrawer').classList.remove('tech-drawer-open');
+        const btn = document.getElementById('modalInfoBtn');
+        btn.classList.remove('info-active');
+        btn.setAttribute('aria-expanded', 'false');
       }
 
       // ============================================================
@@ -2664,7 +3125,27 @@
           closeMenu();
         });
 
-        // Filters
+        // Category tabs (nível 1: corte vs coloração)
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+          tab.addEventListener('click', function() {
+            document.querySelectorAll('.cat-tab').forEach(t => { t.classList.remove('active-cat'); t.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active-cat');
+            this.setAttribute('aria-selected', 'true');
+            STATE.currentCategory = this.dataset.cat;
+            STATE.currentFilter = 'all';
+            document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
+            updateFilterGroupVisibility();
+            if (document.getElementById('pageHome').classList.contains('active-page')) {
+              generateCarousel(STATE.currentStyle);
+            } else {
+              navigateTo('pageHome');
+              setTimeout(() => generateCarousel(STATE.currentStyle), 100);
+            }
+          });
+        });
+        updateFilterGroupVisibility();
+
+        // Filters (nível 2: comprimento / estilo / família)
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.addEventListener('click', function() {
             document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
@@ -2702,6 +3183,8 @@
 
         // Modal
         document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalInfoBtn').addEventListener('click', toggleTechDrawer);
+        document.getElementById('techDrawerHandle').addEventListener('click', closeTechDrawer);
         document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
         document.getElementById('modalPrev').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex - 1); });
         document.getElementById('modalNext').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex + 1); });
