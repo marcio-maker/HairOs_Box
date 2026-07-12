@@ -1124,7 +1124,7 @@
     }
     .menu-theme .theme-switch:hover { background: var(--gold-glow); color: var(--gold); }
 
-    /* ===== MODAL ===== */
+    /* ===== MODAL ATUALIZADO ===== */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -1134,45 +1134,79 @@
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 16px;
+      padding: 10px;
     }
     .modal-overlay.active { display: flex; animation: curtainOpen 0.35s ease; }
     @keyframes curtainOpen { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
     .modal-content {
       position: relative;
-      width: auto;
-      height: min(65vh, 480px);
-      aspect-ratio: 9/16;
+      width: 90vw;
+      height: 90vh;
       max-width: 90vw;
+      max-height: 90vh;
+      aspect-ratio: auto;
       border-radius: 16px;
       overflow: hidden;
       background: var(--bg-card);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px var(--border-gold);
+      box-shadow: 
+        0 20px 60px rgba(0,0,0,0.7),
+        0 0 0 1px var(--border-gold),
+        -8px 0 30px rgba(201,169,110,0.15),
+        8px 0 30px rgba(201,169,110,0.05);
       animation: slideModal 0.35s ease 0.05s both;
     }
-    @keyframes slideModal { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* Efeito de brilho lateral no canto direito */
+    .modal-content::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -2px;
+      width: 50px;
+      height: 100%;
+      background: linear-gradient(to left, rgba(201,169,110,0.08), transparent);
+      pointer-events: none;
+      z-index: 5;
+      border-radius: 0 16px 16px 0;
+    }
+
+    /* Efeito de brilho sutil no canto esquerdo */
+    .modal-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2px;
+      width: 30px;
+      height: 100%;
+      background: linear-gradient(to right, rgba(201,169,110,0.03), transparent);
+      pointer-events: none;
+      z-index: 5;
+      border-radius: 16px 0 0 16px;
+    }
+
+    @keyframes slideModal { from { transform: translateY(16px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
 
     .modal-close {
       position: absolute;
-      top: 10px;
-      right: 8px;
-      background: rgba(0,0,0,0.35);
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.6);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.7rem;
+      width: 34px;
+      height: 34px;
+      font-size: 1rem;
       cursor: pointer;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all var(--transition-smooth);
       z-index: 21;
     }
-    .modal-close:hover { background: rgba(0,0,0,0.5); transform: rotate(90deg); color: #fff; }
+    .modal-close:hover { background: rgba(0,0,0,0.8); transform: rotate(90deg); color: #fff; }
 
     .modal-gallery-wrapper {
       width: 100%;
@@ -1211,14 +1245,14 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.4);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      color: rgba(255,255,255,0.35);
-      font-size: 0.8rem;
+      width: 34px;
+      height: 34px;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       display: flex;
@@ -1228,9 +1262,38 @@
       opacity: 0;
     }
     .modal-content:hover .modal-nav { opacity: 1; }
-    .modal-nav:hover { background: rgba(0,0,0,0.45); color: #fff; }
-    .modal-nav.prev { left: 4px; }
-    .modal-nav.next { right: 4px; }
+    .modal-nav:hover { background: rgba(0,0,0,0.6); color: #fff; transform: translateY(-50%) scale(1.05); }
+    .modal-nav.prev { left: 8px; }
+    .modal-nav.next { right: 8px; }
+
+    /* Indicadores de carrossel no modal */
+    .modal-indicators {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 15;
+      padding: 4px 8px;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .modal-indicators .modal-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      transition: all var(--transition-smooth);
+      cursor: pointer;
+    }
+    .modal-indicators .modal-dot.active-modal-dot {
+      background: var(--gold);
+      width: 18px;
+      border-radius: 3px;
+    }
 
     .modal-info-overlay {
       position: absolute;
@@ -1242,13 +1305,13 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 8px;
-      padding: 24px 10px 12px 12px;
+      padding: 30px 12px 16px 12px;
       background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 45%, transparent 100%);
     }
-    .modal-text-block { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .modal-text-block { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
     .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
+      font-size: clamp(16px, 3.5vw, 22px);
       font-weight: 700;
       font-style: italic;
       color: #fff;
@@ -1256,7 +1319,7 @@
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
     .modal-classification {
-      font-size: 0.4rem;
+      font-size: clamp(10px, 2.2vw, 12px);
       color: var(--gold-light);
       font-weight: 500;
       letter-spacing: 0.12em;
@@ -1270,10 +1333,10 @@
       width: fit-content;
     }
     .modal-desc {
-      font-size: 0.5rem;
+      font-size: clamp(11px, 2.4vw, 13px);
       color: rgba(240,235,228,0.7);
       font-weight: 300;
-      line-height: 1.3;
+      line-height: 1.4;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -1283,13 +1346,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2px;
-      margin: 1px 0;
+      margin: 2px 0;
     }
     .modal-tag {
-      font-size: 0.25rem;
+      font-size: clamp(9px, 2vw, 11px);
       background: rgba(201,169,110,0.15);
       border: 1px solid rgba(201,169,110,0.08);
-      padding: 0 5px;
+      padding: 0 6px;
       border-radius: 8px;
       color: var(--gold-light);
       font-weight: 400;
@@ -1297,11 +1360,11 @@
     .modal-details {
       display: flex;
       flex-wrap: wrap;
-      gap: 3px;
+      gap: 4px;
       margin: 2px 0;
     }
     .modal-details span {
-      font-size: 0.3rem;
+      font-size: clamp(9px, 2vw, 11px);
       color: rgba(240,235,228,0.6);
       background: rgba(0,0,0,0.3);
       padding: 1px 8px;
@@ -1318,7 +1381,7 @@
       color: var(--gold-light);
       padding: 1px 8px;
       border-radius: var(--radius-pill);
-      font-size: 0.35rem;
+      font-size: clamp(10px, 2.2vw, 12px);
       border: 1px solid rgba(201,169,110,0.1);
       letter-spacing: 0.08em;
       text-transform: lowercase;
@@ -1341,21 +1404,27 @@
     }
     .modal-fav-btn:hover { transform: scale(1.05); }
     .modal-fav-btn .fav-icon {
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.35);
+      background: rgba(0,0,0,0.4);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: rgba(255,255,255,0.8);
       transition: all var(--transition-smooth);
     }
-    .modal-fav-btn.favorited .fav-icon { color: #ff4757; background: rgba(255,71,87,0.15); border-color: rgba(255,71,87,0.15); }
-    .modal-fav-btn .fav-label { font-size: 0.25rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 300; }
+    .modal-fav-btn.favorited .fav-icon { color: #ff4757; background: rgba(255,71,87,0.2); border-color: rgba(255,71,87,0.2); }
+    .modal-fav-btn .fav-label { 
+      font-size: clamp(8px, 1.8vw, 10px); 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase; 
+      color: rgba(255,255,255,0.4); 
+      font-weight: 300; 
+    }
 
     /* ===== RESPONSIVO ===== */
     @media (max-height: 640px) {
@@ -1373,29 +1442,35 @@
       .galeria-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
       .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
       .footer-links a { font-size: clamp(8px, 1.8vw, 10px); padding: 1px 4px; min-height: 14px; }
-      .modal-content { height: min(60vh, 380px); }
-      .modal-title { font-size: 0.75rem; }
-      .modal-desc { font-size: 0.45rem; }
+      .modal-content { height: 90vh; width: 90vw; }
+      .modal-title { font-size: clamp(14px, 3vw, 18px); }
+      .modal-desc { font-size: clamp(10px, 2.2vw, 12px); }
+      .modal-info-overlay { padding: 20px 10px 12px 10px; }
+      .modal-indicators { bottom: 70px; }
     }
 
     @media (max-width: 360px) {
       .carousel-item { flex: 0 0 90vw; width: 90vw; height: 70vh; min-width: 110px; }
       .drop-option { font-size: clamp(9px, 2vw, 11px); padding: 1px 5px; min-height: 16px; }
+      .modal-content { height: 90vh; width: 90vw; }
     }
 
-    /* ===== NOVOS BREAKPOINTS ===== */
+    /* ===== BREAKPOINTS ===== */
     @media (max-width: 375px) {
       .carousel-item { width: 90vw; height: 70vh; flex: 0 0 90vw; }
       .app { padding: 6px 8px 4px 8px; }
+      .modal-content { height: 90vh; width: 90vw; }
     }
 
     @media (min-width: 376px) and (max-width: 430px) {
       .carousel-item { width: 90vw; height: 70vh; flex: 0 0 90vw; }
+      .modal-content { height: 90vh; width: 90vw; }
     }
 
     @media (min-width: 431px) and (max-width: 768px) {
       .carousel-item { width: 70vw; height: 70vh; flex: 0 0 70vw; }
       .app { max-width: 600px; }
+      .modal-content { height: 85vh; width: 80vw; }
     }
 
     @media (min-width: 769px) {
@@ -1403,12 +1478,15 @@
       .app { max-width: 430px; }
       .tendencias-grid { grid-template-columns: repeat(3, 1fr); }
       .galeria-grid { grid-template-columns: repeat(4, 1fr); }
+      .modal-content { height: 85vh; width: 70vw; max-width: 500px; }
     }
   </style>
 </head>
 <body>
+  <!-- O resto do HTML permanece IDÊNTICO ao original -->
+  <!-- (mantido para brevidade, mas o modal agora tem suporte a múltiplas imagens) -->
+  
   <div class="app">
-
     <!-- HEADER -->
     <header class="header">
       <div class="header-brand" id="homeBtn">
@@ -1662,6 +1740,8 @@
         <div class="modal-gallery" id="modalGallery"></div>
         <button class="modal-nav prev" id="modalPrev">‹</button>
         <button class="modal-nav next" id="modalNext">›</button>
+        <!-- Indicadores do carrossel do modal -->
+        <div class="modal-indicators" id="modalIndicators"></div>
         <div class="modal-info-overlay">
           <div class="modal-text-block">
             <span class="modal-classification" id="modalClassification">corte · médio</span>
@@ -1715,7 +1795,11 @@
           cores: ['6.0', '7.0'],
           tags: ['corte', 'médio', 'clássico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'pixie-cut': {
           title: 'Pixie Cut',
@@ -1732,7 +1816,10 @@
           cores: ['5.0', '6.0'],
           tags: ['corte', 'curto', 'moderno'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'wolf-cut': {
           title: 'Wolf Cut',
@@ -1749,7 +1836,10 @@
           cores: ['7.0', '8.0'],
           tags: ['corte', 'médio', 'moderno'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'side-cut': {
           title: 'Side Cut',
@@ -1766,7 +1856,10 @@
           cores: ['5.0', '6.1', '7.1'],
           tags: ['corte', 'curto', 'alternativo'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'short-bob': {
           title: 'Short Bob',
@@ -1783,7 +1876,9 @@
           cores: ['6.0', '7.0'],
           tags: ['corte', 'curto', 'clássico'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'kitty-cut': {
           title: 'Kitty Cut',
@@ -1800,7 +1895,10 @@
           cores: ['7.0', '7.3'],
           tags: ['corte', 'médio', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'nirvana-cut': {
           title: 'Nirvana Cut',
@@ -1817,7 +1915,10 @@
           cores: ['5.0', '6.0', '7.4'],
           tags: ['corte', 'médio', 'alternativo'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'long-bob': {
           title: 'Long Bob',
@@ -1834,7 +1935,10 @@
           cores: ['7.0', '8.0'],
           tags: ['corte', 'longo', 'clássico'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'butterfly-cut': {
           title: 'Butterfly Cut',
@@ -1851,7 +1955,10 @@
           cores: ['7.0', '7.3', '8.0'],
           tags: ['corte', 'longo', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'blunt-cut': {
           title: 'Blunt Cut',
@@ -1868,7 +1975,9 @@
           cores: ['6.0', '7.0', '8.0'],
           tags: ['corte', 'médio', 'moderno'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'octopus-cut': {
           title: 'Octopus Cut',
@@ -1885,7 +1994,10 @@
           cores: ['5.0', '6.34', '7.4'],
           tags: ['corte', 'longo', 'alternativo'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'shaggy-hair': {
           title: 'Shaggy Hair',
@@ -1902,7 +2014,9 @@
           cores: ['6.0', '7.3', '8.0'],
           tags: ['corte', 'médio', 'alternativo'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'curtain-bangs': {
           title: 'Curtain Bangs',
@@ -1919,7 +2033,10 @@
           cores: ['7.0', '7.3', '8.1'],
           tags: ['corte', 'longo', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
 
         // ===== 12 COLORAÇÕES =====
@@ -1938,7 +2055,10 @@
           cores: ['5.0', '7.3', '8.0'],
           tags: ['coloração', 'morenas', 'ombré'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'babylights-morena': {
           title: 'Babylights Morena',
@@ -1955,7 +2075,9 @@
           cores: ['6.0', '7.0', '8.0'],
           tags: ['coloração', 'morenas', 'babylights'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'contour-highlights': {
           title: 'Contour Highlights',
@@ -1972,7 +2094,10 @@
           cores: ['5.0', '7.3', '8.0'],
           tags: ['coloração', 'morenas', 'contour'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'balayage-loira': {
           title: 'Balayage Loira',
@@ -1989,7 +2114,9 @@
           cores: ['7.0', '8.0', '7.3'],
           tags: ['coloração', 'loiras', 'balayage'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'californianas': {
           title: 'Californianas',
@@ -2006,7 +2133,10 @@
           cores: ['7.0', '8.0', '8.1'],
           tags: ['coloração', 'loiras', 'californianas'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'mechas-contour': {
           title: 'Mechas Contour',
@@ -2023,7 +2153,10 @@
           cores: ['8.0', '8.1', '10.12'],
           tags: ['coloração', 'loiras', 'contour'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'highlights-loira': {
           title: 'Highlights Loira',
@@ -2040,7 +2173,9 @@
           cores: ['7.0', '8.0', '7.3'],
           tags: ['coloração', 'loiras', 'highlights'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'cherry-cola': {
           title: 'Cherry Cola',
@@ -2057,7 +2192,10 @@
           cores: ['5.0', '6.34', '7.4'],
           tags: ['coloração', 'ruivas', 'cherry'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'cowgirl-copper': {
           title: 'Cowgirl Copper',
@@ -2074,7 +2212,9 @@
           cores: ['6.0', '7.4', '7.3'],
           tags: ['coloração', 'ruivas', 'copper'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'ruivo-doce-leite': {
           title: 'Ruivo Doce de Leite',
@@ -2091,7 +2231,10 @@
           cores: ['6.34', '7.3', '7.0'],
           tags: ['coloração', 'ruivas', 'doce leite'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'grisalhos-frios': {
           title: 'Grisalhos Frios',
@@ -2108,7 +2251,9 @@
           cores: ['7.1', '8.1', '10.12'],
           tags: ['coloração', 'grisalhas', 'frios'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'grisalhos-quentes': {
           title: 'Grisalhos Quentes',
@@ -2125,7 +2270,10 @@
           cores: ['7.1', '7.3', '8.1'],
           tags: ['coloração', 'grisalhas', 'quentes'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          gallery: ['https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face']
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
 
         // ===== 12 PRODUTOS =====
@@ -2144,7 +2292,9 @@
           cores: [],
           tags: ['produto', 'shampoo', 'nutrição'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'condicionador-reparador': {
           title: 'Condicionador Reparador',
@@ -2161,7 +2311,9 @@
           cores: [],
           tags: ['produto', 'condicionador', 'reparação'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'mascara-capilar-umbium': {
           title: 'Máscara Capilar Umbiúm',
@@ -2178,7 +2330,9 @@
           cores: [],
           tags: ['produto', 'máscara', 'hidratação'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'serum-brilho-definicao': {
           title: 'Sérum Brilho e Definição',
@@ -2195,7 +2349,9 @@
           cores: [],
           tags: ['produto', 'sérum', 'definição'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'oleo-finalizador-cacau': {
           title: 'Óleo Finalizador de Cacau',
@@ -2212,7 +2368,9 @@
           cores: [],
           tags: ['produto', 'óleo', 'finalização'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'spray-protetor-termico': {
           title: 'Spray Protetor Térmico',
@@ -2229,7 +2387,9 @@
           cores: [],
           tags: ['produto', 'spray', 'proteção'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'gel-fixacao-ultra': {
           title: 'Gel Fixação Ultra',
@@ -2246,7 +2406,9 @@
           cores: [],
           tags: ['produto', 'gel', 'fixação'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'tonico-capilar-crescimento': {
           title: 'Tônico Capilar Crescimento',
@@ -2263,7 +2425,9 @@
           cores: [],
           tags: ['produto', 'tônico', 'crescimento'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'shampoo-antifrizz': {
           title: 'Shampoo Antifrizz',
@@ -2280,7 +2444,9 @@
           cores: [],
           tags: ['produto', 'shampoo', 'antifrizz'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'condicionador-volume': {
           title: 'Condicionador Volume',
@@ -2297,7 +2463,9 @@
           cores: [],
           tags: ['produto', 'condicionador', 'volume'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'creme-para-pentear': {
           title: 'Creme para Pentear',
@@ -2314,7 +2482,9 @@
           cores: [],
           tags: ['produto', 'creme', 'desembaraço'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'mousse-modelador': {
           title: 'Mousse Modelador',
@@ -2331,7 +2501,9 @@
           cores: [],
           tags: ['produto', 'mousse', 'modelagem'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         },
         'spray-brilho-intenso': {
           title: 'Spray Brilho Intenso',
@@ -2348,7 +2520,9 @@
           cores: [],
           tags: ['produto', 'spray', 'brilho'],
           img: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=600&fit=crop&crop=center',
-          gallery: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center']
+          gallery: [
+            'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=1067&fit=crop&crop=center'
+          ]
         }
       };
 
@@ -2697,8 +2871,19 @@
           gallery.appendChild(el);
         });
 
+        // Atualizar indicadores
+        const indicators = document.getElementById('modalIndicators');
+        indicators.innerHTML = '';
+        images.forEach((_, i) => {
+          const dot = document.createElement('span');
+          dot.className = `modal-dot${i === 0 ? ' active-modal-dot' : ''}`;
+          dot.addEventListener('click', () => goToModalImage(i));
+          indicators.appendChild(dot);
+        });
+
         document.getElementById('modalPrev').style.display = images.length > 1 ? 'flex' : 'none';
         document.getElementById('modalNext').style.display = images.length > 1 ? 'flex' : 'none';
+        indicators.style.display = images.length > 1 ? 'flex' : 'none';
         document.getElementById('modalOverlay').classList.add('active');
         document.body.style.overflow = 'hidden';
         setTimeout(() => { gallery.scrollTo({ left: 0, behavior: 'auto' }); }, 50);
@@ -2718,6 +2903,9 @@
         const imgWidth = images[0]?.offsetWidth || 0;
         document.getElementById('modalGallery').scrollTo({ left: index * imgWidth, behavior: 'smooth' });
         images.forEach((img, i) => img.classList.toggle('active-modal-img', i === index));
+        document.querySelectorAll('.modal-dot').forEach((dot, i) => {
+          dot.classList.toggle('active-modal-dot', i === index);
+        });
       }
 
       // ============================================================
@@ -2915,6 +3103,9 @@
           if (idx !== STATE.modalIndex && idx >= 0 && idx < images.length) {
             STATE.modalIndex = idx;
             images.forEach((img, i) => img.classList.toggle('active-modal-img', i === idx));
+            document.querySelectorAll('.modal-dot').forEach((dot, i) => {
+              dot.classList.toggle('active-modal-dot', i === idx);
+            });
           }
         });
         document.getElementById('modalFavBtn').addEventListener('click', function() {
@@ -2962,11 +3153,10 @@
         updateFavUI();
 
         console.log('📦 HAIRBOX · 37 cards com todas as páginas');
-        console.log('✅ Tags destacadas nos cards');
-        console.log('✅ Nomes em evidência');
-        console.log('✅ Números de cor visíveis');
+        console.log('✅ Modal com 90% da tela e carrossel de imagens');
+        console.log('✅ Sombra e brilho no canto direito');
+        console.log('✅ Tags e cores destacadas');
         console.log('✅ Ícone de informação (i)');
-        console.log('✅ Modal informativo completo');
         console.log('✅ Tamanhos otimizados');
       }
 
