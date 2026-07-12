@@ -1603,6 +1603,7 @@
     ::-webkit-scrollbar-track { background: var(--bg-secondary); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
+    /* Responsividade */
     @media (max-height: 640px) {
       .app { padding: 10px 12px 4px 12px; }
       .header { padding: 2px 0 8px 0; min-height: 36px; }
@@ -1712,6 +1713,7 @@
       </div>
     </div>
 
+    <!-- FILTER BAR com 12 botões -->
     <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filtros de estilo">
       <button class="filter-btn active-filter" data-filter="all" role="tab" aria-selected="true">todos</button>
       <button class="filter-btn" data-filter="curto" role="tab" aria-selected="false">curto</button>
@@ -1721,6 +1723,10 @@
       <button class="filter-btn" data-filter="moderno" role="tab" aria-selected="false">moderno</button>
       <button class="filter-btn" data-filter="alternativo" role="tab" aria-selected="false">alternativo</button>
       <button class="filter-btn" data-filter="romantico" role="tab" aria-selected="false">romântico</button>
+      <button class="filter-btn" data-filter="morenas" role="tab" aria-selected="false">morenas</button>
+      <button class="filter-btn" data-filter="loiras" role="tab" aria-selected="false">loiras</button>
+      <button class="filter-btn" data-filter="ruivas" role="tab" aria-selected="false">ruivas</button>
+      <button class="filter-btn" data-filter="grisalhas" role="tab" aria-selected="false">grisalhas</button>
     </div>
 
     <div class="chip-carousel-wrapper" id="chipWrapper">
@@ -1785,7 +1791,7 @@
             <div class="sobre-card"><h4>origem</h4><p>Nascida da estética atemporal da Vogue Paris dos anos 1960.</p></div>
             <div class="sobre-card"><h4>missão</h4><p>Inspirar e revelar os estilos mais atuais.</p></div>
             <div class="sobre-stats">
-              <div class="stat"><span class="number">13+</span><span class="label">estilos</span></div>
+              <div class="stat"><span class="number">25</span><span class="label">estilos</span></div>
               <div class="stat"><span class="number">4.8</span><span class="label">★ avaliação</span></div>
               <div class="stat"><span class="number" id="favCountStat">0</span><span class="label">♥ favoritos</span></div>
             </div>
@@ -1861,13 +1867,18 @@
     (function() {
       'use strict';
 
+      // ============================================================
+      // 25 ESTILOS COMPLETOS
+      // ============================================================
       const styleData = {
+        // ---------- EXISTENTES (13) ----------
         'velvet bob': {
           title: 'Velvet Bob',
           desc: 'Clássico moderno com camadas suaves que emolduram o rosto.',
           badge: 'tendência',
           size: 'medio',
           style: 'classico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1881,6 +1892,7 @@
           badge: 'ousado',
           size: 'curto',
           style: 'moderno',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1894,6 +1906,7 @@
           badge: 'selvagem',
           size: 'medio',
           style: 'moderno',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1907,6 +1920,7 @@
           badge: 'radical',
           size: 'curto',
           style: 'alternativo',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1920,6 +1934,7 @@
           badge: 'clássico',
           size: 'curto',
           style: 'classico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1933,6 +1948,7 @@
           badge: 'doce',
           size: 'medio',
           style: 'romantico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1946,6 +1962,7 @@
           badge: 'grunge',
           size: 'medio',
           style: 'alternativo',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1959,6 +1976,7 @@
           badge: 'elegante',
           size: 'longo',
           style: 'classico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1972,6 +1990,7 @@
           badge: 'leve',
           size: 'longo',
           style: 'romantico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -1985,6 +2004,7 @@
           badge: 'reto',
           size: 'medio',
           style: 'moderno',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
@@ -1998,6 +2018,7 @@
           badge: 'volumoso',
           size: 'longo',
           style: 'alternativo',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2011,6 +2032,7 @@
           badge: 'despojado',
           size: 'medio',
           style: 'alternativo',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
@@ -2024,15 +2046,195 @@
           badge: 'retrô',
           size: 'longo',
           style: 'romantico',
+          colorCategory: null,
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
           ]
+        },
+
+        // ---------- MORENAS ILUMINADAS (3) ----------
+        'ombre-tiger-eye': {
+          title: 'Ombré Tiger Eye',
+          desc: 'Transição suave do escuro para o dourado. Efeito olho de tigre.',
+          badge: 'ombré',
+          size: 'longo',
+          style: 'moderno',
+          colorCategory: 'morenas',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'babylights-morena': {
+          title: 'Babylights Morena',
+          desc: 'Luzes finíssimas que imitam o efeito natural do sol nos cabelos.',
+          badge: 'babylights',
+          size: 'medio',
+          style: 'classico',
+          colorCategory: 'morenas',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'contour-highlights': {
+          title: 'Contour Highlights',
+          desc: 'Luzes estratégicas que valorizam o formato do rosto.',
+          badge: 'contour',
+          size: 'medio',
+          style: 'moderno',
+          colorCategory: 'morenas',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+
+        // ---------- LOIRAS (4) ----------
+        'balayage-loira': {
+          title: 'Balayage Loira',
+          desc: 'Técnica de luzes naturais com efeito degradê e movimento.',
+          badge: 'balayage',
+          size: 'longo',
+          style: 'moderno',
+          colorCategory: 'loiras',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'californianas': {
+          title: 'Californianas',
+          desc: 'Luzes que criam um efeito de sol californiano, com contraste suave.',
+          badge: 'californianas',
+          size: 'longo',
+          style: 'romantico',
+          colorCategory: 'loiras',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'mechas-contour': {
+          title: 'Mechas Contour',
+          desc: 'Luzes que contornam o rosto, iluminando e valorizando.',
+          badge: 'contour',
+          size: 'medio',
+          style: 'moderno',
+          colorCategory: 'loiras',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'highlights-loira': {
+          title: 'Highlights Loira',
+          desc: 'Luzes suaves que adicionam dimensão e brilho ao cabelo loiro.',
+          badge: 'highlights',
+          size: 'medio',
+          style: 'classico',
+          colorCategory: 'loiras',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+
+        // ---------- RUIVAS (3) ----------
+        'cherry-cola': {
+          title: 'Cherry Cola',
+          desc: 'Tom ruivo intenso com nuances de cereja e cola. Vibrante.',
+          badge: 'cherry',
+          size: 'medio',
+          style: 'moderno',
+          colorCategory: 'ruivas',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'cowgirl-copper': {
+          title: 'Cowgirl Copper',
+          desc: 'Tom cobre intenso com inspiração western. Moderno e ousado.',
+          badge: 'copper',
+          size: 'longo',
+          style: 'alternativo',
+          colorCategory: 'ruivas',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'ruivo-doce-leite': {
+          title: 'Ruivo Doce de Leite',
+          desc: 'Tom ruivo com nuances carameladas e suaves. Doce e sofisticado.',
+          badge: 'doce leite',
+          size: 'medio',
+          style: 'romantico',
+          colorCategory: 'ruivas',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+
+        // ---------- GRISALHAS (2) ----------
+        'grisalhos-frios': {
+          title: 'Grisalhos Frios',
+          desc: 'Transição natural com tons de cinza prateado. Sofisticação.',
+          badge: 'frios',
+          size: 'medio',
+          style: 'moderno',
+          colorCategory: 'grisalhas',
+          img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
+          ]
+        },
+        'grisalhos-quentes': {
+          title: 'Grisalhos Quentes',
+          desc: 'Transição com tons de cinza mais quentes e acinzentados.',
+          badge: 'quentes',
+          size: 'curto',
+          style: 'classico',
+          colorCategory: 'grisalhas',
+          img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
+          gallery: [
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=800&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
+          ]
         }
       };
 
+      // ============================================================
+      // STATE
+      // ============================================================
       const STATE = {
         favorites: JSON.parse(localStorage.getItem('hairbox_favorites') || '[]'),
         currentStyle: 'velvet bob',
@@ -2042,6 +2244,9 @@
         modalIndex: 0
       };
 
+      // ============================================================
+      // HELPERS
+      // ============================================================
       function isFavorite(key) { return STATE.favorites.includes(key); }
 
       function toggleFavorite(key) {
@@ -2055,22 +2260,11 @@
 
       function updateFavUI() {
         const count = STATE.favorites.length;
-        const badge = document.getElementById('menuBadge');
-        const favCount = document.getElementById('menuFavCount');
-        const favStat = document.getElementById('favCountStat');
-        badge.textContent = count;
-        favCount.textContent = count;
-        if (favStat) favStat.textContent = count;
-        if (count > 0) {
-          badge.classList.add('show');
-          favCount.classList.remove('empty');
-        } else {
-          badge.classList.remove('show');
-          favCount.classList.add('empty');
-        }
-        if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
-          generateFavGrid();
-        }
+        document.getElementById('menuBadge').textContent = count;
+        document.getElementById('menuFavCount').textContent = count;
+        document.getElementById('favCountStat').textContent = count;
+        count > 0 ? document.getElementById('menuBadge').classList.add('show') : document.getElementById('menuBadge').classList.remove('show');
+        if (document.getElementById('pageFavoritos').classList.contains('active-page')) generateFavGrid();
       }
 
       function updateAllFavButtons(key) {
@@ -2093,12 +2287,17 @@
         if (STATE.currentFilter !== 'all') {
           keys = keys.filter(k => {
             const data = styleData[k];
-            return data.size === STATE.currentFilter || data.style === STATE.currentFilter;
+            return data.size === STATE.currentFilter ||
+                   data.style === STATE.currentFilter ||
+                   data.colorCategory === STATE.currentFilter;
           });
         }
         return keys.length ? keys : Object.keys(styleData);
       }
 
+      // ============================================================
+      // RENDER FUNCTIONS
+      // ============================================================
       function generateChips() {
         const container = document.getElementById('chipCarousel');
         container.innerHTML = '';
@@ -2219,7 +2418,7 @@
       function generateTendencias() {
         const list = document.getElementById('tendenciasList');
         list.innerHTML = '';
-        const tendencias = ['wolf cut', 'butterfly cut', 'pixie cut', 'curtain bangs', 'long bob', 'kitty cut'];
+        const tendencias = ['wolf cut', 'butterfly cut', 'pixie cut', 'curtain bangs', 'long bob', 'kitty cut', 'ombre-tiger-eye', 'balayage-loira', 'cherry-cola'];
         tendencias.forEach(key => {
           const data = styleData[key];
           if (!data) return;
@@ -2291,6 +2490,9 @@
         });
       }
 
+      // ============================================================
+      // MODAL
+      // ============================================================
       function openModal(key) {
         const data = styleData[key];
         if (!data) return;
@@ -2359,6 +2561,9 @@
         document.body.style.overflow = '';
       }
 
+      // ============================================================
+      // SEARCH
+      // ============================================================
       function handleSearch() {
         const val = document.getElementById('searchInput').value.trim().toLowerCase();
         if (val) {
@@ -2387,11 +2592,14 @@
         generateCarousel(STATE.currentStyle);
       }
 
-      const debounce = (fn, delay = 300) => {
+      const debounce = (fn, delay = 400) => {
         let timer;
         return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); };
       };
 
+      // ============================================================
+      // NAVIGATION
+      // ============================================================
       function navigateTo(pageId) {
         const current = document.querySelector('.page.active-page');
         const target = document.getElementById(pageId);
@@ -2401,32 +2609,30 @@
           setTimeout(() => {
             current.classList.remove('active-page', 'exit-page');
             target.classList.add('active-page');
-            const isHome = pageId === 'pageHome';
-            document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
-            document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
-            document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
-            document.querySelectorAll('.footer-links a').forEach(link => {
-              link.classList.toggle('active-link', link.dataset.page === pageId);
-              link.setAttribute('aria-selected', link.dataset.page === pageId);
-            });
-            if (isHome) generateCarousel(STATE.currentStyle);
-            if (pageId === 'pageFavoritos') generateFavGrid();
+            updatePageVisibility(pageId);
           }, 250);
         } else if (!current || current === target) {
           target.classList.add('active-page');
-          const isHome = pageId === 'pageHome';
-          document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
-          document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
-          document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
-          document.querySelectorAll('.footer-links a').forEach(link => {
-            link.classList.toggle('active-link', link.dataset.page === pageId);
-            link.setAttribute('aria-selected', link.dataset.page === pageId);
-          });
-          if (isHome) generateCarousel(STATE.currentStyle);
-          if (pageId === 'pageFavoritos') generateFavGrid();
+          updatePageVisibility(pageId);
         }
       }
 
+      function updatePageVisibility(pageId) {
+        const isHome = pageId === 'pageHome';
+        document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
+        document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
+        document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
+        document.querySelectorAll('.footer-links a').forEach(link => {
+          link.classList.toggle('active-link', link.dataset.page === pageId);
+          link.setAttribute('aria-selected', link.dataset.page === pageId);
+        });
+        if (isHome) generateCarousel(STATE.currentStyle);
+        if (pageId === 'pageFavoritos') generateFavGrid();
+      }
+
+      // ============================================================
+      // THEME
+      // ============================================================
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         document.getElementById('menuThemeToggle').textContent = theme === 'dark' ? '🌙 dark' : '☀️ light';
@@ -2434,30 +2640,31 @@
         STATE.theme = theme;
       }
 
+      // ============================================================
+      // INIT
+      // ============================================================
       function init() {
         applyTheme(STATE.theme);
 
-        const menuThemeToggle = document.getElementById('menuThemeToggle');
-        menuThemeToggle.addEventListener('click', () => {
-          applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
-          closeMenu();
-        });
-
+        // Menu
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const menuOverlay = document.getElementById('menuOverlay');
         const menuClose = document.getElementById('menuClose');
-
         function openMenu() { menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeMenu() { menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
         hamburgerBtn.addEventListener('click', openMenu);
         menuClose.addEventListener('click', closeMenu);
         menuOverlay.addEventListener('click', e => { if (e.target === e.currentTarget) closeMenu(); });
-
         document.querySelectorAll('.menu-item[data-page]').forEach(item => {
           item.addEventListener('click', function() { navigateTo(this.dataset.page); closeMenu(); });
         });
         document.getElementById('menuFavs').addEventListener('click', function() { navigateTo('pageFavoritos'); closeMenu(); });
+        document.getElementById('menuThemeToggle').addEventListener('click', () => {
+          applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
+          closeMenu();
+        });
 
+        // Filters
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.addEventListener('click', function() {
             document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
@@ -2473,6 +2680,7 @@
           });
         });
 
+        // Footer links
         document.querySelectorAll('.footer-links a').forEach(link => {
           link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -2480,9 +2688,11 @@
           });
         });
 
+        // Back buttons
         document.querySelectorAll('.back-home').forEach(btn => btn.addEventListener('click', () => navigateTo('pageHome')));
         document.getElementById('homeBtn').addEventListener('click', () => navigateTo('pageHome'));
 
+        // Search
         const searchInput = document.getElementById('searchInput');
         const searchBtn = document.getElementById('searchButton');
         const debouncedSearch = debounce(handleSearch, 400);
@@ -2490,11 +2700,11 @@
         searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } });
         searchBtn.addEventListener('click', e => { e.preventDefault(); handleSearch(); });
 
+        // Modal
         document.getElementById('modalClose').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
         document.getElementById('modalPrev').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex - 1); });
         document.getElementById('modalNext').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex + 1); });
-
         document.getElementById('modalGallery').addEventListener('scroll', function() {
           const images = this.querySelectorAll('img');
           if (!images.length) return;
@@ -2511,7 +2721,6 @@
             });
           }
         });
-
         document.getElementById('modalFavBtn').addEventListener('click', function() {
           const key = this.dataset.favKey;
           if (key) {
@@ -2523,7 +2732,6 @@
             this.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
           }
         });
-
         document.addEventListener('keydown', e => {
           if (!document.getElementById('modalOverlay').classList.contains('active')) return;
           if (e.key === 'Escape') closeModal();
@@ -2531,6 +2739,7 @@
           if (e.key === 'ArrowRight') goToModalImage(STATE.modalIndex + 1);
         });
 
+        // Contact form
         document.getElementById('contatoForm').addEventListener('submit', function(e) {
           e.preventDefault();
           const inputs = this.querySelectorAll('input, textarea');
@@ -2551,6 +2760,7 @@
           this.reset();
         });
 
+        // Render
         generateChips();
         generateTendencias();
         generateGaleria();
@@ -2558,12 +2768,10 @@
         generateFavGrid();
         updateFavUI();
 
-        console.log('📦 HAIRBOX · Catálogo · Nível 1 ✓');
-        console.log('✅ Design refinado, acessível e responsivo');
-        console.log('✅ Animações de entrada/saída');
-        console.log('✅ Busca com debounce');
-        console.log('✅ Carrossel com drag nativo');
-        console.log('✅ Formulário com validação visual');
+        console.log('📦 HAIRBOX · 25 estilos · Nível 1 ✓');
+        console.log('✅ 13 existentes + 12 novos (morenas, loiras, ruivas, grisalhas)');
+        console.log('✅ Filtros: estrutura + cores');
+        console.log('✅ Layout limpo e minimalista');
       }
 
       document.addEventListener('DOMContentLoaded', init);
