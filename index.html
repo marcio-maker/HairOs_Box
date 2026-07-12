@@ -7,35 +7,25 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@200;300;400;500;600;700&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg-primary: #0a0808;
       --bg-secondary: #12100e;
       --bg-card: #1a1612;
       --bg-elevated: #1c1814;
-
       --text-primary: #f0ebe4;
       --text-secondary: #d4c9bc;
       --text-muted: #8a8278;
-
       --gold: #c9a96e;
       --gold-light: #e8d5a8;
       --gold-dark: #a8894e;
       --gold-glow: rgba(201, 169, 110, 0.12);
-
       --border-subtle: rgba(201, 169, 110, 0.06);
       --border-gold: rgba(201, 169, 110, 0.15);
-
       --shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.4);
       --shadow-glow: 0 0 80px rgba(201, 169, 110, 0.02);
-
       --transition-smooth: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-
       --radius-card: 14px;
       --radius-pill: 100px;
     }
@@ -45,11 +35,9 @@
       --bg-secondary: #ffffff;
       --bg-card: #ffffff;
       --bg-elevated: #f8f4ef;
-
       --text-primary: #1a1612;
       --text-secondary: #4a443e;
       --text-muted: #8a8278;
-
       --border-subtle: rgba(0, 0, 0, 0.04);
       --shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.06);
     }
@@ -60,7 +48,6 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background var(--transition-smooth);
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow: hidden;
     }
 
@@ -83,9 +70,7 @@
       position: relative;
       transition: background var(--transition-smooth);
       overflow: hidden;
-      background-image:
-        radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
+      background-image: radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
     }
 
     .header {
@@ -118,9 +103,7 @@
       transition: transform 0.3s ease;
     }
 
-    .header-brand:hover {
-      transform: scale(1.02);
-    }
+    .header-brand:hover { transform: scale(1.02); }
 
     .header-brand .brand-main {
       font-family: 'Playfair Display', serif;
@@ -133,9 +116,7 @@
       line-height: 1;
     }
 
-    .header-brand .brand-main span {
-      color: var(--gold);
-    }
+    .header-brand .brand-main span { color: var(--gold); }
 
     .header-brand .brand-sub {
       font-size: 0.45rem;
@@ -183,19 +164,9 @@
       transition: all var(--transition-smooth);
     }
 
-    .hamburger .bar:nth-child(2) {
-      width: 14px;
-      align-self: flex-end;
-    }
-
-    .hamburger .bar:nth-child(3) {
-      width: 10px;
-      align-self: flex-end;
-    }
-
-    .hamburger:hover .bar {
-      background: var(--gold);
-    }
+    .hamburger .bar:nth-child(2) { width: 14px; align-self: flex-end; }
+    .hamburger .bar:nth-child(3) { width: 10px; align-self: flex-end; }
+    .hamburger:hover .bar { background: var(--gold); }
 
     .hamburger .badge-count {
       position: absolute;
@@ -232,9 +203,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .filter-bar::-webkit-scrollbar {
-      display: none;
-    }
+    .filter-bar::-webkit-scrollbar { display: none; }
 
     .filter-btn {
       background: transparent;
@@ -253,9 +222,7 @@
       min-height: 30px;
     }
 
-    .filter-btn:hover {
-      color: var(--text-secondary);
-    }
+    .filter-btn:hover { color: var(--text-secondary); }
 
     .filter-btn.active-filter {
       color: var(--gold);
@@ -280,9 +247,7 @@
       scroll-behavior: smooth;
     }
 
-    .chip-carousel::-webkit-scrollbar {
-      display: none;
-    }
+    .chip-carousel::-webkit-scrollbar { display: none; }
 
     .chip {
       flex: 0 0 auto;
@@ -421,11 +386,13 @@
       scroll-behavior: smooth;
       height: 100%;
       align-items: stretch;
+      touch-action: pan-x;
+      cursor: grab;
     }
 
-    .unified-carousel::-webkit-scrollbar {
-      display: none;
-    }
+    .unified-carousel:active { cursor: grabbing; }
+
+    .unified-carousel::-webkit-scrollbar { display: none; }
 
     .carousel-item {
       flex: 0 0 72%;
@@ -443,9 +410,7 @@
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
     }
 
-    .carousel-item:last-child {
-      margin-right: 2px;
-    }
+    .carousel-item:last-child { margin-right: 2px; }
 
     .carousel-item:hover {
       border-color: var(--border-gold);
@@ -540,11 +505,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 30px 14px 14px 14px;
+      padding: 30px 14px 16px 14px;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.2) 55%, transparent 100%);
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
     }
 
     .item-overlay h3 {
@@ -559,7 +524,7 @@
 
     .item-overlay .item-sub {
       font-size: 0.45rem;
-      color: rgba(201, 169, 110, 0.5);
+      color: rgba(201, 169, 110, 0.6);
       font-weight: 300;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -568,14 +533,14 @@
 
     .item-overlay .item-badge {
       display: inline-block;
-      background: rgba(201, 169, 110, 0.12);
+      background: rgba(201, 169, 110, 0.2);
       backdrop-filter: blur(6px);
       padding: 3px 12px;
       border-radius: var(--radius-pill);
       font-size: 0.4rem;
       font-weight: 400;
       color: var(--gold-light);
-      border: 1px solid rgba(201, 169, 110, 0.04);
+      border: 1px solid rgba(201, 169, 110, 0.1);
       align-self: flex-start;
       margin-top: 4px;
       letter-spacing: 0.08em;
@@ -640,9 +605,7 @@
       margin: 0 auto;
     }
 
-    .footer-links::-webkit-scrollbar {
-      display: none;
-    }
+    .footer-links::-webkit-scrollbar { display: none; }
 
     .footer-links a {
       color: var(--text-muted);
@@ -691,9 +654,7 @@
       transition: color 0.3s ease;
     }
 
-    .footer-copy a:hover {
-      color: var(--gold);
-    }
+    .footer-copy a:hover { color: var(--gold); }
 
     .menu-overlay {
       position: fixed;
@@ -741,14 +702,8 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    .menu-panel::-webkit-scrollbar {
-      width: 2px;
-    }
-
-    .menu-panel::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 4px;
-    }
+    .menu-panel::-webkit-scrollbar { width: 2px; }
+    .menu-panel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
     .menu-header {
       display: flex;
@@ -886,9 +841,18 @@
       animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
+    .page.exit-page {
+      animation: fadeOut 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(8px); }
     }
 
     .page-header {
@@ -922,6 +886,7 @@
       min-height: 28px;
       display: flex;
       align-items: center;
+      background: transparent;
     }
 
     .back-home:hover {
@@ -938,9 +903,7 @@
       padding: 0 0 4px 0;
     }
 
-    .page-scroll::-webkit-scrollbar {
-      display: none;
-    }
+    .page-scroll::-webkit-scrollbar { display: none; }
 
     .grid-cortes {
       display: grid;
@@ -1017,9 +980,7 @@
       transition: all var(--transition-smooth);
     }
 
-    .grid-item .grid-fav.favorited {
-      color: #ff4757;
-    }
+    .grid-item .grid-fav.favorited { color: #ff4757; }
 
     .grid-item .grid-fav-remove {
       position: absolute;
@@ -1312,6 +1273,13 @@
     .contato-form input.error,
     .contato-form textarea.error {
       border-color: #ff4757;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
     }
 
     .contato-form textarea {
@@ -1474,9 +1442,7 @@
       -webkit-overflow-scrolling: touch;
     }
 
-    .modal-gallery::-webkit-scrollbar {
-      display: none;
-    }
+    .modal-gallery::-webkit-scrollbar { display: none; }
 
     .modal-gallery img {
       flex: 0 0 100%;
@@ -1516,15 +1482,8 @@
       opacity: 0;
     }
 
-    .modal-content:hover .modal-nav {
-      opacity: 1;
-    }
-
-    .modal-nav:hover {
-      background: rgba(0, 0, 0, 0.45);
-      color: #fff;
-    }
-
+    .modal-content:hover .modal-nav { opacity: 1; }
+    .modal-nav:hover { background: rgba(0, 0, 0, 0.45); color: #fff; }
     .modal-nav.prev { left: 8px; }
     .modal-nav.next { right: 8px; }
 
@@ -1552,14 +1511,14 @@
 
     .modal-badge {
       align-self: flex-start;
-      background: rgba(201, 169, 110, 0.12);
+      background: rgba(201, 169, 110, 0.2);
       backdrop-filter: blur(6px);
       color: var(--gold-light);
       padding: 2px 12px;
       border-radius: var(--radius-pill);
       font-size: 0.45rem;
       font-weight: 400;
-      border: 1px solid rgba(201, 169, 110, 0.08);
+      border: 1px solid rgba(201, 169, 110, 0.1);
       letter-spacing: 0.1em;
       text-transform: lowercase;
       white-space: nowrap;
@@ -1604,9 +1563,7 @@
       transition: all var(--transition-smooth);
     }
 
-    .modal-fav-btn:hover {
-      transform: scale(1.05);
-    }
+    .modal-fav-btn:hover { transform: scale(1.05); }
 
     .modal-fav-btn .fav-icon {
       width: 40px;
@@ -1642,19 +1599,9 @@
       font-weight: 300;
     }
 
-    ::-webkit-scrollbar {
-      width: 2px;
-      height: 2px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--bg-secondary);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 4px;
-    }
+    ::-webkit-scrollbar { width: 2px; height: 2px; }
+    ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
     @media (max-height: 640px) {
       .app { padding: 10px 12px 4px 12px; }
@@ -1675,7 +1622,7 @@
       .search-wrapper button { padding: 6px 14px; font-size: 0.45rem; min-height: 28px; }
       .search-wrapper button svg { width: 10px; height: 10px; }
       .carousel-item { flex: 0 0 65%; min-width: 140px; aspect-ratio: 9/12; }
-      .item-overlay { padding: 20px 10px 10px 10px; }
+      .item-overlay { padding: 20px 10px 12px 10px; }
       .item-overlay h3 { font-size: 0.8rem; }
       .item-overlay .item-badge { font-size: 0.35rem; padding: 2px 10px; min-height: 18px; }
       .item-overlay .item-sub { font-size: 0.35rem; }
@@ -1709,12 +1656,15 @@
 
     @media (min-width: 500px) {
       .carousel-item { flex: 0 0 55%; min-width: 240px; }
+      .galeria-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (min-width: 768px) {
       .app { max-width: 600px; padding: 24px 24px 12px 24px; }
       .header-brand .brand-main { font-size: 2rem; }
       .carousel-item { flex: 0 0 45%; min-width: 280px; }
+      .galeria-grid { grid-template-columns: repeat(4, 1fr); }
+      .fav-grid { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
@@ -1722,7 +1672,7 @@
   <div class="app">
 
     <header class="header">
-      <div class="header-brand" id="homeBtn">
+      <div class="header-brand" id="homeBtn" role="button" tabindex="0" aria-label="Voltar para home">
         <span class="brand-main">hairbox<span>.</span></span>
         <span class="brand-sub">· catálogo ·</span>
       </div>
@@ -1731,20 +1681,20 @@
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
-          <span class="badge-count" id="menuBadge">0</span>
+          <span class="badge-count" id="menuBadge" aria-label="Favoritos">0</span>
         </button>
       </div>
     </header>
 
-    <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menu">
       <div class="menu-panel">
         <div class="menu-header">
           <span>✦ menu</span>
-          <button class="menu-close" id="menuClose">✕</button>
+          <button class="menu-close" id="menuClose" aria-label="Fechar menu">✕</button>
         </div>
         <button class="menu-item" id="menuFavs">
           <span class="icon">♥</span> favoritos
-          <span class="item-count" id="menuFavCount">0</span>
+          <span class="item-count empty" id="menuFavCount">0</span>
         </button>
         <div class="menu-divider"></div>
         <button class="menu-item" data-page="pageHome"><span class="icon">✧</span> home</button>
@@ -1755,31 +1705,31 @@
         <div class="menu-divider"></div>
         <div class="menu-theme">
           <span>🌙 tema</span>
-          <button class="theme-switch" id="menuThemeToggle">dark</button>
+          <button class="theme-switch" id="menuThemeToggle" aria-label="Alternar tema">dark</button>
         </div>
         <div class="menu-divider"></div>
         <div style="padding: 8px 8px 0 8px; font-size: 0.4rem; color: var(--text-muted); letter-spacing: 0.08em; text-align: center; opacity: 0.3;">hairbox · são paulo</div>
       </div>
     </div>
 
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active-filter" data-filter="all">todos</button>
-      <button class="filter-btn" data-filter="curto">curto</button>
-      <button class="filter-btn" data-filter="medio">médio</button>
-      <button class="filter-btn" data-filter="longo">longo</button>
-      <button class="filter-btn" data-filter="classico">clássico</button>
-      <button class="filter-btn" data-filter="moderno">moderno</button>
-      <button class="filter-btn" data-filter="alternativo">alternativo</button>
-      <button class="filter-btn" data-filter="romantico">romântico</button>
+    <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filtros de estilo">
+      <button class="filter-btn active-filter" data-filter="all" role="tab" aria-selected="true">todos</button>
+      <button class="filter-btn" data-filter="curto" role="tab" aria-selected="false">curto</button>
+      <button class="filter-btn" data-filter="medio" role="tab" aria-selected="false">médio</button>
+      <button class="filter-btn" data-filter="longo" role="tab" aria-selected="false">longo</button>
+      <button class="filter-btn" data-filter="classico" role="tab" aria-selected="false">clássico</button>
+      <button class="filter-btn" data-filter="moderno" role="tab" aria-selected="false">moderno</button>
+      <button class="filter-btn" data-filter="alternativo" role="tab" aria-selected="false">alternativo</button>
+      <button class="filter-btn" data-filter="romantico" role="tab" aria-selected="false">romântico</button>
     </div>
 
     <div class="chip-carousel-wrapper" id="chipWrapper">
-      <div class="chip-carousel" id="chipCarousel"></div>
+      <div class="chip-carousel" id="chipCarousel" role="tablist" aria-label="Estilos"></div>
     </div>
 
-    <div class="search-wrapper" id="searchWrapper">
-      <input type="text" id="searchInput" placeholder="buscar estilo..." aria-label="Buscar cortes">
-      <button id="searchButton">
+    <div class="search-wrapper" id="searchWrapper" role="search">
+      <input type="text" id="searchInput" placeholder="buscar estilo..." aria-label="Buscar cortes" autocomplete="off">
+      <button id="searchButton" aria-label="Buscar">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         buscar
       </button>
@@ -1787,47 +1737,47 @@
 
     <div class="page-container" id="pageContainer">
 
-      <div class="page active-page" id="pageHome">
+      <div class="page active-page" id="pageHome" role="tabpanel">
         <div class="unified-carousel-wrapper">
-          <div class="unified-carousel" id="unifiedCarousel"></div>
+          <div class="unified-carousel" id="unifiedCarousel" role="list"></div>
         </div>
-        <div class="carousel-indicators" id="indicators"></div>
+        <div class="carousel-indicators" id="indicators" role="tablist" aria-label="Indicadores do carrossel"></div>
       </div>
 
-      <div class="page" id="pageTendencias">
+      <div class="page" id="pageTendencias" role="tabpanel">
         <div class="page-header">
           <h2>tendências</h2>
-          <span class="back-home" id="backHome2">← voltar</span>
+          <button class="back-home" id="backHome2">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="tendencias-list" id="tendenciasList"></div>
         </div>
       </div>
 
-      <div class="page" id="pageGaleria">
+      <div class="page" id="pageGaleria" role="tabpanel">
         <div class="page-header">
           <h2>galeria</h2>
-          <span class="back-home" id="backHome3">← voltar</span>
+          <button class="back-home" id="backHome3">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="galeria-grid" id="galeriaGrid"></div>
         </div>
       </div>
 
-      <div class="page" id="pageFavoritos">
+      <div class="page" id="pageFavoritos" role="tabpanel">
         <div class="page-header">
           <h2>♥ favoritos</h2>
-          <span class="back-home" id="backHomeFav">← voltar</span>
+          <button class="back-home" id="backHomeFav">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="fav-grid" id="favGrid"></div>
         </div>
       </div>
 
-      <div class="page" id="pageSobre">
+      <div class="page" id="pageSobre" role="tabpanel">
         <div class="page-header">
           <h2>sobre</h2>
-          <span class="back-home" id="backHome4">← voltar</span>
+          <button class="back-home" id="backHome4">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="sobre-content">
@@ -1843,22 +1793,25 @@
         </div>
       </div>
 
-      <div class="page" id="pageContato">
+      <div class="page" id="pageContato" role="tabpanel">
         <div class="page-header">
           <h2>contato</h2>
-          <span class="back-home" id="backHome5">← voltar</span>
+          <button class="back-home" id="backHome5">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="contato-content">
             <p>Envie uma mensagem para a equipe hairbox.</p>
             <form class="contato-form" id="contatoForm" novalidate>
-              <input type="text" id="contatoNome" placeholder="seu nome" required>
-              <input type="email" id="contatoEmail" placeholder="seu e-mail" required>
-              <textarea id="contatoMensagem" placeholder="sua mensagem..." required></textarea>
+              <input type="text" id="contatoNome" placeholder="seu nome" required aria-required="true">
+              <input type="email" id="contatoEmail" placeholder="seu e-mail" required aria-required="true">
+              <textarea id="contatoMensagem" placeholder="sua mensagem..." required aria-required="true"></textarea>
               <button type="submit">enviar</button>
             </form>
             <div class="contato-social">
-              <a href="#">📷</a><a href="#">🐦</a><a href="#">📘</a><a href="#">📱</a>
+              <a href="#" aria-label="Instagram">📷</a>
+              <a href="#" aria-label="Twitter">🐦</a>
+              <a href="#" aria-label="Facebook">📘</a>
+              <a href="#" aria-label="WhatsApp">📱</a>
             </div>
             <p style="text-align:center;font-size:0.5rem;color:var(--text-muted);letter-spacing:0.05em;">contato@hairbox.com</p>
           </div>
@@ -1868,34 +1821,34 @@
     </div>
 
     <div class="footer-minimal">
-      <div class="footer-links" id="footerLinks">
-        <a class="active-link" data-page="pageHome">home</a>
-        <a data-page="pageTendencias">tendências</a>
-        <a data-page="pageGaleria">galeria</a>
-        <a data-page="pageFavoritos">♥ fav</a>
-        <a data-page="pageSobre">sobre</a>
-        <a data-page="pageContato">contato</a>
+      <div class="footer-links" id="footerLinks" role="tablist">
+        <a class="active-link" data-page="pageHome" role="tab" aria-selected="true">home</a>
+        <a data-page="pageTendencias" role="tab" aria-selected="false">tendências</a>
+        <a data-page="pageGaleria" role="tab" aria-selected="false">galeria</a>
+        <a data-page="pageFavoritos" role="tab" aria-selected="false">♥ fav</a>
+        <a data-page="pageSobre" role="tab" aria-selected="false">sobre</a>
+        <a data-page="pageContato" role="tab" aria-selected="false">contato</a>
       </div>
       <div class="footer-copy">© 2026 <a href="#">hairbox</a> · são paulo</div>
     </div>
 
   </div>
 
-  <div class="modal-overlay" id="modalOverlay">
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Detalhes do estilo">
     <div class="modal-content">
-      <div class="modal-indicators" id="modalIndicators"></div>
-      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-indicators" id="modalIndicators" role="tablist"></div>
+      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
       <div class="modal-gallery-wrapper">
         <div class="modal-gallery" id="modalGallery"></div>
-        <button class="modal-nav prev" id="modalPrev">‹</button>
-        <button class="modal-nav next" id="modalNext">›</button>
+        <button class="modal-nav prev" id="modalPrev" aria-label="Anterior">‹</button>
+        <button class="modal-nav next" id="modalNext" aria-label="Próximo">›</button>
         <div class="modal-info-overlay">
           <div class="modal-text-block">
             <span class="modal-badge" id="modalBadge">tendência</span>
             <span class="modal-title" id="modalTitle">Velvet Bob</span>
             <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves que emolduram o rosto.</span>
           </div>
-          <button class="modal-fav-btn" id="modalFavBtn">
+          <button class="modal-fav-btn" id="modalFavBtn" aria-label="Favoritar">
             <span class="fav-icon">♡</span>
             <span class="fav-label">favoritar</span>
           </button>
@@ -1906,6 +1859,8 @@
 
   <script>
     (function() {
+      'use strict';
+
       const styleData = {
         'velvet bob': {
           title: 'Velvet Bob',
@@ -2078,37 +2033,41 @@
         }
       };
 
-      let favorites = JSON.parse(localStorage.getItem('hairbox_favorites') || '[]');
+      const STATE = {
+        favorites: JSON.parse(localStorage.getItem('hairbox_favorites') || '[]'),
+        currentStyle: 'velvet bob',
+        currentFilter: 'all',
+        theme: localStorage.getItem('hairbox_theme') || 'dark',
+        modalKey: null,
+        modalIndex: 0
+      };
+
+      function isFavorite(key) { return STATE.favorites.includes(key); }
 
       function toggleFavorite(key) {
-        const idx = favorites.indexOf(key);
-        idx > -1 ? favorites.splice(idx, 1) : favorites.push(key);
-        localStorage.setItem('hairbox_favorites', JSON.stringify(favorites));
+        const idx = STATE.favorites.indexOf(key);
+        idx > -1 ? STATE.favorites.splice(idx, 1) : STATE.favorites.push(key);
+        localStorage.setItem('hairbox_favorites', JSON.stringify(STATE.favorites));
         updateFavUI();
         updateAllFavButtons(key);
-        return favorites.includes(key);
+        return isFavorite(key);
       }
 
-      function isFavorite(key) { return favorites.includes(key); }
-
       function updateFavUI() {
-        const count = favorites.length;
+        const count = STATE.favorites.length;
         const badge = document.getElementById('menuBadge');
         const favCount = document.getElementById('menuFavCount');
+        const favStat = document.getElementById('favCountStat');
         badge.textContent = count;
         favCount.textContent = count;
+        if (favStat) favStat.textContent = count;
         if (count > 0) {
           badge.classList.add('show');
           favCount.classList.remove('empty');
-          favCount.style.background = 'var(--gold)';
-          favCount.style.color = '#0a0808';
         } else {
           badge.classList.remove('show');
           favCount.classList.add('empty');
-          favCount.style.background = 'var(--border-subtle)';
-          favCount.style.color = 'var(--text-muted)';
         }
-        document.getElementById('favCountStat').textContent = count;
         if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
           generateFavGrid();
         }
@@ -2118,9 +2077,7 @@
         const fav = isFavorite(key);
         document.querySelectorAll(`[data-fav-key="${key}"]`).forEach(el => {
           el.classList.toggle('favorited', fav);
-          if (el.tagName === 'BUTTON') {
-            el.textContent = fav ? '♥' : '♡';
-          }
+          if (el.tagName === 'BUTTON') el.textContent = fav ? '♥' : '♡';
         });
         const modalBtn = document.getElementById('modalFavBtn');
         if (modalBtn.dataset.favKey === key) {
@@ -2131,172 +2088,57 @@
         updateFavUI();
       }
 
-      function generateFavGrid() {
-        const grid = document.getElementById('favGrid');
-        grid.innerHTML = '';
-        if (favorites.length === 0) {
-          grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
-          return;
+      function getFilteredKeys() {
+        let keys = Object.keys(styleData);
+        if (STATE.currentFilter !== 'all') {
+          keys = keys.filter(k => {
+            const data = styleData[k];
+            return data.size === STATE.currentFilter || data.style === STATE.currentFilter;
+          });
         }
-        favorites.forEach(key => {
-          const data = styleData[key];
-          if (!data) return;
-          const item = document.createElement('div');
-          item.className = 'grid-item';
-          item.innerHTML = `
-            <button class="grid-fav-remove" data-fav-key="${key}">✕</button>
-            <img src="${data.img}" alt="${data.title}" loading="lazy">
-            <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
-          `;
-          item.querySelector('.grid-fav-remove').addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleFavorite(this.dataset.favKey);
-            updateAllFavButtons(this.dataset.favKey);
-            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
-              generateFavGrid();
-            }
-          });
-          item.addEventListener('click', function(e) {
-            if (e.target.closest('.grid-fav-remove')) return;
-            openModal(key);
-          });
-          grid.appendChild(item);
-        });
+        return keys.length ? keys : Object.keys(styleData);
       }
-
-      const searchInput = document.getElementById('searchInput');
-      const searchButton = document.getElementById('searchButton');
-      const unifiedCarousel = document.getElementById('unifiedCarousel');
-      const indicators = document.getElementById('indicators');
-      const footerLinks = document.querySelectorAll('.footer-links a');
-      const pages = {
-        home: document.getElementById('pageHome'),
-        tendencias: document.getElementById('pageTendencias'),
-        galeria: document.getElementById('pageGaleria'),
-        favoritos: document.getElementById('pageFavoritos'),
-        sobre: document.getElementById('pageSobre'),
-        contato: document.getElementById('pageContato')
-      };
-      const backButtons = document.querySelectorAll('.back-home');
-      const homeBtn = document.getElementById('homeBtn');
-      const chipWrapper = document.getElementById('chipWrapper');
-      const searchWrapper = document.getElementById('searchWrapper');
-      const chipCarousel = document.getElementById('chipCarousel');
-      const modalOverlay = document.getElementById('modalOverlay');
-      const modalClose = document.getElementById('modalClose');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalBadge = document.getElementById('modalBadge');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalGallery = document.getElementById('modalGallery');
-      const modalIndicators = document.getElementById('modalIndicators');
-      const modalFavBtn = document.getElementById('modalFavBtn');
-      const modalPrev = document.getElementById('modalPrev');
-      const modalNext = document.getElementById('modalNext');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const hamburgerBtn = document.getElementById('hamburgerBtn');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const menuClose = document.getElementById('menuClose');
-      const menuFavs = document.getElementById('menuFavs');
-
-      let currentStyle = 'velvet bob';
-      let currentFilter = 'all';
-      let carouselItems = [];
-      let modalCurrentKey = null;
-      let modalCurrentIndex = 0;
-      let modalImages = [];
-
-      let currentTheme = localStorage.getItem('hairbox_theme') || 'dark';
-      const themeToggle = document.getElementById('menuThemeToggle');
-
-      function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        themeToggle.textContent = theme === 'dark' ? '🌙 dark' : '☀️ light';
-        localStorage.setItem('hairbox_theme', theme);
-        currentTheme = theme;
-      }
-      applyTheme(currentTheme);
-      themeToggle.addEventListener('click', () => { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); closeMenu(); });
-
-      function openMenu() { menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
-      function closeMenu() { menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
-      hamburgerBtn.addEventListener('click', openMenu);
-      menuClose.addEventListener('click', closeMenu);
-      menuOverlay.addEventListener('click', e => { if (e.target === e.currentTarget) closeMenu(); });
-      document.querySelectorAll('.menu-item[data-page]').forEach(item => {
-        item.addEventListener('click', function() { navigateTo(this.dataset.page); closeMenu(); });
-      });
-      menuFavs.addEventListener('click', function() { navigateTo('pageFavoritos'); closeMenu(); });
 
       function generateChips() {
-        chipCarousel.innerHTML = '';
+        const container = document.getElementById('chipCarousel');
+        container.innerHTML = '';
         const keys = getFilteredKeys();
         keys.forEach(key => {
           const data = styleData[key];
           if (!data) return;
           const chip = document.createElement('span');
-          chip.className = `chip ${key === currentStyle ? 'active-chip' : ''}`;
+          chip.className = `chip ${key === STATE.currentStyle ? 'active-chip' : ''}`;
           chip.dataset.style = key;
           chip.textContent = data.title;
+          chip.setAttribute('role', 'tab');
+          chip.setAttribute('aria-selected', key === STATE.currentStyle);
           chip.addEventListener('click', function() {
-            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active-chip'));
+            document.querySelectorAll('.chip').forEach(c => { c.classList.remove('active-chip'); c.setAttribute('aria-selected', 'false'); });
             this.classList.add('active-chip');
-            currentStyle = this.dataset.style;
+            this.setAttribute('aria-selected', 'true');
+            STATE.currentStyle = this.dataset.style;
             if (document.getElementById('pageHome').classList.contains('active-page')) {
-              generateCarousel(currentStyle);
+              generateCarousel(STATE.currentStyle);
             } else {
               navigateTo('pageHome');
-              setTimeout(() => generateCarousel(currentStyle), 100);
+              setTimeout(() => generateCarousel(STATE.currentStyle), 100);
             }
           });
-          chipCarousel.appendChild(chip);
+          container.appendChild(chip);
         });
       }
-
-      function getFilteredKeys() {
-        let keys = Object.keys(styleData);
-        if (currentFilter !== 'all') {
-          keys = keys.filter(k => {
-            const data = styleData[k];
-            return data.size === currentFilter || data.style === currentFilter;
-          });
-        }
-        if (keys.length === 0) keys = Object.keys(styleData);
-        return keys;
-      }
-
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterBtns.forEach(b => b.classList.remove('active-filter'));
-          this.classList.add('active-filter');
-          currentFilter = this.dataset.filter;
-          
-          if (document.getElementById('pageHome').classList.contains('active-page')) {
-            generateCarousel(currentStyle);
-          } else if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
-            // Não faz nada nos favoritos
-          } else {
-            navigateTo('pageHome');
-            setTimeout(() => generateCarousel(currentStyle), 100);
-          }
-        });
-      });
 
       function generateCarousel(activeStyle) {
         let keys = getFilteredKeys();
-        if (keys.length === 0) keys = Object.keys(styleData);
-        
-        if (!keys.includes(activeStyle) && keys.length) {
-          activeStyle = keys[0];
-        }
-        if (!activeStyle || !keys.includes(activeStyle)) {
-          activeStyle = 'velvet bob';
-        }
-        currentStyle = activeStyle;
-        
+        if (!keys.includes(activeStyle) && keys.length) activeStyle = keys[0];
+        if (!activeStyle || !keys.includes(activeStyle)) activeStyle = 'velvet bob';
+        STATE.currentStyle = activeStyle;
+
         const sorted = [activeStyle, ...keys.filter(k => k !== activeStyle)];
-        unifiedCarousel.innerHTML = '';
-        carouselItems = [];
-        
+        const container = document.getElementById('unifiedCarousel');
+        container.innerHTML = '';
+        const items = [];
+
         sorted.forEach(key => {
           const data = styleData[key];
           if (!data) return;
@@ -2304,8 +2146,9 @@
           const item = document.createElement('div');
           item.className = `carousel-item${key === activeStyle ? ' active-item' : ''}`;
           item.dataset.style = key;
+          item.setAttribute('role', 'listitem');
           item.innerHTML = `
-            <button class="favorite-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}">${fav ? '♥' : '♡'}</button>
+            <button class="favorite-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}" aria-label="${fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${fav ? '♥' : '♡'}</button>
             <div class="img-container"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
             <div class="item-overlay">
               <h3>${data.title}</h3>
@@ -2322,43 +2165,55 @@
             if (e.target.closest('.favorite-btn')) return;
             openModal(this.dataset.style);
           });
-          unifiedCarousel.appendChild(item);
-          carouselItems.push(item);
+          container.appendChild(item);
+          items.push(item);
         });
-        
-        updateIndicators();
+
+        updateIndicators(items);
         setTimeout(() => {
           const idx = sorted.indexOf(activeStyle);
-          if (idx >= 0 && carouselItems[idx]) {
-            carouselItems[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          if (idx >= 0 && items[idx]) {
+            items[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
           }
         }, 80);
         updateFavUI();
         generateChips();
       }
 
-      function updateIndicators() {
-        const total = Math.max(Math.ceil(carouselItems.length / 2.5), 1);
-        indicators.innerHTML = '';
+      function updateIndicators(items) {
+        const total = Math.max(Math.ceil(items.length / 2.5), 1);
+        const container = document.getElementById('indicators');
+        container.innerHTML = '';
         for (let i = 0; i < total; i++) {
           const dot = document.createElement('span');
           dot.className = `dot${i === 0 ? ' active-dot' : ''}`;
-          dot.addEventListener('click', () => { if (carouselItems[i]) carouselItems[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); });
-          indicators.appendChild(dot);
+          dot.setAttribute('role', 'tab');
+          dot.setAttribute('aria-selected', i === 0);
+          dot.addEventListener('click', () => {
+            if (items[i]) items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          });
+          container.appendChild(dot);
         }
       }
 
-      unifiedCarousel.addEventListener('scroll', function() {
-        const scrollLeft = this.scrollLeft;
-        const itemWidth = carouselItems[0]?.offsetWidth || 0;
+      const carouselEl = document.getElementById('unifiedCarousel');
+      carouselEl.addEventListener('scroll', function() {
+        const items = this.querySelectorAll('.carousel-item');
+        if (!items.length) return;
+        const itemWidth = items[0]?.offsetWidth || 0;
         const gap = 10;
+        const scrollLeft = this.scrollLeft;
+        const totalWidth = (itemWidth + gap) * items.length;
         const visibleWidth = this.offsetWidth;
-        const totalWidth = (itemWidth + gap) * Math.max(carouselItems.length, 1);
-        const maxScroll = totalWidth - visibleWidth;
-        const pct = maxScroll > 0 ? scrollLeft / maxScroll : 0;
-        const totalDots = indicators.children.length;
+        const maxScroll = Math.max(totalWidth - visibleWidth, 1);
+        const pct = Math.min(scrollLeft / maxScroll, 1);
+        const dots = document.querySelectorAll('#indicators .dot');
+        const totalDots = dots.length;
         const active = Math.min(Math.round(pct * (totalDots - 1)), totalDots - 1);
-        Array.from(indicators.children).forEach((dot, i) => dot.classList.toggle('active-dot', i === active));
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active-dot', i === active);
+          dot.setAttribute('aria-selected', i === active);
+        });
       });
 
       function generateTendencias() {
@@ -2379,9 +2234,9 @@
             </div>
           `;
           item.addEventListener('click', () => { 
-            searchInput.value = key; 
-            updateContent(key); 
-            navigateTo('pageHome'); 
+            document.getElementById('searchInput').value = key;
+            handleSearch();
+            navigateTo('pageHome');
           });
           list.appendChild(item);
         });
@@ -2390,7 +2245,9 @@
       function generateGaleria() {
         const grid = document.getElementById('galeriaGrid');
         grid.innerHTML = '';
-        Object.keys(styleData).slice(0, 8).forEach(key => {
+        const keys = Object.keys(styleData);
+        const shuffled = keys.sort(() => Math.random() - 0.5).slice(0, 8);
+        shuffled.forEach(key => {
           const data = styleData[key];
           if (!data) return;
           const item = document.createElement('div');
@@ -2401,206 +2258,315 @@
         });
       }
 
+      function generateFavGrid() {
+        const grid = document.getElementById('favGrid');
+        grid.innerHTML = '';
+        if (STATE.favorites.length === 0) {
+          grid.innerHTML = `<div class="empty-state"><span class="heart-big">♡</span>Toque no ♥ de um estilo para salvá-lo!</div>`;
+          return;
+        }
+        STATE.favorites.forEach(key => {
+          const data = styleData[key];
+          if (!data) return;
+          const item = document.createElement('div');
+          item.className = 'grid-item';
+          item.innerHTML = `
+            <button class="grid-fav-remove" data-fav-key="${key}" aria-label="Remover dos favoritos">✕</button>
+            <img src="${data.img}" alt="${data.title}" loading="lazy">
+            <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
+          `;
+          item.querySelector('.grid-fav-remove').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleFavorite(this.dataset.favKey);
+            updateAllFavButtons(this.dataset.favKey);
+            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
+              generateFavGrid();
+            }
+          });
+          item.addEventListener('click', function(e) {
+            if (e.target.closest('.grid-fav-remove')) return;
+            openModal(key);
+          });
+          grid.appendChild(item);
+        });
+      }
+
       function openModal(key) {
         const data = styleData[key];
         if (!data) return;
-        modalCurrentKey = key;
-        modalCurrentIndex = 0;
-        modalImages = data.gallery || [data.img];
-        modalTitle.textContent = data.title;
-        modalBadge.textContent = data.badge;
-        modalDesc.textContent = data.desc;
+        STATE.modalKey = key;
+        STATE.modalIndex = 0;
+        const images = data.gallery || [data.img];
+        document.getElementById('modalTitle').textContent = data.title;
+        document.getElementById('modalBadge').textContent = data.badge;
+        document.getElementById('modalDesc').textContent = data.desc;
         const fav = isFavorite(key);
-        modalFavBtn.dataset.favKey = key;
-        modalFavBtn.classList.toggle('favorited', fav);
-        modalFavBtn.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
-        modalFavBtn.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
-        modalGallery.innerHTML = '';
-        modalImages.forEach((img, i) => {
+        const modalBtn = document.getElementById('modalFavBtn');
+        modalBtn.dataset.favKey = key;
+        modalBtn.classList.toggle('favorited', fav);
+        modalBtn.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
+        modalBtn.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
+
+        const gallery = document.getElementById('modalGallery');
+        gallery.innerHTML = '';
+        images.forEach((img, i) => {
           const el = document.createElement('img');
           el.src = img;
           el.alt = data.title;
           el.loading = 'lazy';
           el.draggable = false;
           if (i === 0) el.classList.add('active-modal-img');
-          modalGallery.appendChild(el);
+          gallery.appendChild(el);
         });
-        modalIndicators.innerHTML = '';
-        modalImages.forEach((_, i) => {
+
+        const indicators = document.getElementById('modalIndicators');
+        indicators.innerHTML = '';
+        images.forEach((_, i) => {
           const dot = document.createElement('span');
           dot.className = `m-dot${i === 0 ? ' active-m-dot' : ''}`;
           dot.dataset.index = i;
+          dot.setAttribute('role', 'tab');
+          dot.setAttribute('aria-selected', i === 0);
           dot.addEventListener('click', () => goToModalImage(i));
-          modalIndicators.appendChild(dot);
+          indicators.appendChild(dot);
         });
-        setTimeout(() => { modalGallery.scrollTo({ left: 0, behavior: 'auto' }); }, 50);
-        modalOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        modalPrev.style.display = modalImages.length > 1 ? 'flex' : 'none';
-        modalNext.style.display = modalImages.length > 1 ? 'flex' : 'none';
-      }
 
-      function updateModalProgress(index) {
-        modalIndicators.querySelectorAll('.m-dot').forEach((dot, i) => {
-          dot.classList.toggle('active-m-dot', i === index);
-          dot.classList.toggle('filled-m-dot', i <= index);
-        });
+        document.getElementById('modalPrev').style.display = images.length > 1 ? 'flex' : 'none';
+        document.getElementById('modalNext').style.display = images.length > 1 ? 'flex' : 'none';
+        document.getElementById('modalOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => { gallery.scrollTo({ left: 0, behavior: 'auto' }); }, 50);
       }
 
       function goToModalImage(index) {
-        if (index < 0) index = modalImages.length - 1;
-        if (index >= modalImages.length) index = 0;
-        modalCurrentIndex = index;
-        const imgWidth = modalGallery.querySelector('img')?.offsetWidth || 0;
-        modalGallery.scrollTo({ left: index * imgWidth, behavior: 'smooth' });
-        updateModalProgress(index);
-        modalGallery.querySelectorAll('img').forEach((img, i) => img.classList.toggle('active-modal-img', i === index));
+        const images = document.querySelectorAll('#modalGallery img');
+        if (!images.length) return;
+        if (index < 0) index = images.length - 1;
+        if (index >= images.length) index = 0;
+        STATE.modalIndex = index;
+        const imgWidth = images[0]?.offsetWidth || 0;
+        document.getElementById('modalGallery').scrollTo({ left: index * imgWidth, behavior: 'smooth' });
+        images.forEach((img, i) => img.classList.toggle('active-modal-img', i === index));
+        document.querySelectorAll('#modalIndicators .m-dot').forEach((dot, i) => {
+          dot.classList.toggle('active-m-dot', i === index);
+          dot.classList.toggle('filled-m-dot', i <= index);
+          dot.setAttribute('aria-selected', i === index);
+        });
       }
 
       function closeModal() {
-        modalOverlay.classList.remove('active');
+        document.getElementById('modalOverlay').classList.remove('active');
         document.body.style.overflow = '';
       }
 
-      modalClose.addEventListener('click', closeModal);
-      modalOverlay.addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-      modalPrev.addEventListener('click', e => { e.stopPropagation(); goToModalImage(modalCurrentIndex - 1); });
-      modalNext.addEventListener('click', e => { e.stopPropagation(); goToModalImage(modalCurrentIndex + 1); });
-      modalGallery.addEventListener('scroll', function() {
-        const imgWidth = this.querySelector('img')?.offsetWidth || 0;
-        if (!imgWidth) return;
-        const idx = Math.round(this.scrollLeft / imgWidth);
-        if (idx !== modalCurrentIndex && idx >= 0 && idx < modalImages.length) {
-          modalCurrentIndex = idx;
-          updateModalProgress(idx);
-          modalGallery.querySelectorAll('img').forEach((img, i) => img.classList.toggle('active-modal-img', i === idx));
-        }
-      });
-      modalFavBtn.addEventListener('click', function() {
-        const key = this.dataset.favKey;
-        if (key) {
-          toggleFavorite(key);
-          updateAllFavButtons(key);
-          const fav = isFavorite(key);
-          this.classList.toggle('favorited', fav);
-          this.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
-          this.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
-        }
-      });
-      document.addEventListener('keydown', e => {
-        if (!modalOverlay.classList.contains('active')) return;
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft') goToModalImage(modalCurrentIndex - 1);
-        if (e.key === 'ArrowRight') goToModalImage(modalCurrentIndex + 1);
-      });
-
-      function updateContent(term) {
-        const clean = term.trim().toLowerCase();
-        let found = null;
-        
-        if (clean) {
-          const keys = Object.keys(styleData);
-          found = keys.find(k => k === clean);
-          if (!found) {
-            found = keys.find(k => k.includes(clean) || clean.includes(k));
-          }
-          if (!found) {
-            const feedback = document.createElement('div');
-            feedback.className = 'search-feedback';
-            feedback.textContent = `"${term}" não encontrado. Mostrando todos os estilos.`;
-            const wrapper = document.querySelector('.unified-carousel-wrapper');
-            const existing = wrapper.querySelector('.search-feedback');
-            if (existing) existing.remove();
-            wrapper.appendChild(feedback);
-            setTimeout(() => feedback.remove(), 2000);
-            found = 'velvet bob';
-          }
-        }
-        
-        currentStyle = found || 'velvet bob';
-        if (document.getElementById('pageHome').classList.contains('active-page')) {
-          generateCarousel(currentStyle);
-        } else {
-          navigateTo('pageHome');
-          setTimeout(() => generateCarousel(currentStyle), 100);
-        }
-        generateChips();
-      }
-
       function handleSearch() {
-        const val = searchInput.value;
-        if (val.trim()) {
-          updateContent(val);
-        } else {
-          generateCarousel(currentStyle);
+        const val = document.getElementById('searchInput').value.trim().toLowerCase();
+        if (val) {
+          const keys = Object.keys(styleData);
+          let found = keys.find(k => k === val);
+          if (!found) found = keys.find(k => k.includes(val) || val.includes(k));
+          if (found) {
+            STATE.currentStyle = found;
+            if (document.getElementById('pageHome').classList.contains('active-page')) {
+              generateCarousel(STATE.currentStyle);
+            } else {
+              navigateTo('pageHome');
+              setTimeout(() => generateCarousel(STATE.currentStyle), 100);
+            }
+            return;
+          }
+          const feedback = document.createElement('div');
+          feedback.className = 'search-feedback';
+          feedback.textContent = `"${val}" não encontrado. Mostrando todos.`;
+          const wrapper = document.querySelector('.unified-carousel-wrapper');
+          const existing = wrapper.querySelector('.search-feedback');
+          if (existing) existing.remove();
+          wrapper.appendChild(feedback);
+          setTimeout(() => feedback.remove(), 2000);
         }
-        if (window.innerWidth < 600) searchInput.blur();
+        generateCarousel(STATE.currentStyle);
       }
+
+      const debounce = (fn, delay = 300) => {
+        let timer;
+        return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); };
+      };
 
       function navigateTo(pageId) {
         const current = document.querySelector('.page.active-page');
-        if (current && current.id !== pageId) {
-          current.style.animation = 'none';
-          void current.offsetHeight;
-          current.style.animation = 'fadeOut 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards';
-          setTimeout(() => { current.classList.remove('active-page'); current.style.animation = ''; }, 250);
-        }
-        setTimeout(() => {
-          Object.values(pages).forEach(p => { if (p) p.classList.remove('active-page'); });
-          const target = document.getElementById(pageId);
-          if (target) target.classList.add('active-page');
+        const target = document.getElementById(pageId);
+        if (!target) return;
+        if (current && current !== target) {
+          current.classList.add('exit-page');
+          setTimeout(() => {
+            current.classList.remove('active-page', 'exit-page');
+            target.classList.add('active-page');
+            const isHome = pageId === 'pageHome';
+            document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
+            document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
+            document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
+            document.querySelectorAll('.footer-links a').forEach(link => {
+              link.classList.toggle('active-link', link.dataset.page === pageId);
+              link.setAttribute('aria-selected', link.dataset.page === pageId);
+            });
+            if (isHome) generateCarousel(STATE.currentStyle);
+            if (pageId === 'pageFavoritos') generateFavGrid();
+          }, 250);
+        } else if (!current || current === target) {
+          target.classList.add('active-page');
           const isHome = pageId === 'pageHome';
-          chipWrapper.style.display = isHome ? 'block' : 'none';
-          searchWrapper.style.display = isHome ? 'flex' : 'none';
+          document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
+          document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
           document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
-          footerLinks.forEach(link => link.classList.toggle('active-link', link.dataset.page === pageId));
-          if (isHome) generateCarousel(currentStyle);
+          document.querySelectorAll('.footer-links a').forEach(link => {
+            link.classList.toggle('active-link', link.dataset.page === pageId);
+            link.setAttribute('aria-selected', link.dataset.page === pageId);
+          });
+          if (isHome) generateCarousel(STATE.currentStyle);
           if (pageId === 'pageFavoritos') generateFavGrid();
-        }, 250);
+        }
       }
 
-      footerLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const pageId = this.dataset.page;
-          if (pageId) navigateTo(pageId);
-        });
-      });
-      backButtons.forEach(btn => btn.addEventListener('click', () => navigateTo('pageHome')));
-      homeBtn.addEventListener('click', () => navigateTo('pageHome'));
-      searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } });
-      searchButton.addEventListener('click', e => { e.preventDefault(); handleSearch(); });
-      searchInput.addEventListener('blur', () => { if (!searchInput.value.trim()) generateCarousel(currentStyle); });
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.getElementById('menuThemeToggle').textContent = theme === 'dark' ? '🌙 dark' : '☀️ light';
+        localStorage.setItem('hairbox_theme', theme);
+        STATE.theme = theme;
+      }
 
-      document.getElementById('contatoForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const inputs = this.querySelectorAll('input, textarea');
-        let valid = true;
-        inputs.forEach(input => {
-          if (!input.value.trim()) {
-            input.classList.add('error');
-            valid = false;
-          } else {
-            input.classList.remove('error');
+      function init() {
+        applyTheme(STATE.theme);
+
+        const menuThemeToggle = document.getElementById('menuThemeToggle');
+        menuThemeToggle.addEventListener('click', () => {
+          applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
+          closeMenu();
+        });
+
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuClose = document.getElementById('menuClose');
+
+        function openMenu() { menuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMenu() { menuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+        hamburgerBtn.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', e => { if (e.target === e.currentTarget) closeMenu(); });
+
+        document.querySelectorAll('.menu-item[data-page]').forEach(item => {
+          item.addEventListener('click', function() { navigateTo(this.dataset.page); closeMenu(); });
+        });
+        document.getElementById('menuFavs').addEventListener('click', function() { navigateTo('pageFavoritos'); closeMenu(); });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
+            this.classList.add('active-filter');
+            this.setAttribute('aria-selected', 'true');
+            STATE.currentFilter = this.dataset.filter;
+            if (document.getElementById('pageHome').classList.contains('active-page')) {
+              generateCarousel(STATE.currentStyle);
+            } else {
+              navigateTo('pageHome');
+              setTimeout(() => generateCarousel(STATE.currentStyle), 100);
+            }
+          });
+        });
+
+        document.querySelectorAll('.footer-links a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            navigateTo(this.dataset.page);
+          });
+        });
+
+        document.querySelectorAll('.back-home').forEach(btn => btn.addEventListener('click', () => navigateTo('pageHome')));
+        document.getElementById('homeBtn').addEventListener('click', () => navigateTo('pageHome'));
+
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchButton');
+        const debouncedSearch = debounce(handleSearch, 400);
+        searchInput.addEventListener('input', debouncedSearch);
+        searchInput.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } });
+        searchBtn.addEventListener('click', e => { e.preventDefault(); handleSearch(); });
+
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+        document.getElementById('modalPrev').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex - 1); });
+        document.getElementById('modalNext').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex + 1); });
+
+        document.getElementById('modalGallery').addEventListener('scroll', function() {
+          const images = this.querySelectorAll('img');
+          if (!images.length) return;
+          const imgWidth = images[0]?.offsetWidth || 0;
+          if (!imgWidth) return;
+          const idx = Math.round(this.scrollLeft / imgWidth);
+          if (idx !== STATE.modalIndex && idx >= 0 && idx < images.length) {
+            STATE.modalIndex = idx;
+            images.forEach((img, i) => img.classList.toggle('active-modal-img', i === idx));
+            document.querySelectorAll('#modalIndicators .m-dot').forEach((dot, i) => {
+              dot.classList.toggle('active-m-dot', i === idx);
+              dot.classList.toggle('filled-m-dot', i <= idx);
+              dot.setAttribute('aria-selected', i === idx);
+            });
           }
         });
-        if (!valid) {
-          alert('⚠️ Por favor, preencha todos os campos.');
-          return;
-        }
-        alert('📨 Mensagem enviada com sucesso!');
-        this.reset();
-      });
 
-      generateChips();
-      generateTendencias();
-      generateGaleria();
-      generateCarousel('velvet bob');
-      generateFavGrid();
-      updateFavUI();
-      console.log('📦 HAIRBOX · Catálogo · Versão Original!');
-      console.log('✅ Footer em cápsula Instagram');
-      console.log('✅ Modal com 3 imagens funcionando');
+        document.getElementById('modalFavBtn').addEventListener('click', function() {
+          const key = this.dataset.favKey;
+          if (key) {
+            toggleFavorite(key);
+            updateAllFavButtons(key);
+            const fav = isFavorite(key);
+            this.classList.toggle('favorited', fav);
+            this.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
+            this.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
+          }
+        });
+
+        document.addEventListener('keydown', e => {
+          if (!document.getElementById('modalOverlay').classList.contains('active')) return;
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowLeft') goToModalImage(STATE.modalIndex - 1);
+          if (e.key === 'ArrowRight') goToModalImage(STATE.modalIndex + 1);
+        });
+
+        document.getElementById('contatoForm').addEventListener('submit', function(e) {
+          e.preventDefault();
+          const inputs = this.querySelectorAll('input, textarea');
+          let valid = true;
+          inputs.forEach(input => {
+            if (!input.value.trim()) {
+              input.classList.add('error');
+              valid = false;
+            } else {
+              input.classList.remove('error');
+            }
+          });
+          if (!valid) {
+            alert('⚠️ Por favor, preencha todos os campos.');
+            return;
+          }
+          alert('📨 Mensagem enviada com sucesso!');
+          this.reset();
+        });
+
+        generateChips();
+        generateTendencias();
+        generateGaleria();
+        generateCarousel('velvet bob');
+        generateFavGrid();
+        updateFavUI();
+
+        console.log('📦 HAIRBOX · Catálogo · Nível 1 ✓');
+        console.log('✅ Design refinado, acessível e responsivo');
+        console.log('✅ Animações de entrada/saída');
+        console.log('✅ Busca com debounce');
+        console.log('✅ Carrossel com drag nativo');
+        console.log('✅ Formulário com validação visual');
+      }
+
+      document.addEventListener('DOMContentLoaded', init);
     })();
   </script>
 </body>
