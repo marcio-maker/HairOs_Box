@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>HairBox · Catálogo</title>
+  <title>HairOS · Catálogo 25 Estilos</title>
   <style>
+    /* ============================================================
+       IMPORTAÇÃO DE FONTES
+    ============================================================ */
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@200;300;400;500;600;700&display=swap');
 
+    /* ============================================================
+       VARIÁVEIS E TEMA (ESCURO/CLARO)
+    ============================================================ */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -58,6 +64,9 @@
       padding: 0;
     }
 
+    /* ============================================================
+       APP CONTAINER
+    ============================================================ */
     .app {
       width: 100%;
       max-width: 430px;
@@ -66,22 +75,25 @@
       background: var(--bg-primary);
       display: flex;
       flex-direction: column;
-      padding: 16px 16px 8px 16px;
+      padding: 14px 14px 6px 14px;
       position: relative;
       transition: background var(--transition-smooth);
       overflow: hidden;
       background-image: radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.03) 0%, transparent 60%);
     }
 
+    /* ============================================================
+       HEADER
+    ============================================================ */
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 0 12px 0;
+      padding: 2px 0 10px 0;
       border-bottom: 1px solid var(--border-subtle);
       flex-shrink: 0;
+      min-height: 40px;
       position: relative;
-      min-height: 44px;
     }
 
     .header::after {
@@ -107,7 +119,7 @@
 
     .header-brand .brand-main {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
       font-style: italic;
       letter-spacing: 0.04em;
@@ -119,7 +131,7 @@
     .header-brand .brand-main span { color: var(--gold); }
 
     .header-brand .brand-sub {
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -127,26 +139,20 @@
       margin-top: 2px;
     }
 
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .hamburger {
       background: transparent;
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 3px;
       cursor: pointer;
       transition: all var(--transition-smooth);
-      padding: 10px;
+      padding: 8px;
       position: relative;
       flex-shrink: 0;
     }
@@ -157,15 +163,15 @@
     }
 
     .hamburger .bar {
-      width: 18px;
+      width: 16px;
       height: 1.5px;
       background: var(--text-secondary);
       border-radius: 2px;
       transition: all var(--transition-smooth);
     }
 
-    .hamburger .bar:nth-child(2) { width: 14px; align-self: flex-end; }
-    .hamburger .bar:nth-child(3) { width: 10px; align-self: flex-end; }
+    .hamburger .bar:nth-child(2) { width: 12px; align-self: flex-end; }
+    .hamburger .bar:nth-child(3) { width: 8px; align-self: flex-end; }
     .hamburger:hover .bar { background: var(--gold); }
 
     .hamburger .badge-count {
@@ -174,10 +180,10 @@
       right: -3px;
       background: #ff4757;
       color: #fff;
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       font-weight: 600;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -193,42 +199,13 @@
       transform: scale(1);
     }
 
-    .category-tabs {
-      display: flex;
-      gap: 6px;
-      padding: 10px 0 4px 0;
-      flex-shrink: 0;
-      border-bottom: 1px solid var(--border-subtle);
-    }
-
-    .cat-tab {
-      background: transparent;
-      border: 1px solid var(--border-gold);
-      padding: 7px 18px;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--text-secondary);
-      cursor: pointer;
-      transition: all var(--transition-smooth);
-      white-space: nowrap;
-      border-radius: var(--radius-pill);
-      min-height: 30px;
-    }
-
-    .cat-tab.active-cat {
-      color: var(--bg-primary);
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
+    /* ============================================================
+       FILTER BAR (12 BOTÕES)
+    ============================================================ */
     .filter-bar {
       display: flex;
-      align-items: center;
       gap: 3px;
-      padding: 8px 0 6px 0;
+      padding: 6px 0 4px 0;
       flex-shrink: 0;
       overflow-x: auto;
       scrollbar-width: none;
@@ -237,30 +214,11 @@
 
     .filter-bar::-webkit-scrollbar { display: none; }
 
-    .filter-group-label {
-      font-size: 0.4rem;
-      color: var(--text-muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      padding: 0 6px 0 4px;
-      opacity: 0.55;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .filter-divider {
-      width: 1px;
-      height: 14px;
-      background: var(--border-gold);
-      margin: 0 2px 0 6px;
-      flex-shrink: 0;
-    }
-
     .filter-btn {
       background: transparent;
       border: none;
-      padding: 6px 12px;
-      font-size: 0.55rem;
+      padding: 5px 10px;
+      font-size: 0.5rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -270,7 +228,7 @@
       white-space: nowrap;
       font-family: 'Inter', sans-serif;
       border-radius: var(--radius-pill);
-      min-height: 30px;
+      min-height: 26px;
     }
 
     .filter-btn:hover { color: var(--text-secondary); }
@@ -281,15 +239,18 @@
       background: var(--gold-glow);
     }
 
+    /* ============================================================
+       CHIP CAROUSEL (NAVEGAÇÃO RÁPIDA)
+    ============================================================ */
     .chip-carousel-wrapper {
-      padding: 2px 0 10px 0;
+      padding: 2px 0 6px 0;
       border-bottom: 1px solid var(--border-subtle);
       flex-shrink: 0;
     }
 
     .chip-carousel {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       overflow-x: auto;
       padding: 2px 0 4px 0;
       scrollbar-width: none;
@@ -303,9 +264,9 @@
     .chip {
       flex: 0 0 auto;
       background: var(--bg-card);
-      padding: 5px 16px;
+      padding: 4px 14px;
       border-radius: var(--radius-pill);
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 300;
       color: var(--text-secondary);
       border: 1px solid var(--border-subtle);
@@ -315,7 +276,7 @@
       white-space: nowrap;
       font-family: 'Inter', sans-serif;
       letter-spacing: 0.02em;
-      min-height: 30px;
+      min-height: 26px;
       display: flex;
       align-items: center;
     }
@@ -335,43 +296,45 @@
       transform: translateY(-1px);
     }
 
+    /* ============================================================
+       SEARCH
+    ============================================================ */
     .search-wrapper {
-      margin: 8px 0 10px 0;
+      margin: 6px 0 8px 0;
       display: flex;
       align-items: center;
       background: var(--bg-secondary);
       border-radius: var(--radius-pill);
-      padding: 2px 2px 2px 16px;
+      padding: 2px 2px 2px 14px;
       border: 1px solid var(--border-subtle);
       transition: all var(--transition-smooth);
       flex-shrink: 0;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-      min-height: 38px;
+      min-height: 34px;
     }
 
     .search-wrapper:focus-within {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px var(--gold-glow), 0 2px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 0 0 3px var(--gold-glow);
     }
 
     .search-wrapper input {
       flex: 1;
       border: none;
       background: transparent;
-      padding: 8px 8px 8px 0;
-      font-size: 0.7rem;
+      padding: 6px 6px 6px 0;
+      font-size: 0.65rem;
       color: var(--text-primary);
       outline: none;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
       width: 100%;
-      min-height: 34px;
+      min-height: 30px;
     }
 
     .search-wrapper input::placeholder {
       color: var(--text-muted);
       font-weight: 200;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-style: italic;
       letter-spacing: 0.02em;
     }
@@ -380,10 +343,10 @@
       background: var(--gold);
       border: none;
       border-radius: var(--radius-pill);
-      padding: 8px 18px;
+      padding: 6px 14px;
       color: #0a0808;
       font-weight: 500;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       white-space: nowrap;
@@ -392,8 +355,8 @@
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 5px;
-      min-height: 34px;
+      gap: 4px;
+      min-height: 30px;
     }
 
     .search-wrapper button:hover {
@@ -402,20 +365,14 @@
     }
 
     .search-wrapper button svg {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       fill: currentColor;
     }
 
-    .search-feedback {
-      text-align: center;
-      padding: 20px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      font-style: italic;
-      animation: fadeIn 0.3s ease;
-    }
-
+    /* ============================================================
+       CAROUSEL PRINCIPAL
+    ============================================================ */
     .unified-carousel-wrapper {
       flex: 1;
       min-height: 0;
@@ -423,7 +380,6 @@
       overflow: hidden;
       position: relative;
       margin: 0 0 2px 0;
-      padding: 0;
     }
 
     .unified-carousel {
@@ -445,9 +401,12 @@
 
     .unified-carousel::-webkit-scrollbar { display: none; }
 
+    /* ============================================================
+       CAROUSEL ITEM
+    ============================================================ */
     .carousel-item {
-      flex: 0 0 72%;
-      min-width: 180px;
+      flex: 0 0 70%;
+      min-width: 170px;
       border-radius: var(--radius-card);
       overflow: hidden;
       background: var(--bg-card);
@@ -461,8 +420,6 @@
       box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
     }
 
-    .carousel-item:last-child { margin-right: 2px; }
-
     .carousel-item:hover {
       border-color: var(--border-gold);
       transform: translateY(-2px) scale(1.01);
@@ -474,6 +431,7 @@
       box-shadow: 0 4px 30px rgba(201, 169, 110, 0.08), 0 2px 20px rgba(0, 0, 0, 0.2);
     }
 
+    /* ----- IMAGEM ----- */
     .carousel-item .img-container {
       width: 100%;
       height: 100%;
@@ -496,6 +454,7 @@
       transform: scale(1.02);
     }
 
+    /* ----- OVERLAY GRADIENTE ----- */
     .carousel-item .img-container::after {
       content: '';
       position: absolute;
@@ -511,18 +470,19 @@
       opacity: 0.15;
     }
 
+    /* ----- BOTÃO FAVORITO ----- */
     .carousel-item .favorite-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 8px;
+      right: 8px;
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      font-size: 0.85rem;
+      width: 30px;
+      height: 30px;
+      font-size: 0.75rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       display: flex;
@@ -551,21 +511,22 @@
       100% { transform: scale(1); }
     }
 
+    /* ----- OVERLAY DE INFORMAÇÕES ----- */
     .item-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 30px 14px 16px 14px;
+      padding: 28px 12px 12px 12px;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.2) 55%, transparent 100%);
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
     .item-overlay h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       font-style: italic;
       color: #ffffff;
@@ -574,7 +535,7 @@
     }
 
     .item-overlay .item-sub {
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       color: rgba(201, 169, 110, 0.6);
       font-weight: 300;
       letter-spacing: 0.15em;
@@ -584,7 +545,7 @@
 
     .item-overlay .item-colors {
       display: flex;
-      gap: 4px;
+      gap: 3px;
       margin: 3px 0 2px 0;
       flex-wrap: wrap;
       min-height: 20px;
@@ -609,26 +570,29 @@
       display: inline-block;
       background: rgba(201, 169, 110, 0.2);
       backdrop-filter: blur(6px);
-      padding: 3px 12px;
+      padding: 2px 10px;
       border-radius: var(--radius-pill);
-      font-size: 0.4rem;
+      font-size: 0.35rem;
       font-weight: 400;
       color: var(--gold-light);
       border: 1px solid rgba(201, 169, 110, 0.1);
       align-self: flex-start;
-      margin-top: 4px;
+      margin-top: 2px;
       letter-spacing: 0.08em;
       text-transform: lowercase;
-      min-height: 22px;
+      min-height: 20px;
       display: flex;
       align-items: center;
     }
 
+    /* ============================================================
+       INDICADORES
+    ============================================================ */
     .carousel-indicators {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      padding: 4px 0 2px 0;
+      gap: 6px;
+      padding: 3px 0 2px 0;
       flex-shrink: 0;
     }
 
@@ -644,19 +608,22 @@
 
     .carousel-indicators .dot.active-dot {
       background: var(--gold);
-      width: 20px;
+      width: 18px;
       border-radius: 2px;
       opacity: 1;
     }
 
+    /* ============================================================
+       FOOTER
+    ============================================================ */
     .footer-minimal {
       margin-top: 2px;
-      padding: 6px 0 2px 0;
+      padding: 4px 0 2px 0;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
       flex-shrink: 0;
     }
 
@@ -673,9 +640,9 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-radius: var(--radius-pill);
-      padding: 4px 6px;
+      padding: 3px 5px;
       border: 1px solid var(--border-subtle);
-      max-width: 320px;
+      max-width: 340px;
       margin: 0 auto;
     }
 
@@ -683,7 +650,7 @@
 
     .footer-links a {
       color: var(--text-muted);
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       text-decoration: none;
       transition: all var(--transition-smooth);
       font-weight: 300;
@@ -691,10 +658,10 @@
       text-transform: uppercase;
       cursor: pointer;
       font-family: 'Inter', sans-serif;
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: var(--radius-pill);
       white-space: nowrap;
-      min-height: 24px;
+      min-height: 22px;
       display: flex;
       align-items: center;
       background: transparent;
@@ -714,7 +681,7 @@
 
     .footer-copy {
       color: var(--text-muted);
-      font-size: 0.35rem;
+      font-size: 0.3rem;
       letter-spacing: 0.12em;
       text-align: center;
       opacity: 0.25;
@@ -730,6 +697,9 @@
 
     .footer-copy a:hover { color: var(--gold); }
 
+    /* ============================================================
+       MENU LATERAL
+    ============================================================ */
     .menu-overlay {
       position: fixed;
       top: 0;
@@ -761,9 +731,9 @@
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       border-radius: 16px;
-      padding: 20px 18px;
+      padding: 18px 16px;
       width: 100%;
-      max-width: 300px;
+      max-width: 280px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       border: 1px solid var(--border-subtle);
       animation: slideMenu 0.25s cubic-bezier(0.23, 1, 0.32, 1);
@@ -783,15 +753,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .menu-header span {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-primary);
     }
 
@@ -799,7 +769,7 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
       padding: 4px;
       transition: all var(--transition-smooth);
@@ -813,13 +783,13 @@
     .menu-item {
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 10px 8px;
-      border-radius: 10px;
+      gap: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all var(--transition-smooth);
       color: var(--text-secondary);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 300;
       letter-spacing: 0.03em;
       border: none;
@@ -827,7 +797,7 @@
       width: 100%;
       font-family: 'Inter', sans-serif;
       text-align: left;
-      min-height: 40px;
+      min-height: 36px;
     }
 
     .menu-item:hover {
@@ -837,8 +807,8 @@
     }
 
     .menu-item .icon {
-      font-size: 1rem;
-      width: 28px;
+      font-size: 0.9rem;
+      width: 24px;
       text-align: center;
     }
 
@@ -846,33 +816,28 @@
       margin-left: auto;
       background: var(--gold);
       color: #0a0808;
-      font-size: 0.5rem;
+      font-size: 0.45rem;
       font-weight: 500;
-      padding: 1px 10px;
+      padding: 1px 8px;
       border-radius: 20px;
-      min-width: 24px;
+      min-width: 20px;
       text-align: center;
-    }
-
-    .menu-item .item-count.empty {
-      background: var(--border-subtle);
-      color: var(--text-muted);
     }
 
     .menu-divider {
       height: 1px;
       background: var(--border-subtle);
-      margin: 6px 0;
+      margin: 4px 0;
     }
 
     .menu-theme {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 8px;
-      border-radius: 10px;
+      padding: 8px 6px;
+      border-radius: 8px;
       color: var(--text-secondary);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 300;
       letter-spacing: 0.03em;
     }
@@ -880,14 +845,14 @@
     .menu-theme .theme-switch {
       background: var(--border-subtle);
       border: none;
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 2px 8px;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       color: var(--text-secondary);
-      min-height: 28px;
-      min-width: 48px;
+      min-height: 24px;
+      min-width: 44px;
     }
 
     .menu-theme .theme-switch:hover {
@@ -895,6 +860,9 @@
       color: var(--gold);
     }
 
+    /* ============================================================
+       PÁGINAS
+    ============================================================ */
     .page-container {
       flex: 1;
       overflow: hidden;
@@ -915,31 +883,22 @@
       animation: fadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .page.exit-page {
-      animation: fadeOut 0.25s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    }
-
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; transform: translateY(0); }
-      to { opacity: 0; transform: translateY(8px); }
     }
 
     .page-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 0 8px 0;
+      padding: 2px 0 6px 0;
       flex-shrink: 0;
     }
 
     .page-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       font-style: italic;
       color: var(--text-primary);
@@ -948,16 +907,16 @@
 
     .back-home {
       color: var(--text-muted);
-      font-size: 0.5rem;
+      font-size: 0.45rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       font-weight: 300;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 3px 10px;
       border-radius: var(--radius-pill);
       border: 1px solid var(--border-subtle);
-      min-height: 28px;
+      min-height: 24px;
       display: flex;
       align-items: center;
       background: transparent;
@@ -979,10 +938,13 @@
 
     .page-scroll::-webkit-scrollbar { display: none; }
 
-    .grid-cortes {
+    /* ============================================================
+       FAVORITOS GRID
+    ============================================================ */
+    .fav-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
       padding: 4px 0;
     }
 
@@ -995,13 +957,12 @@
       transition: all var(--transition-smooth);
       border: 1px solid var(--border-subtle);
       position: relative;
-      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     .grid-item:hover {
       border-color: var(--border-gold);
       transform: scale(1.02) translateY(-2px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
     }
 
     .grid-item img {
@@ -1021,52 +982,30 @@
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 12px 8px 6px 8px;
+      padding: 10px 6px 4px 6px;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
     }
 
     .grid-item .grid-overlay .grid-title {
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       font-weight: 400;
       color: #fff;
       display: block;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      letter-spacing: 0.01em;
     }
-
-    .grid-item .grid-fav {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
-      border: none;
-      border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.6rem;
-      cursor: pointer;
-      color: rgba(255, 255, 255, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-smooth);
-    }
-
-    .grid-item .grid-fav.favorited { color: #ff4757; }
 
     .grid-item .grid-fav-remove {
       position: absolute;
-      top: 8px;
-      right: 8px;
+      top: 6px;
+      right: 6px;
       background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 50%;
-      width: 26px;
-      height: 26px;
-      font-size: 0.5rem;
+      width: 22px;
+      height: 22px;
+      font-size: 0.45rem;
       cursor: pointer;
       color: #ff4757;
       display: flex;
@@ -1085,18 +1024,21 @@
       text-align: center;
       padding: 30px 16px;
       color: var(--text-muted);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 300;
       font-style: italic;
     }
 
     .empty-state .heart-big {
-      font-size: 2rem;
+      font-size: 1.8rem;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       opacity: 0.2;
     }
 
+    /* ============================================================
+       TENDÊNCIAS
+    ============================================================ */
     .tendencias-list {
       display: flex;
       flex-direction: column;
@@ -1171,10 +1113,13 @@
       align-items: center;
     }
 
+    /* ============================================================
+       GALERIA
+    ============================================================ */
     .galeria-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     .galeria-item {
@@ -1224,22 +1169,18 @@
       font-style: italic;
     }
 
-    .fav-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      padding: 4px 0;
-    }
-
+    /* ============================================================
+       SOBRE
+    ============================================================ */
     .sobre-content {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       padding: 0 0 4px 0;
     }
 
     .sobre-content p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-secondary);
       line-height: 1.7;
       font-weight: 300;
@@ -1248,34 +1189,33 @@
     .sobre-content .sobre-card {
       background: var(--bg-card);
       border-radius: 10px;
-      padding: 14px;
+      padding: 12px;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     }
 
     .sobre-content .sobre-card h4 {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       color: var(--text-primary);
-      font-size: 0.75rem;
-      margin-bottom: 4px;
+      font-size: 0.7rem;
+      margin-bottom: 2px;
     }
 
     .sobre-content .sobre-card p {
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       color: var(--text-secondary);
     }
 
     .sobre-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 6px;
     }
 
     .sobre-stats .stat {
       background: var(--bg-card);
       border-radius: 10px;
-      padding: 12px;
+      padding: 10px;
       text-align: center;
       border: 1px solid var(--border-subtle);
       transition: all var(--transition-smooth);
@@ -1287,7 +1227,7 @@
     }
 
     .sobre-stats .stat .number {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--gold);
       display: block;
@@ -1295,22 +1235,25 @@
     }
 
     .sobre-stats .stat .label {
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       color: var(--text-secondary);
       font-weight: 300;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
+    /* ============================================================
+       CONTATO
+    ============================================================ */
     .contato-content {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       padding: 0 0 4px 0;
     }
 
     .contato-content p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: var(--text-secondary);
       font-weight: 300;
       line-height: 1.7;
@@ -1319,7 +1262,7 @@
     .contato-form {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .contato-form input,
@@ -1327,15 +1270,15 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 10px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       color: var(--text-primary);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       outline: none;
       transition: all var(--transition-smooth);
       width: 100%;
       font-family: 'Inter', sans-serif;
       font-weight: 300;
-      min-height: 40px;
+      min-height: 36px;
     }
 
     .contato-form input:focus,
@@ -1357,7 +1300,7 @@
     }
 
     .contato-form textarea {
-      min-height: 80px;
+      min-height: 70px;
       resize: vertical;
     }
 
@@ -1365,16 +1308,16 @@
       background: var(--gold);
       border: none;
       border-radius: 10px;
-      padding: 12px;
+      padding: 10px;
       color: #0a0808;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 500;
       cursor: pointer;
       transition: all var(--transition-smooth);
       font-family: 'Inter', sans-serif;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      min-height: 40px;
+      min-height: 36px;
     }
 
     .contato-form button:hover {
@@ -1385,13 +1328,13 @@
     .contato-social {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 6px 0;
+      gap: 16px;
+      padding: 4px 0;
     }
 
     .contato-social a {
       color: var(--text-muted);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       text-decoration: none;
       transition: all var(--transition-smooth);
     }
@@ -1401,6 +1344,9 @@
       transform: scale(1.1);
     }
 
+    /* ============================================================
+       MODAL
+    ============================================================ */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1414,7 +1360,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 24px 16px;
+      padding: 20px 14px;
     }
 
     .modal-overlay.active {
@@ -1423,17 +1369,17 @@
     }
 
     @keyframes curtainOpen {
-      0% { opacity: 0; transform: scale(0.94); }
-      100% { opacity: 1; transform: scale(1); }
+      from { opacity: 0; transform: scale(0.94); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .modal-content {
       position: relative;
       width: auto;
-      height: min(76vh, 620px);
+      height: min(76vh, 600px);
       aspect-ratio: 9 / 16;
       max-width: 90vw;
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       background: var(--bg-card);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--border-gold);
@@ -1445,20 +1391,21 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
+    /* ----- INDICADORES DO MODAL ----- */
     .modal-indicators {
       position: absolute;
-      top: 10px;
-      left: 12px;
-      right: 12px;
+      top: 8px;
+      left: 10px;
+      right: 10px;
       display: flex;
-      gap: 4px;
+      gap: 3px;
       z-index: 20;
       padding: 0;
     }
 
     .modal-indicators .m-dot {
       flex: 1;
-      height: 3px;
+      height: 2px;
       border-radius: 2px;
       background: rgba(255, 255, 255, 0.2);
       transition: background var(--transition-smooth);
@@ -1470,17 +1417,18 @@
       background: var(--gold);
     }
 
+    /* ----- BOTÃO FECHAR ----- */
     .modal-close {
       position: absolute;
-      top: 18px;
-      right: 10px;
+      top: 14px;
+      right: 8px;
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      font-size: 0.85rem;
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
       cursor: pointer;
       color: rgba(255, 255, 255, 0.6);
       display: flex;
@@ -1496,6 +1444,7 @@
       color: #fff;
     }
 
+    /* ----- GALERIA DO MODAL ----- */
     .modal-gallery-wrapper {
       width: 100%;
       height: 100%;
@@ -1535,6 +1484,7 @@
       filter: grayscale(0%) sepia(0%) contrast(1);
     }
 
+    /* ----- NAVEGAÇÃO DO MODAL ----- */
     .modal-nav {
       position: absolute;
       top: 50%;
@@ -1543,10 +1493,10 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.04);
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       color: rgba(255, 255, 255, 0.35);
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
       transition: all var(--transition-smooth);
       display: flex;
@@ -1558,9 +1508,10 @@
 
     .modal-content:hover .modal-nav { opacity: 1; }
     .modal-nav:hover { background: rgba(0, 0, 0, 0.45); color: #fff; }
-    .modal-nav.prev { left: 8px; }
-    .modal-nav.next { right: 8px; }
+    .modal-nav.prev { left: 6px; }
+    .modal-nav.next { right: 6px; }
 
+    /* ----- INFO DO MODAL ----- */
     .modal-info-overlay {
       position: absolute;
       bottom: 0;
@@ -1570,17 +1521,41 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 12px;
-      padding: 36px 14px 16px 16px;
+      gap: 10px;
+      padding: 30px 12px 14px 14px;
       background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.4) 45%, transparent 100%);
     }
 
     .modal-text-block {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
       flex: 1;
       min-width: 0;
+    }
+
+    .modal-colors {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 2px;
+      flex-wrap: wrap;
+      min-height: 22px;
+    }
+
+    .modal-colors .color-chip-modal {
+      background: rgba(201, 169, 110, 0.2);
+      border: 1px solid rgba(201, 169, 110, 0.12);
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      font-family: 'Inter', monospace;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(4px);
+      min-height: 20px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .modal-badge {
@@ -1588,23 +1563,23 @@
       background: rgba(201, 169, 110, 0.2);
       backdrop-filter: blur(6px);
       color: var(--gold-light);
-      padding: 2px 12px;
+      padding: 1px 10px;
       border-radius: var(--radius-pill);
-      font-size: 0.45rem;
+      font-size: 0.4rem;
       font-weight: 400;
       border: 1px solid rgba(201, 169, 110, 0.1);
       letter-spacing: 0.1em;
       text-transform: lowercase;
       white-space: nowrap;
-      margin-bottom: 2px;
-      min-height: 24px;
+      margin-bottom: 1px;
+      min-height: 20px;
       display: flex;
       align-items: center;
     }
 
     .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 600;
       font-style: italic;
       color: #fff;
@@ -1613,7 +1588,7 @@
     }
 
     .modal-desc {
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       color: rgba(240, 235, 228, 0.7);
       font-weight: 300;
       line-height: 1.4;
@@ -1624,6 +1599,7 @@
       overflow: hidden;
     }
 
+    /* ----- BOTÃO FAVORITO DO MODAL ----- */
     .modal-fav-btn {
       flex-shrink: 0;
       background: none;
@@ -1631,7 +1607,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 2px;
       cursor: pointer;
       color: #fff;
       transition: all var(--transition-smooth);
@@ -1640,8 +1616,8 @@
     .modal-fav-btn:hover { transform: scale(1.05); }
 
     .modal-fav-btn .fav-icon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(10px);
@@ -1649,7 +1625,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: rgba(255, 255, 255, 0.8);
       transition: all var(--transition-smooth);
     }
@@ -1666,359 +1642,211 @@
     }
 
     .modal-fav-btn .fav-label {
-      font-size: 0.35rem;
+      font-size: 0.3rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.5);
       font-weight: 300;
     }
 
-    .modal-classification {
-      font-size: 0.4rem;
-      color: rgba(201, 169, 110, 0.75);
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .modal-colors {
-      display: flex;
-      gap: 4px;
-      margin: 2px 0 1px 0;
-      flex-wrap: wrap;
-      min-height: 22px;
-    }
-
-    .modal-colors .color-chip-modal {
-      background: rgba(201, 169, 110, 0.2);
-      border: 1px solid rgba(201, 169, 110, 0.15);
-      padding: 2px 10px;
-      border-radius: 10px;
-      font-size: 0.5rem;
-      font-weight: 600;
-      color: var(--gold);
-      font-family: 'Inter', monospace;
-      letter-spacing: 0.06em;
-      backdrop-filter: blur(4px);
-      min-height: 20px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .modal-actions {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .modal-info-btn {
-      background: none;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      cursor: pointer;
-      color: #fff;
-      transition: all var(--transition-smooth);
-    }
-
-    .modal-info-btn .info-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-style: italic;
-      font-family: 'Playfair Display', serif;
-      color: var(--gold-light);
-      transition: all var(--transition-smooth);
-    }
-
-    .modal-info-btn:hover .info-icon,
-    .modal-info-btn.info-active .info-icon {
-      transform: scale(1.06);
-      background: var(--gold);
-      color: var(--bg-primary);
-    }
-
-    .modal-info-btn .info-label {
-      font-size: 0.32rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      font-weight: 300;
-      text-align: center;
-      max-width: 46px;
-      line-height: 1.2;
-    }
-
-    .tech-drawer {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 20;
-      max-height: 78%;
-      overflow-y: auto;
-      background: linear-gradient(180deg, rgba(10, 8, 8, 0.98) 0%, var(--bg-primary) 40%);
-      border-top: 1px solid var(--border-gold);
-      border-radius: 18px 18px 0 0;
-      padding: 10px 18px 22px 18px;
-      transform: translateY(100%);
-      transition: transform var(--transition-smooth);
-    }
-
-    .tech-drawer.tech-drawer-open { transform: translateY(0); }
-
-    .tech-drawer-handle {
-      width: 32px;
-      height: 3px;
-      border-radius: 4px;
-      background: var(--border-gold);
-      margin: 2px auto 14px auto;
-    }
-
-    .tech-drawer-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .tech-chip {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.42rem;
-      letter-spacing: 0.06em;
-      color: var(--gold-light);
-      background: var(--gold-glow);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-pill);
-      padding: 5px 12px;
-      white-space: nowrap;
-    }
-
-    .tech-chip strong {
-      color: var(--gold);
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-right: 4px;
-    }
-
-    .tech-drawer-text {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.72rem;
-      line-height: 1.6;
-      color: var(--text-primary);
-    }
-
-    .tech-drawer-text::before {
-      content: '"porquê funciona" — ';
-      color: var(--gold);
-      font-weight: 600;
-      font-style: normal;
-      font-size: 0.4rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 6px;
-    }
-
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
     ::-webkit-scrollbar { width: 2px; height: 2px; }
     ::-webkit-scrollbar-track { background: var(--bg-secondary); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
 
-    /* Responsividade */
+    /* ============================================================
+       RESPONSIVIDADE
+    ============================================================ */
     @media (max-height: 640px) {
-      .app { padding: 10px 12px 4px 12px; }
-      .header { padding: 2px 0 8px 0; min-height: 36px; }
-      .header-brand .brand-main { font-size: 1.2rem; }
-      .header-brand .brand-sub { font-size: 0.35rem; }
-      .hamburger { width: 32px; height: 32px; padding: 8px; }
-      .hamburger .bar { width: 14px; height: 1.5px; }
-      .hamburger .bar:nth-child(2) { width: 11px; }
-      .hamburger .bar:nth-child(3) { width: 8px; }
-      .filter-bar { padding: 4px 0 4px 0; }
-      .category-tabs { padding: 6px 0 3px 0; }
-      .cat-tab { font-size: 0.55rem; padding: 5px 14px; min-height: 24px; }
-      .filter-group-label { font-size: 0.36rem; }
-      .filter-btn { font-size: 0.45rem; padding: 4px 10px; min-height: 24px; }
-      .chip-carousel-wrapper { padding: 2px 0 6px 0; }
-      .chip { font-size: 0.5rem; padding: 4px 12px; min-height: 24px; }
-      .search-wrapper { margin: 4px 0 6px 0; min-height: 30px; }
-      .search-wrapper input { font-size: 0.6rem; padding: 6px 6px 6px 0; min-height: 28px; }
-      .search-wrapper input::placeholder { font-size: 0.55rem; }
-      .search-wrapper button { padding: 6px 14px; font-size: 0.45rem; min-height: 28px; }
-      .search-wrapper button svg { width: 10px; height: 10px; }
-      .carousel-item { flex: 0 0 65%; min-width: 140px; aspect-ratio: 9/12; }
-      .item-overlay { padding: 20px 10px 12px 10px; }
-      .item-overlay h3 { font-size: 0.8rem; }
-      .item-overlay .item-badge { font-size: 0.35rem; padding: 2px 10px; min-height: 18px; }
-      .item-overlay .item-sub { font-size: 0.35rem; }
+      .app { padding: 8px 10px 4px 10px; }
+      .header { padding: 0 0 6px 0; min-height: 32px; }
+      .header-brand .brand-main { font-size: 1.1rem; }
+      .header-brand .brand-sub { font-size: 0.3rem; }
+      .hamburger { width: 30px; height: 30px; padding: 6px; }
+      .hamburger .bar { width: 13px; height: 1.5px; }
+      .hamburger .bar:nth-child(2) { width: 10px; }
+      .hamburger .bar:nth-child(3) { width: 7px; }
+      .filter-bar { padding: 3px 0; }
+      .filter-btn { font-size: 0.4rem; padding: 3px 8px; min-height: 20px; }
+      .chip-carousel-wrapper { padding: 1px 0 4px 0; }
+      .chip { font-size: 0.45rem; padding: 3px 10px; min-height: 20px; }
+      .search-wrapper { margin: 4px 0 4px 0; min-height: 28px; }
+      .search-wrapper input { font-size: 0.55rem; padding: 4px 4px 4px 0; min-height: 24px; }
+      .search-wrapper input::placeholder { font-size: 0.5rem; }
+      .search-wrapper button { padding: 4px 10px; font-size: 0.4rem; min-height: 24px; }
+      .carousel-item { flex: 0 0 62%; min-width: 130px; aspect-ratio: 9/12; }
+      .item-overlay { padding: 20px 10px 10px 10px; }
+      .item-overlay h3 { font-size: 0.75rem; }
       .item-overlay .color-chip { font-size: 0.35rem; padding: 1px 6px; min-height: 14px; }
-      .carousel-item .favorite-btn { width: 28px; height: 28px; font-size: 0.7rem; top: 8px; right: 8px; }
-      .carousel-indicators { padding: 2px 0 0 0; gap: 6px; }
+      .item-overlay .item-badge { font-size: 0.3rem; padding: 1px 8px; min-height: 16px; }
+      .carousel-item .favorite-btn { width: 24px; height: 24px; font-size: 0.6rem; top: 6px; right: 6px; }
+      .carousel-indicators { padding: 2px 0 0 0; gap: 4px; }
       .carousel-indicators .dot { width: 3px; height: 3px; }
-      .carousel-indicators .dot.active-dot { width: 16px; }
-      .footer-links a { font-size: 0.4rem; padding: 2px 8px; min-height: 20px; }
-      .footer-copy { font-size: 0.3rem; }
-      .modal-content { height: min(70vh, 480px); }
-      .modal-title { font-size: 0.95rem; }
-      .modal-desc { font-size: 0.55rem; }
+      .carousel-indicators .dot.active-dot { width: 14px; }
+      .footer-links a { font-size: 0.35rem; padding: 2px 6px; min-height: 18px; }
+      .footer-copy { font-size: 0.25rem; }
+      .modal-content { height: min(70vh, 440px); }
+      .modal-title { font-size: 0.85rem; }
+      .modal-desc { font-size: 0.5rem; }
       .modal-colors .color-chip-modal { font-size: 0.4rem; padding: 1px 8px; min-height: 16px; }
-      .modal-fav-btn .fav-icon { width: 34px; height: 34px; font-size: 0.9rem; }
-      .modal-info-btn .info-icon { width: 34px; height: 34px; font-size: 0.75rem; }
-      .modal-classification { font-size: 0.36rem; }
-      .tech-drawer-text { font-size: 0.65rem; }
+      .modal-fav-btn .fav-icon { width: 30px; height: 30px; font-size: 0.85rem; }
+      .galeria-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-height: 560px) {
-      .carousel-item { flex: 0 0 55%; min-width: 120px; aspect-ratio: 9/11; }
+    @media (max-height: 520px) {
+      .carousel-item { flex: 0 0 50%; min-width: 110px; aspect-ratio: 9/11; }
       .header-brand .brand-main { font-size: 1rem; }
-      .filter-btn { font-size: 0.4rem; padding: 3px 8px; }
-      .chip { font-size: 0.45rem; padding: 3px 10px; }
+      .filter-btn { font-size: 0.35rem; padding: 2px 6px; }
+      .chip { font-size: 0.4rem; padding: 2px 8px; }
     }
 
     @media (max-width: 360px) {
-      .app { padding: 12px 10px 4px 10px; }
-      .header-brand .brand-main { font-size: 1.2rem; }
-      .carousel-item { flex: 0 0 65%; min-width: 130px; aspect-ratio: 9/12; }
-      .item-overlay h3 { font-size: 0.75rem; }
-      .filter-btn { font-size: 0.45rem; padding: 4px 8px; }
-      .chip { font-size: 0.5rem; padding: 4px 10px; }
+      .app { padding: 10px 8px 4px 8px; }
+      .carousel-item { flex: 0 0 62%; min-width: 120px; }
+      .item-overlay h3 { font-size: 0.7rem; }
+      .filter-btn { font-size: 0.4rem; padding: 3px 6px; }
+      .chip { font-size: 0.45rem; padding: 3px 8px; }
+      .galeria-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (min-width: 500px) {
-      .carousel-item { flex: 0 0 55%; min-width: 240px; }
+      .carousel-item { flex: 0 0 50%; min-width: 220px; }
       .galeria-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (min-width: 768px) {
-      .app { max-width: 600px; padding: 24px 24px 12px 24px; }
-      .header-brand .brand-main { font-size: 2rem; }
-      .carousel-item { flex: 0 0 45%; min-width: 280px; }
-      .galeria-grid { grid-template-columns: repeat(4, 1fr); }
+      .app { max-width: 600px; padding: 20px 24px 10px 24px; }
+      .header-brand .brand-main { font-size: 1.8rem; }
+      .carousel-item { flex: 0 0 40%; min-width: 260px; }
       .fav-grid { grid-template-columns: repeat(4, 1fr); }
+      .galeria-grid { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
 <body>
   <div class="app">
 
+    <!-- ============================================================
+       HEADER
+    ============================================================ -->
     <header class="header">
-      <div class="header-brand" id="homeBtn" role="button" tabindex="0" aria-label="Voltar para home">
+      <div class="header-brand" id="homeBtn" role="button" tabindex="0">
         <span class="brand-main">HairOS<span>.</span></span>
-        <span class="brand-sub">· catálogo ·</span>
+        <span class="brand-sub">· 25 estilos ·</span>
       </div>
-      <div class="header-actions">
-        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="badge-count" id="menuBadge" aria-label="Favoritos">0</span>
-        </button>
-      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="badge-count" id="menuBadge">0</span>
+      </button>
     </header>
 
-    <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Menu">
+    <!-- ============================================================
+       MENU LATERAL
+    ============================================================ -->
+    <div class="menu-overlay" id="menuOverlay">
       <div class="menu-panel">
         <div class="menu-header">
           <span>✦ menu</span>
-          <button class="menu-close" id="menuClose" aria-label="Fechar menu">✕</button>
+          <button class="menu-close" id="menuClose">✕</button>
         </div>
         <button class="menu-item" id="menuFavs">
           <span class="icon">♥</span> favoritos
-          <span class="item-count empty" id="menuFavCount">0</span>
+          <span class="item-count" id="menuFavCount">0</span>
         </button>
         <div class="menu-divider"></div>
         <button class="menu-item" data-page="pageHome"><span class="icon">✧</span> home</button>
         <button class="menu-item" data-page="pageTendencias"><span class="icon">✦</span> tendências</button>
         <button class="menu-item" data-page="pageGaleria"><span class="icon">◈</span> galeria</button>
+        <button class="menu-item" data-page="pageFavoritos"><span class="icon">♥</span> favoritos</button>
         <button class="menu-item" data-page="pageSobre"><span class="icon">◎</span> sobre</button>
         <button class="menu-item" data-page="pageContato"><span class="icon">✉</span> contato</button>
         <div class="menu-divider"></div>
         <div class="menu-theme">
           <span>🌙 tema</span>
-          <button class="theme-switch" id="menuThemeToggle" aria-label="Alternar tema">dark</button>
+          <button class="theme-switch" id="menuThemeToggle">dark</button>
         </div>
         <div class="menu-divider"></div>
-        <div style="padding: 8px 8px 0 8px; font-size: 0.4rem; color: var(--text-muted); letter-spacing: 0.08em; text-align: center; opacity: 0.3;">HairOS · são paulo</div>
+        <div style="padding: 6px 6px 0 6px; font-size: 0.35rem; color: var(--text-muted); letter-spacing: 0.08em; text-align: center; opacity: 0.3;">13 cortes + 12 cores · 25 estilos</div>
       </div>
     </div>
 
-    <!-- FILTER BAR: comprimento / estilo / família, agrupados -->
-    <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filtros de estilo">
-      <button class="filter-btn active-filter" data-filter="all" role="tab" aria-selected="true">todos</button>
-      <span class="filter-divider"></span>
-      <span class="filter-group-label" data-group="size">comprimento</span>
-      <button class="filter-btn" data-filter="curto" role="tab" aria-selected="false">curto</button>
-      <button class="filter-btn" data-filter="medio" role="tab" aria-selected="false">médio</button>
-      <button class="filter-btn" data-filter="longo" role="tab" aria-selected="false">longo</button>
-      <span class="filter-divider" data-group="style"></span>
-      <span class="filter-group-label" data-group="style">estilo</span>
-      <button class="filter-btn" data-filter="classico" role="tab" aria-selected="false">clássico</button>
-      <button class="filter-btn" data-filter="moderno" role="tab" aria-selected="false">moderno</button>
-      <button class="filter-btn" data-filter="alternativo" role="tab" aria-selected="false">alternativo</button>
-      <button class="filter-btn" data-filter="romantico" role="tab" aria-selected="false">romântico</button>
-      <span class="filter-divider" data-group="familia"></span>
-      <span class="filter-group-label" data-group="familia">família</span>
-      <button class="filter-btn" data-filter="morenas" role="tab" aria-selected="false">morenas</button>
-      <button class="filter-btn" data-filter="loiras" role="tab" aria-selected="false">loiras</button>
-      <button class="filter-btn" data-filter="ruivas" role="tab" aria-selected="false">ruivas</button>
-      <button class="filter-btn" data-filter="grisalhas" role="tab" aria-selected="false">grisalhas</button>
+    <!-- ============================================================
+       FILTER BAR (12 BOTÕES)
+    ============================================================ -->
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active-filter" data-filter="all">todos</button>
+      <button class="filter-btn" data-filter="curto">curto</button>
+      <button class="filter-btn" data-filter="medio">médio</button>
+      <button class="filter-btn" data-filter="longo">longo</button>
+      <button class="filter-btn" data-filter="classico">clássico</button>
+      <button class="filter-btn" data-filter="moderno">moderno</button>
+      <button class="filter-btn" data-filter="alternativo">alternativo</button>
+      <button class="filter-btn" data-filter="romantico">romântico</button>
+      <button class="filter-btn" data-filter="morenas">morenas</button>
+      <button class="filter-btn" data-filter="loiras">loiras</button>
+      <button class="filter-btn" data-filter="ruivas">ruivas</button>
+      <button class="filter-btn" data-filter="grisalhas">grisalhas</button>
     </div>
 
-    <div class="chip-carousel-wrapper" id="chipWrapper">
-      <div class="chip-carousel" id="chipCarousel" role="tablist" aria-label="Estilos"></div>
+    <!-- ============================================================
+       CHIP CAROUSEL (NAVEGAÇÃO RÁPIDA)
+    ============================================================ -->
+    <div class="chip-carousel-wrapper">
+      <div class="chip-carousel" id="chipCarousel"></div>
     </div>
 
-    <div class="search-wrapper" id="searchWrapper" role="search">
-      <input type="text" id="searchInput" placeholder="buscar estilo..." aria-label="Buscar cortes" autocomplete="off">
-      <button id="searchButton" aria-label="Buscar">
+    <!-- ============================================================
+       SEARCH
+    ============================================================ -->
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="buscar estilo..." autocomplete="off">
+      <button id="searchButton">
         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
         buscar
       </button>
     </div>
 
-    <div class="page-container" id="pageContainer">
+    <!-- ============================================================
+       PÁGINAS
+    ============================================================ -->
+    <div class="page-container">
 
-      <div class="page active-page" id="pageHome" role="tabpanel">
+      <!-- HOME -->
+      <div class="page active-page" id="pageHome">
         <div class="unified-carousel-wrapper">
-          <div class="unified-carousel" id="unifiedCarousel" role="list"></div>
+          <div class="unified-carousel" id="unifiedCarousel"></div>
         </div>
-        <div class="carousel-indicators" id="indicators" role="tablist" aria-label="Indicadores do carrossel"></div>
+        <div class="carousel-indicators" id="indicators"></div>
       </div>
 
-      <div class="page" id="pageTendencias" role="tabpanel">
+      <!-- TENDÊNCIAS -->
+      <div class="page" id="pageTendencias">
         <div class="page-header">
           <h2>tendências</h2>
-          <button class="back-home" id="backHome2">← voltar</button>
+          <button class="back-home" id="backHomeTendencias">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="tendencias-list" id="tendenciasList"></div>
         </div>
       </div>
 
-      <div class="page" id="pageGaleria" role="tabpanel">
+      <!-- GALERIA -->
+      <div class="page" id="pageGaleria">
         <div class="page-header">
           <h2>galeria</h2>
-          <button class="back-home" id="backHome3">← voltar</button>
+          <button class="back-home" id="backHomeGaleria">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="galeria-grid" id="galeriaGrid"></div>
         </div>
       </div>
 
-      <div class="page" id="pageFavoritos" role="tabpanel">
+      <!-- FAVORITOS -->
+      <div class="page" id="pageFavoritos">
         <div class="page-header">
           <h2>♥ favoritos</h2>
           <button class="back-home" id="backHomeFav">← voltar</button>
@@ -2028,29 +1856,33 @@
         </div>
       </div>
 
-      <div class="page" id="pageSobre" role="tabpanel">
+      <!-- SOBRE -->
+      <div class="page" id="pageSobre">
         <div class="page-header">
           <h2>sobre</h2>
-          <button class="back-home" id="backHome4">← voltar</button>
+          <button class="back-home" id="backHomeSobre">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="sobre-content">
-            <p><strong style="color:var(--text-primary);font-family:'Playfair Display',serif;font-style:italic;">HairOS</strong> é uma curadoria de estilos capilares — um catálogo vivo que reúne tendências, clássicos e inspirações.</p>
-            <div class="sobre-card"><h4>origem</h4><p>Nascida da estética atemporal da Vogue Paris dos anos 1960.</p></div>
-            <div class="sobre-card"><h4>missão</h4><p>Inspirar e revelar os estilos mais atuais.</p></div>
+            <p><strong style="color:var(--text-primary);font-family:'Playfair Display',serif;font-style:italic;">HairOS</strong> é um catálogo completo com <strong>25 estilos</strong> — 13 cortes clássicos e 12 técnicas de coloração com os códigos de cor usados no dia a dia do salão.</p>
+            <div class="sobre-card">
+              <h4>estoque de cores</h4>
+              <p style="font-size:0.55rem;color:var(--text-secondary);font-weight:300;letter-spacing:0.04em;">5.0 · 6.0 · 7.0 · 8.0 · 6.1 · 7.1 · 8.1 · 6.34 · 7.4 · 7.3 · 10.12</p>
+            </div>
             <div class="sobre-stats">
               <div class="stat"><span class="number">25</span><span class="label">estilos</span></div>
-              <div class="stat"><span class="number">4.8</span><span class="label">★ avaliação</span></div>
               <div class="stat"><span class="number" id="favCountStat">0</span><span class="label">♥ favoritos</span></div>
+              <div class="stat"><span class="number">11</span><span class="label">cores</span></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="page" id="pageContato" role="tabpanel">
+      <!-- CONTATO -->
+      <div class="page" id="pageContato">
         <div class="page-header">
           <h2>contato</h2>
-          <button class="back-home" id="backHome5">← voltar</button>
+          <button class="back-home" id="backHomeContato">← voltar</button>
         </div>
         <div class="page-scroll">
           <div class="contato-content">
@@ -2074,53 +1906,46 @@
 
     </div>
 
+    <!-- ============================================================
+       FOOTER
+    ============================================================ -->
     <div class="footer-minimal">
-      <div class="footer-links" id="footerLinks" role="tablist">
-        <a class="active-link" data-page="pageHome" role="tab" aria-selected="true">home</a>
-        <a data-page="pageTendencias" role="tab" aria-selected="false">tendências</a>
-        <a data-page="pageGaleria" role="tab" aria-selected="false">galeria</a>
-        <a data-page="pageFavoritos" role="tab" aria-selected="false">♥ fav</a>
-        <a data-page="pageSobre" role="tab" aria-selected="false">sobre</a>
-        <a data-page="pageContato" role="tab" aria-selected="false">contato</a>
+      <div class="footer-links">
+        <a class="active-link" data-page="pageHome">home</a>
+        <a data-page="pageTendencias">tendências</a>
+        <a data-page="pageGaleria">galeria</a>
+        <a data-page="pageFavoritos">♥ fav</a>
+        <a data-page="pageSobre">sobre</a>
+        <a data-page="pageContato">contato</a>
       </div>
-      <div class="footer-copy">© 2026 <a href="#">HairOS</a> · são paulo</div>
+      <div class="footer-copy">© 2026 <a href="#">HairOS</a> · 25 estilos</div>
     </div>
 
   </div>
 
-  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Detalhes do estilo">
+  <!-- ============================================================
+     MODAL
+  ============================================================ -->
+  <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
-      <div class="modal-indicators" id="modalIndicators" role="tablist"></div>
-      <button class="modal-close" id="modalClose" aria-label="Fechar">✕</button>
+      <div class="modal-indicators" id="modalIndicators"></div>
+      <button class="modal-close" id="modalClose">✕</button>
       <div class="modal-gallery-wrapper">
         <div class="modal-gallery" id="modalGallery"></div>
-        <button class="modal-nav prev" id="modalPrev" aria-label="Anterior">‹</button>
-        <button class="modal-nav next" id="modalNext" aria-label="Próximo">›</button>
+        <button class="modal-nav prev" id="modalPrev">‹</button>
+        <button class="modal-nav next" id="modalNext">›</button>
         <div class="modal-info-overlay">
           <div class="modal-text-block">
-            <span class="modal-classification" id="modalClassification">corte · médio · clássico</span>
             <div class="modal-colors" id="modalColors"></div>
             <span class="modal-badge" id="modalBadge">tendência</span>
             <span class="modal-title" id="modalTitle">Velvet Bob</span>
-            <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves que emolduram o rosto.</span>
+            <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves.</span>
           </div>
-          <div class="modal-actions">
-            <button class="modal-fav-btn" id="modalFavBtn" aria-label="Favoritar">
-              <span class="fav-icon">♡</span>
-              <span class="fav-label">favoritar</span>
-            </button>
-            <button class="modal-info-btn" id="modalInfoBtn" aria-label="Ver ficha técnica" aria-expanded="false">
-              <span class="info-icon">i</span>
-              <span class="info-label">porquê funciona</span>
-            </button>
-          </div>
+          <button class="modal-fav-btn" id="modalFavBtn">
+            <span class="fav-icon">♡</span>
+            <span class="fav-label">favoritar</span>
+          </button>
         </div>
-      </div>
-
-      <div class="tech-drawer" id="techDrawer" role="region" aria-label="Ficha técnica">
-        <div class="tech-drawer-handle" id="techDrawerHandle"></div>
-        <div class="tech-drawer-chips" id="techDrawerChips"></div>
-        <p class="tech-drawer-text" id="techDrawerText"></p>
       </div>
     </div>
   </div>
@@ -2133,7 +1958,6 @@
       // 25 ESTILOS COMPLETOS
       // ============================================================
       const styleData = {
-        // ---------- EXISTENTES (13) ----------
         'velvet bob': {
           title: 'Velvet Bob',
           desc: 'Clássico moderno com camadas suaves que emolduram o rosto.',
@@ -2141,10 +1965,6 @@
           size: 'medio',
           style: 'classico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais e quadrados',
-          manutencao: 'baixa',
-          porque: 'As camadas internas suavizam o ângulo da mandíbula sem tirar volume. O comprimento na altura dos ombros permite manutenção simples, sem depender de escova diária.',
           cores: ['6.0', '7.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2160,10 +1980,6 @@
           size: 'curto',
           style: 'moderno',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais e alongados',
-          manutencao: 'alta',
-          porque: 'Sem comprimento para distrair, o foco visual migra para os olhos e a estrutura óssea — por isso pede traços bem definidos. Exige retoque a cada 4 a 6 semanas para manter a forma.',
           cores: ['5.0', '6.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2179,10 +1995,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos redondos, fios com volume natural',
-          manutencao: 'média',
-          porque: 'As camadas curtas no topo criam textura que afina visualmente o contorno do rosto redondo. Funciona melhor em fios com ondulação natural, que sustentam o movimento sem esforço.',
           cores: ['7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2198,10 +2010,6 @@
           size: 'curto',
           style: 'alternativo',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais, fios grossos',
-          manutencao: 'alta',
-          porque: 'O rapado lateral expõe a linha do crânio, por isso pede fios mais grossos para que o contraste com o comprimento oposto tenha definição. Requer raspagem de manutenção a cada 2 a 3 semanas.',
           cores: ['5.0', '6.1', '7.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2217,10 +2025,6 @@
           size: 'curto',
           style: 'classico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais e quadrados',
-          manutencao: 'média',
-          porque: 'O corte reto na altura do queixo cria uma linha horizontal que estrutura o rosto. Fios lisos ou levemente ondulados sustentam melhor o acabamento geométrico.',
           cores: ['6.0', '7.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2236,10 +2040,6 @@
           size: 'medio',
           style: 'romantico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais, fios finos a médios',
-          manutencao: 'baixa',
-          porque: 'A franja lateral suaviza a testa e as camadas leves dão movimento sem exigir escova estruturada — ideal para quem busca praticidade com delicadeza no dia a dia.',
           cores: ['7.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2255,10 +2055,6 @@
           size: 'medio',
           style: 'alternativo',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos ovais e alongados, fios com textura natural',
-          manutencao: 'média',
-          porque: 'A desconexão entre camadas cria contraste de comprimento que quebra a uniformidade do fio liso. Funciona melhor em cabelos que já têm alguma textura natural.',
           cores: ['5.0', '6.0', '7.4'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2274,10 +2070,6 @@
           size: 'longo',
           style: 'classico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'todos os formatos de rosto',
-          manutencao: 'baixa',
-          porque: 'Por ficar entre o queixo e os ombros, é o comprimento mais versátil da categoria bob — alonga levemente o rosto redondo e mantém a estrutura em rostos ovais, com manutenção simples.',
           cores: ['7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2293,10 +2085,6 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'rostos redondos e quadrados',
-          manutencao: 'média',
-          porque: 'Camadas em ângulo ascendente ao redor do rosto criam movimento e afinam o contorno — especialmente eficazes para reduzir volume nas laterais sem perder comprimento.',
           cores: ['7.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2312,10 +2100,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'fios lisos e saudáveis, rostos ovais e alongados',
-          manutencao: 'baixa',
-          porque: 'A ausência de camadas concentra a densidade nas pontas, o que exige fios saudáveis — o corte reto evidencia qualquer irregularidade na saúde capilar.',
           cores: ['6.0', '7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2331,10 +2115,6 @@
           size: 'longo',
           style: 'alternativo',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'fios finos que precisam de volume',
-          manutencao: 'média',
-          porque: 'Camadas curtas concentradas no topo criam volume na raiz enquanto o comprimento é preservado nas pontas — resolve o "murchamento" comum em cortes muito uniformes.',
           cores: ['5.0', '6.34', '7.4'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2350,10 +2130,6 @@
           size: 'medio',
           style: 'alternativo',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'fios ondulados ou cacheados',
-          manutencao: 'média',
-          porque: 'Múltiplas camadas soltas dependem de uma textura natural para não parecer desalinhado. Em fios lisos, costuma precisar de finalização com babyliss para reproduzir o movimento.',
           cores: ['6.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2369,10 +2145,6 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: null,
-          categoria: 'Corte',
-          indicado: 'testas largas, rostos redondos e quadrados',
-          manutencao: 'média',
-          porque: 'A franja central dividida ao meio quebra visualmente a largura da testa e suaviza ângulos, mas pede escova ou babyliss regular para manter a abertura nas pontas.',
           cores: ['7.0', '7.3', '8.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2381,8 +2153,6 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
           ]
         },
-
-        // ---------- MORENAS ILUMINADAS (3) ----------
         'ombre-tiger-eye': {
           title: 'Ombré Tiger Eye',
           desc: 'Transição suave do escuro para o dourado. Efeito olho de tigre.',
@@ -2390,10 +2160,6 @@
           size: 'longo',
           style: 'moderno',
           colorCategory: 'morenas',
-          categoria: 'Coloração',
-          indicado: 'subtom quente',
-          manutencao: 'baixa',
-          porque: 'A transição gradual do escuro para o dourado nasce sem marcação de raiz, o que espaça o retoque para 3 a 4 meses. A técnica harmoniza melhor em subtom quente.',
           cores: ['5.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2409,10 +2175,6 @@
           size: 'medio',
           style: 'classico',
           colorCategory: 'morenas',
-          categoria: 'Coloração',
-          indicado: 'todos os subtons',
-          manutencao: 'média',
-          porque: 'Mechas finíssimas aplicadas fio a fio imitam o clareamento solar natural. Por serem sutis, o retoque de raiz pode ser espaçado a cada 3 meses sem comprometer o efeito.',
           cores: ['6.0', '7.0', '8.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2428,10 +2190,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'morenas',
-          categoria: 'Coloração',
-          indicado: 'subtom neutro a quente',
-          manutencao: 'média',
-          porque: 'As luzes são posicionadas estrategicamente ao redor do rosto — testa, têmporas e queixo — em uma técnica de colorimetria aplicada, e não apenas mechas soltas.',
           cores: ['5.0', '7.3', '8.0'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2440,8 +2198,6 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
           ]
         },
-
-        // ---------- LOIRAS (4) ----------
         'balayage-loira': {
           title: 'Balayage Loira',
           desc: 'Técnica de luzes naturais com efeito degradê e movimento.',
@@ -2449,10 +2205,6 @@
           size: 'longo',
           style: 'moderno',
           colorCategory: 'loiras',
-          categoria: 'Coloração',
-          indicado: 'subtom quente a neutro',
-          manutencao: 'baixa',
-          porque: 'A técnica pintada à mão livre, sem papel alumínio, cria uma transição orgânica que cresce sem marcação abrupta de raiz — ideal para espaçar as visitas ao salão.',
           cores: ['7.0', '8.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2468,10 +2220,6 @@
           size: 'longo',
           style: 'romantico',
           colorCategory: 'loiras',
-          categoria: 'Coloração',
-          indicado: 'subtom quente, fios morenos claros a médios',
-          manutencao: 'baixa',
-          porque: 'Mechas claras concentradas nas pontas e no contorno do rosto recriam o clareamento natural do sol, com a raiz preservada — resultado suave que dispensa retoque frequente.',
           cores: ['7.0', '8.0', '8.1'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2487,10 +2235,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'loiras',
-          categoria: 'Coloração',
-          indicado: 'rostos ovais e redondos, subtom quente',
-          manutencao: 'média',
-          porque: 'Luzes concentradas nas linhas do rosto — moldura, mandíbula, têmporas — usam a colorimetria para reduzir o volume aparente em áreas específicas.',
           cores: ['8.0', '8.1', '10.12'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2506,10 +2250,6 @@
           size: 'medio',
           style: 'classico',
           colorCategory: 'loiras',
-          categoria: 'Coloração',
-          indicado: 'subtom frio a neutro',
-          manutencao: 'alta',
-          porque: 'Mechas tradicionais com papel alumínio distribuídas por toda a cabeça criam contraste uniforme, mas exigem retoque de raiz a cada 6 a 8 semanas.',
           cores: ['7.0', '8.0', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2518,8 +2258,6 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&h=400&fit=crop&crop=face'
           ]
         },
-
-        // ---------- RUIVAS (3) ----------
         'cherry-cola': {
           title: 'Cherry Cola',
           desc: 'Tom ruivo intenso com nuances de cereja e cola. Vibrante.',
@@ -2527,10 +2265,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'ruivas',
-          categoria: 'Coloração',
-          indicado: 'subtom frio a neutro, pele clara a média',
-          manutencao: 'alta',
-          porque: 'Pigmentos vermelhos são os que mais desbotam com lavagem e sol. A intensidade do cherry cola exige shampoo sem sulfato e reaplicação de cor a cada 4 a 5 semanas.',
           cores: ['5.0', '6.34', '7.4'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2546,10 +2280,6 @@
           size: 'longo',
           style: 'alternativo',
           colorCategory: 'ruivas',
-          categoria: 'Coloração',
-          indicado: 'subtom quente, pele média a morena',
-          manutencao: 'alta',
-          porque: 'O cobre é um dos tons mais instáveis em colorimetria — desbota rápido em cabelos porosos, por isso pede matização e reforço de cor a cada mês.',
           cores: ['6.0', '7.4', '7.3'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2565,10 +2295,6 @@
           size: 'medio',
           style: 'romantico',
           colorCategory: 'ruivas',
-          categoria: 'Coloração',
-          indicado: 'subtom quente, pele clara a média',
-          manutencao: 'média',
-          porque: 'O tom caramelado nasce da mistura de pigmentos ruivos com dourados, o que suaviza o contraste com a raiz e permite um crescimento menos perceptível que ruivos puros.',
           cores: ['6.34', '7.3', '7.0'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2577,8 +2303,6 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&h=400&fit=crop&crop=face'
           ]
         },
-
-        // ---------- GRISALHAS (2) ----------
         'grisalhos-frios': {
           title: 'Grisalhos Frios',
           desc: 'Transição natural com tons de cinza prateado. Sofisticação.',
@@ -2586,10 +2310,6 @@
           size: 'medio',
           style: 'moderno',
           colorCategory: 'grisalhas',
-          categoria: 'Coloração',
-          indicado: 'subtom frio, fios brancos ou grisalhos',
-          manutencao: 'média',
-          porque: 'A matização com base violeta neutraliza o amarelamento natural do fio branco, mantendo o efeito "prateado" — requer shampoo matizador quinzenal.',
           cores: ['7.1', '8.1', '10.12'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2605,10 +2325,6 @@
           size: 'curto',
           style: 'classico',
           colorCategory: 'grisalhas',
-          categoria: 'Coloração',
-          indicado: 'subtom quente, em transição capilar',
-          manutencao: 'média',
-          porque: 'Mechas com base dourada suavizam a transição entre o cabelo pigmentado e o grisalho nascente, tornando o processo de "des-tintura" menos abrupto visualmente.',
           cores: ['7.1', '7.3', '8.1'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
@@ -2626,7 +2342,6 @@
         favorites: JSON.parse(localStorage.getItem('hairos_favorites') || '[]'),
         currentStyle: 'velvet bob',
         currentFilter: 'all',
-        currentCategory: 'all',
         theme: localStorage.getItem('hairos_theme') || 'dark',
         modalKey: null,
         modalIndex: 0
@@ -2651,7 +2366,7 @@
         document.getElementById('menuBadge').textContent = count;
         document.getElementById('menuFavCount').textContent = count;
         document.getElementById('favCountStat').textContent = count;
-        count > 0 ? document.getElementById('menuBadge').classList.add('show') : document.getElementById('menuBadge').classList.remove('show');
+        document.getElementById('menuBadge').classList.toggle('show', count > 0);
         if (document.getElementById('pageFavoritos').classList.contains('active-page')) generateFavGrid();
       }
 
@@ -2672,9 +2387,6 @@
 
       function getFilteredKeys() {
         let keys = Object.keys(styleData);
-        if (STATE.currentCategory !== 'all') {
-          keys = keys.filter(k => styleData[k].categoria === STATE.currentCategory);
-        }
         if (STATE.currentFilter !== 'all') {
           keys = keys.filter(k => {
             const data = styleData[k];
@@ -2686,19 +2398,19 @@
         return keys.length ? keys : Object.keys(styleData);
       }
 
-      function updateFilterGroupVisibility() {
-        const cat = STATE.currentCategory;
-        document.querySelectorAll('[data-group="size"], [data-group="style"]').forEach(el => {
-          el.style.display = (cat === 'all' || cat === 'Corte') ? '' : 'none';
-        });
-        document.querySelectorAll('[data-group="familia"]').forEach(el => {
-          el.style.display = (cat === 'all' || cat === 'Coloração') ? '' : 'none';
-        });
-      }
-
       // ============================================================
       // RENDER FUNCTIONS
       // ============================================================
+      function renderChipColors(cores) {
+        if (!cores || cores.length === 0) return '';
+        return cores.map(c => `<span class="color-chip">${c}</span>`).join('');
+      }
+
+      function renderModalChipColors(cores) {
+        if (!cores || cores.length === 0) return '';
+        return cores.map(c => `<span class="color-chip-modal">${c}</span>`).join('');
+      }
+
       function generateChips() {
         const container = document.getElementById('chipCarousel');
         container.innerHTML = '';
@@ -2710,12 +2422,9 @@
           chip.className = `chip ${key === STATE.currentStyle ? 'active-chip' : ''}`;
           chip.dataset.style = key;
           chip.textContent = data.title;
-          chip.setAttribute('role', 'tab');
-          chip.setAttribute('aria-selected', key === STATE.currentStyle);
           chip.addEventListener('click', function() {
-            document.querySelectorAll('.chip').forEach(c => { c.classList.remove('active-chip'); c.setAttribute('aria-selected', 'false'); });
+            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active-chip'));
             this.classList.add('active-chip');
-            this.setAttribute('aria-selected', 'true');
             STATE.currentStyle = this.dataset.style;
             if (document.getElementById('pageHome').classList.contains('active-page')) {
               generateCarousel(STATE.currentStyle);
@@ -2726,27 +2435,6 @@
           });
           container.appendChild(chip);
         });
-      }
-
-      const SIZE_LABELS = { curto: 'curto', medio: 'médio', longo: 'longo' };
-      const STYLE_LABELS = { classico: 'clássico', moderno: 'moderno', alternativo: 'alternativo', romantico: 'romântico' };
-      const FAMILIA_LABELS = { morenas: 'morenas', loiras: 'loiras', ruivas: 'ruivas', grisalhas: 'grisalhas' };
-
-      function classificationLabel(data) {
-        if (data.categoria === 'Coloração') {
-          return `coloração · ${FAMILIA_LABELS[data.colorCategory] || data.colorCategory}`;
-        }
-        return `corte · ${SIZE_LABELS[data.size] || data.size} · ${STYLE_LABELS[data.style] || data.style}`;
-      }
-
-      function renderChipColors(cores) {
-        if (!cores || cores.length === 0) return '';
-        return cores.map(c => `<span class="color-chip">${c}</span>`).join('');
-      }
-
-      function renderModalChipColors(cores) {
-        if (!cores || cores.length === 0) return '';
-        return cores.map(c => `<span class="color-chip-modal">${c}</span>`).join('');
       }
 
       function generateCarousel(activeStyle) {
@@ -2768,13 +2456,12 @@
           const item = document.createElement('div');
           item.className = `carousel-item${key === activeStyle ? ' active-item' : ''}`;
           item.dataset.style = key;
-          item.setAttribute('role', 'listitem');
           item.innerHTML = `
-            <button class="favorite-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}" aria-label="${fav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}">${fav ? '♥' : '♡'}</button>
+            <button class="favorite-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}">${fav ? '♥' : '♡'}</button>
             <div class="img-container"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
             <div class="item-overlay">
-              <span class="item-sub">${classificationLabel(data)}</span>
               <h3>${data.title}</h3>
+              <span class="item-sub">· ${data.badge} ·</span>
               <div class="item-colors">${coresHtml}</div>
               <span class="item-badge">${data.badge}</span>
             </div>
@@ -2810,11 +2497,7 @@
         for (let i = 0; i < total; i++) {
           const dot = document.createElement('span');
           dot.className = `dot${i === 0 ? ' active-dot' : ''}`;
-          dot.setAttribute('role', 'tab');
-          dot.setAttribute('aria-selected', i === 0);
-          dot.addEventListener('click', () => {
-            if (items[i]) items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          });
+          dot.addEventListener('click', () => { if (items[i]) items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); });
           container.appendChild(dot);
         }
       }
@@ -2835,10 +2518,10 @@
         const active = Math.min(Math.round(pct * (totalDots - 1)), totalDots - 1);
         dots.forEach((dot, i) => {
           dot.classList.toggle('active-dot', i === active);
-          dot.setAttribute('aria-selected', i === active);
         });
       });
 
+      // TENDÊNCIAS
       function generateTendencias() {
         const list = document.getElementById('tendenciasList');
         list.innerHTML = '';
@@ -2865,6 +2548,7 @@
         });
       }
 
+      // GALERIA
       function generateGaleria() {
         const grid = document.getElementById('galeriaGrid');
         grid.innerHTML = '';
@@ -2881,6 +2565,7 @@
         });
       }
 
+      // FAVORITOS GRID
       function generateFavGrid() {
         const grid = document.getElementById('favGrid');
         grid.innerHTML = '';
@@ -2894,7 +2579,7 @@
           const item = document.createElement('div');
           item.className = 'grid-item';
           item.innerHTML = `
-            <button class="grid-fav-remove" data-fav-key="${key}" aria-label="Remover dos favoritos">✕</button>
+            <button class="grid-fav-remove" data-fav-key="${key}">✕</button>
             <img src="${data.img}" alt="${data.title}" loading="lazy">
             <div class="grid-overlay"><span class="grid-title">${data.title}</span></div>
           `;
@@ -2902,9 +2587,7 @@
             e.stopPropagation();
             toggleFavorite(this.dataset.favKey);
             updateAllFavButtons(this.dataset.favKey);
-            if (document.getElementById('pageFavoritos').classList.contains('active-page')) {
-              generateFavGrid();
-            }
+            if (document.getElementById('pageFavoritos').classList.contains('active-page')) generateFavGrid();
           });
           item.addEventListener('click', function(e) {
             if (e.target.closest('.grid-fav-remove')) return;
@@ -2923,12 +2606,14 @@
         STATE.modalKey = key;
         STATE.modalIndex = 0;
         const images = data.gallery || [data.img];
+
         document.getElementById('modalTitle').textContent = data.title;
         document.getElementById('modalBadge').textContent = data.badge;
         document.getElementById('modalDesc').textContent = data.desc;
-        document.getElementById('modalClassification').textContent = classificationLabel(data);
-        document.getElementById('modalColors').innerHTML = renderModalChipColors(data.cores);
-        renderTechDrawer(data);
+
+        const modalColors = document.getElementById('modalColors');
+        modalColors.innerHTML = renderModalChipColors(data.cores);
+
         const fav = isFavorite(key);
         const modalBtn = document.getElementById('modalFavBtn');
         modalBtn.dataset.favKey = key;
@@ -2954,8 +2639,6 @@
           const dot = document.createElement('span');
           dot.className = `m-dot${i === 0 ? ' active-m-dot' : ''}`;
           dot.dataset.index = i;
-          dot.setAttribute('role', 'tab');
-          dot.setAttribute('aria-selected', i === 0);
           dot.addEventListener('click', () => goToModalImage(i));
           indicators.appendChild(dot);
         });
@@ -2979,47 +2662,12 @@
         document.querySelectorAll('#modalIndicators .m-dot').forEach((dot, i) => {
           dot.classList.toggle('active-m-dot', i === index);
           dot.classList.toggle('filled-m-dot', i <= index);
-          dot.setAttribute('aria-selected', i === index);
         });
       }
 
       function closeModal() {
         document.getElementById('modalOverlay').classList.remove('active');
         document.body.style.overflow = '';
-        closeTechDrawer();
-      }
-
-      function renderTechDrawer(data) {
-        const chipsEl = document.getElementById('techDrawerChips');
-        const textEl = document.getElementById('techDrawerText');
-        const familia = data.categoria === 'Coloração' ? (FAMILIA_LABELS[data.colorCategory] || data.colorCategory) : null;
-        const chips = [
-          `<span class="tech-chip"><strong>categoria</strong>${data.categoria}</span>`,
-          data.categoria === 'Coloração'
-            ? `<span class="tech-chip"><strong>família</strong>${familia}</span>`
-            : `<span class="tech-chip"><strong>comprimento</strong>${SIZE_LABELS[data.size] || data.size}</span>`,
-          data.categoria !== 'Coloração' ? `<span class="tech-chip"><strong>estilo</strong>${STYLE_LABELS[data.style] || data.style}</span>` : '',
-          `<span class="tech-chip"><strong>indicado</strong>${data.indicado || '—'}</span>`,
-          `<span class="tech-chip"><strong>manutenção</strong>${data.manutencao || '—'}</span>`,
-          data.cores && data.cores.length ? `<span class="tech-chip"><strong>fórmula</strong>${data.cores.join(' / ')}</span>` : ''
-        ].filter(Boolean).join('');
-        chipsEl.innerHTML = chips;
-        textEl.textContent = data.porque || data.desc;
-      }
-
-      function toggleTechDrawer() {
-        const drawer = document.getElementById('techDrawer');
-        const btn = document.getElementById('modalInfoBtn');
-        const isOpen = drawer.classList.toggle('tech-drawer-open');
-        btn.classList.toggle('info-active', isOpen);
-        btn.setAttribute('aria-expanded', isOpen);
-      }
-
-      function closeTechDrawer() {
-        document.getElementById('techDrawer').classList.remove('tech-drawer-open');
-        const btn = document.getElementById('modalInfoBtn');
-        btn.classList.remove('info-active');
-        btn.setAttribute('aria-expanded', 'false');
       }
 
       // ============================================================
@@ -3041,14 +2689,6 @@
             }
             return;
           }
-          const feedback = document.createElement('div');
-          feedback.className = 'search-feedback';
-          feedback.textContent = `"${val}" não encontrado. Mostrando todos.`;
-          const wrapper = document.querySelector('.unified-carousel-wrapper');
-          const existing = wrapper.querySelector('.search-feedback');
-          if (existing) existing.remove();
-          wrapper.appendChild(feedback);
-          setTimeout(() => feedback.remove(), 2000);
         }
         generateCarousel(STATE.currentStyle);
       }
@@ -3066,12 +2706,9 @@
         const target = document.getElementById(pageId);
         if (!target) return;
         if (current && current !== target) {
-          current.classList.add('exit-page');
-          setTimeout(() => {
-            current.classList.remove('active-page', 'exit-page');
-            target.classList.add('active-page');
-            updatePageVisibility(pageId);
-          }, 250);
+          current.classList.remove('active-page');
+          target.classList.add('active-page');
+          updatePageVisibility(pageId);
         } else if (!current || current === target) {
           target.classList.add('active-page');
           updatePageVisibility(pageId);
@@ -3080,15 +2717,16 @@
 
       function updatePageVisibility(pageId) {
         const isHome = pageId === 'pageHome';
-        document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
-        document.getElementById('searchWrapper').style.display = isHome ? 'flex' : 'none';
+        document.querySelector('.chip-carousel-wrapper').style.display = isHome ? 'block' : 'none';
+        document.querySelector('.search-wrapper').style.display = isHome ? 'flex' : 'none';
         document.querySelector('.filter-bar').style.display = isHome ? 'flex' : 'none';
         document.querySelectorAll('.footer-links a').forEach(link => {
           link.classList.toggle('active-link', link.dataset.page === pageId);
-          link.setAttribute('aria-selected', link.dataset.page === pageId);
         });
         if (isHome) generateCarousel(STATE.currentStyle);
         if (pageId === 'pageFavoritos') generateFavGrid();
+        if (pageId === 'pageTendencias') generateTendencias();
+        if (pageId === 'pageGaleria') generateGaleria();
       }
 
       // ============================================================
@@ -3125,32 +2763,11 @@
           closeMenu();
         });
 
-        // Category tabs (nível 1: corte vs coloração)
-        document.querySelectorAll('.cat-tab').forEach(tab => {
-          tab.addEventListener('click', function() {
-            document.querySelectorAll('.cat-tab').forEach(t => { t.classList.remove('active-cat'); t.setAttribute('aria-selected', 'false'); });
-            this.classList.add('active-cat');
-            this.setAttribute('aria-selected', 'true');
-            STATE.currentCategory = this.dataset.cat;
-            STATE.currentFilter = 'all';
-            document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
-            updateFilterGroupVisibility();
-            if (document.getElementById('pageHome').classList.contains('active-page')) {
-              generateCarousel(STATE.currentStyle);
-            } else {
-              navigateTo('pageHome');
-              setTimeout(() => generateCarousel(STATE.currentStyle), 100);
-            }
-          });
-        });
-        updateFilterGroupVisibility();
-
-        // Filters (nível 2: comprimento / estilo / família)
+        // Filters
         document.querySelectorAll('.filter-btn').forEach(btn => {
           btn.addEventListener('click', function() {
-            document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active-filter'); b.setAttribute('aria-selected', 'false'); });
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
             this.classList.add('active-filter');
-            this.setAttribute('aria-selected', 'true');
             STATE.currentFilter = this.dataset.filter;
             if (document.getElementById('pageHome').classList.contains('active-page')) {
               generateCarousel(STATE.currentStyle);
@@ -3183,8 +2800,6 @@
 
         // Modal
         document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('modalInfoBtn').addEventListener('click', toggleTechDrawer);
-        document.getElementById('techDrawerHandle').addEventListener('click', closeTechDrawer);
         document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
         document.getElementById('modalPrev').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex - 1); });
         document.getElementById('modalNext').addEventListener('click', e => { e.stopPropagation(); goToModalImage(STATE.modalIndex + 1); });
@@ -3200,7 +2815,6 @@
             document.querySelectorAll('#modalIndicators .m-dot').forEach((dot, i) => {
               dot.classList.toggle('active-m-dot', i === idx);
               dot.classList.toggle('filled-m-dot', i <= idx);
-              dot.setAttribute('aria-selected', i === idx);
             });
           }
         });
@@ -3222,7 +2836,7 @@
           if (e.key === 'ArrowRight') goToModalImage(STATE.modalIndex + 1);
         });
 
-        // Contact form
+        // Contato
         document.getElementById('contatoForm').addEventListener('submit', function(e) {
           e.preventDefault();
           const inputs = this.querySelectorAll('input, textarea');
@@ -3245,16 +2859,18 @@
 
         // Render
         generateChips();
-        generateTendencias();
-        generateGaleria();
         generateCarousel('velvet bob');
         generateFavGrid();
+        generateTendencias();
+        generateGaleria();
         updateFavUI();
 
-        console.log('📦 HAIRBOX · 25 estilos · Nível 1 ✓');
-        console.log('✅ 13 existentes + 12 novos (morenas, loiras, ruivas, grisalhas)');
+        console.log('📦 HAIRBOX · 25 estilos completos com cores ✓');
+        console.log('✅ 13 cortes existentes + 12 técnicas de cores');
+        console.log('✅ Todos os cards com chips de cores');
+        console.log('✅ Cores visíveis nos cards e no modal');
+        console.log('✅ Páginas: Home · Tendências · Galeria · Favoritos · Sobre · Contato');
         console.log('✅ Filtros: estrutura + cores');
-        console.log('✅ Layout limpo e minimalista');
       }
 
       document.addEventListener('DOMContentLoaded', init);
