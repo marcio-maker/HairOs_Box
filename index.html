@@ -35,6 +35,12 @@
       --safe-bottom: env(safe-area-inset-bottom, 0px);
       --header-h: 42px;
       --footer-h: 48px;
+      
+      /* Cores das famílias para o modal */
+      --modal-morenas: rgba(40, 25, 15, 0.95);
+      --modal-loiras: rgba(30, 25, 20, 0.95);
+      --modal-ruivas: rgba(45, 15, 10, 0.95);
+      --modal-grisalhas: rgba(20, 20, 25, 0.95);
     }
     [data-theme="light"] {
       --bg-primary: #f5f0eb;
@@ -46,6 +52,10 @@
       --text-muted: #8a8278;
       --border-subtle: rgba(0,0,0,0.04);
       --shadow-soft: 0 8px 40px rgba(0,0,0,0.06);
+      --modal-morenas: rgba(60, 40, 30, 0.95);
+      --modal-loiras: rgba(50, 45, 40, 0.95);
+      --modal-ruivas: rgba(65, 35, 30, 0.95);
+      --modal-grisalhas: rgba(40, 40, 45, 0.95);
     }
     html, body { height: 100%; background: var(--bg-primary); font-family: 'Inter', -apple-system, sans-serif; transition: background var(--transition); -webkit-font-smoothing: antialiased; overflow: hidden; }
     body { display: flex; justify-content: center; align-items: center; padding: 0; }
@@ -608,7 +618,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: top center;
       display: block;
       filter: none;
       transition: all 0.6s ease;
@@ -621,7 +631,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 70%);
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -647,77 +657,83 @@
     .carousel-card .fav-btn:hover { transform: scale(1.1); background: rgba(0,0,0,0.7); }
     .carousel-card .fav-btn.favorited { color: #ff4757; background: rgba(255,71,87,0.2); border-color: rgba(255,71,87,0.2); }
 
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin-bottom: 2px;
+    }
+    .card-tag {
+      font-size: clamp(9px, 2vw, 11px);
+      background: rgba(201,169,110,0.2);
+      border: 1px solid rgba(201,169,110,0.1);
+      padding: 0 6px;
+      border-radius: 6px;
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      backdrop-filter: blur(4px);
+    }
+
     .card-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      padding: 16px 12px 12px 12px;
+      padding: 20px 10px 10px 10px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
       z-index: 5;
     }
-
-    /* HIERARQUIA DO CARD: NOME → DESCRIÇÃO → NÚMERO → TAGS */
-    .card-overlay .card-title {
+    .card-overlay h3 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(18px, 3.8vw, 22px);
+      font-size: clamp(16px, 3.4vw, 20px);
       font-weight: 700;
       font-style: italic;
       color: #fff;
-      line-height: 1.05;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-      letter-spacing: 0.02em;
+      line-height: 1.1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-    .card-overlay .card-desc {
-      font-size: clamp(12px, 2.6vw, 14px);
-      color: rgba(255,255,255,0.75);
-      font-weight: 300;
-      line-height: 1.3;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-      display: -webkit-box;
-      -webkit-line-clamp: 1;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .card-overlay .card-number {
-      font-size: clamp(10px, 2.2vw, 12px);
-      color: var(--gold-light);
+    .card-overlay .card-sub {
+      font-size: clamp(11px, 2.4vw, 13px);
+      color: rgba(255,255,255,0.7);
       font-weight: 400;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-      padding: 1px 10px;
-      border-radius: 12px;
+      padding: 0 8px;
+      border-radius: 6px;
       display: inline-block;
+      backdrop-filter: blur(4px);
       width: fit-content;
-      border: 1px solid rgba(201,169,110,0.08);
     }
-    .card-overlay .card-tags-wrap {
+    .card-overlay .card-badge {
+      display: inline-block;
+      background: rgba(201,169,110,0.2);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      font-size: clamp(11px, 2.4vw, 13px);
+      color: var(--gold-light);
+      border: 1px solid rgba(201,169,110,0.1);
+      align-self: flex-start;
+      margin-top: 2px;
+      min-height: 18px;
+      display: flex;
+      align-items: center;
+    }
+    .card-overlay .card-colors {
+      font-size: clamp(9px, 2vw, 11px);
+      color: rgba(255,255,255,0.5);
       display: flex;
       gap: 4px;
       flex-wrap: wrap;
-      margin-top: 2px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 2px;
     }
-    .card-overlay .card-tags-wrap::-webkit-scrollbar { display: none; }
-    .card-overlay .card-tag {
-      font-size: clamp(9px, 2vw, 11px);
-      background: rgba(201,169,110,0.15);
-      border: 1px solid rgba(201,169,110,0.08);
-      padding: 0 8px;
-      border-radius: 12px;
-      color: var(--gold-light);
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      text-transform: lowercase;
+    .card-overlay .card-colors span {
+      background: rgba(0,0,0,0.2);
+      padding: 0 5px;
+      border-radius: 4px;
       backdrop-filter: blur(4px);
-      white-space: nowrap;
-      flex-shrink: 0;
     }
 
     .info-btn-card {
@@ -791,7 +807,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: top center;
       filter: none;
       transition: all 0.5s ease;
     }
@@ -838,7 +854,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: top center;
       filter: none;
       transition: all 0.5s ease;
     }
@@ -884,7 +900,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: top center;
       filter: none;
       transition: all 0.5s ease;
     }
@@ -1233,7 +1249,7 @@
     .menu-theme .theme-switch:hover { background: var(--gold-glow); color: var(--gold); }
 
     /* ============================================================
-       MODAL - REFATORADO
+       MODAL - COM EFEITO DE COR
        ============================================================ */
     .modal-overlay {
       position: fixed;
@@ -1245,9 +1261,17 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
+      transition: background 0.6s ease;
     }
     .modal-overlay.active { display: flex; animation: curtainOpen 0.35s ease; }
     @keyframes curtainOpen { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+    /* Cores por família */
+    .modal-overlay[data-color="morenas"] { background: rgba(40, 25, 15, 0.95); }
+    .modal-overlay[data-color="loiras"] { background: rgba(30, 25, 20, 0.95); }
+    .modal-overlay[data-color="ruivas"] { background: rgba(45, 15, 10, 0.95); }
+    .modal-overlay[data-color="grisalhas"] { background: rgba(20, 20, 25, 0.95); }
+    .modal-overlay[data-color="produto"] { background: rgba(15, 20, 25, 0.95); }
 
     .modal-content {
       position: relative;
@@ -1324,7 +1348,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
+      object-position: top center;
       scroll-snap-align: start;
       display: block;
       background: #0a0808;
@@ -1359,7 +1383,7 @@
 
     .modal-indicators {
       position: absolute;
-      bottom: 100px;
+      bottom: 90px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -1385,7 +1409,6 @@
       border-radius: 3px;
     }
 
-    /* ===== MODAL INFO - NOVA ESTRUTURA ===== */
     .modal-info {
       position: absolute;
       bottom: 0;
@@ -1394,142 +1417,93 @@
       z-index: 15;
       display: flex;
       align-items: flex-end;
+      justify-content: space-between;
       gap: 10px;
       padding: 30px 14px 18px 14px;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 45%, transparent 100%);
     }
-    .modal-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    /* LINHA 1: NOME */
+    .modal-text { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
     .modal-text .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 4.6vw, 28px);
+      font-size: clamp(20px, 4.2vw, 26px);
       font-weight: 700;
       font-style: italic;
       color: #fff;
-      line-height: 1.05;
+      line-height: 1.1;
       text-shadow: 0 2px 12px rgba(0,0,0,0.6);
-      letter-spacing: 0.02em;
     }
-
-    /* LINHA 2: DESCRIÇÃO */
+    .modal-text .modal-class {
+      font-size: clamp(10px, 2.2vw, 12px);
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(0,0,0,0.3);
+      padding: 2px 12px;
+      border-radius: 20px;
+      display: inline-block;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(201,169,110,0.1);
+      width: fit-content;
+    }
     .modal-text .modal-desc {
-      font-size: clamp(13px, 2.8vw, 15px);
-      color: rgba(240,235,228,0.8);
+      font-size: clamp(12px, 2.6vw, 14px);
+      color: rgba(240,235,228,0.7);
       font-weight: 300;
       line-height: 1.4;
-      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-
-    /* LINHA 3: NÚMEROS (CORES) */
-    .modal-text .modal-number {
-      font-size: clamp(11px, 2.4vw, 13px);
+    .modal-text .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+      margin: 3px 0;
+    }
+    .modal-text .modal-tags span {
+      font-size: clamp(9px, 2vw, 11px);
+      background: rgba(201,169,110,0.15);
+      border: 1px solid rgba(201,169,110,0.08);
+      padding: 0 7px;
+      border-radius: 6px;
       color: var(--gold-light);
       font-weight: 400;
-      letter-spacing: 0.06em;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-      padding: 2px 12px;
-      border-radius: 14px;
-      display: inline-block;
-      width: fit-content;
-      border: 1px solid rgba(201,169,110,0.08);
+    }
+    .modal-text .modal-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
       margin: 2px 0;
     }
-
-    /* LINHA 4: CARROSSEL HORIZONTAL - TAGS + BADGE + DETALHES JUNTOS */
-    .modal-text .modal-carousel-row {
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-      padding: 2px 0 4px 0;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      align-items: center;
-    }
-    .modal-text .modal-carousel-row::-webkit-scrollbar { display: none; }
-    .modal-text .modal-carousel-row .carousel-item {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      white-space: nowrap;
-      font-size: clamp(10px, 2.2vw, 12px);
-      padding: 2px 10px;
-      border-radius: 14px;
-      background: rgba(201,169,110,0.08);
+    .modal-text .modal-details span {
+      font-size: clamp(9px, 2vw, 11px);
+      color: rgba(240,235,228,0.6);
+      background: rgba(0,0,0,0.3);
+      padding: 1px 10px;
+      border-radius: 12px;
       border: 1px solid rgba(201,169,110,0.06);
-      color: var(--gold-light);
-      font-weight: 400;
-      letter-spacing: 0.04em;
       backdrop-filter: blur(4px);
-      min-height: 22px;
-      display: flex;
-      align-items: center;
-    }
-    .modal-text .modal-carousel-row .carousel-item.badge-item {
-      background: rgba(201,169,110,0.2);
-      color: var(--gold-light);
-      border-color: rgba(201,169,110,0.1);
-    }
-    .modal-text .modal-carousel-row .carousel-item.detail-item {
-      background: rgba(0,0,0,0.2);
-      color: rgba(240,235,228,0.5);
-      border-color: rgba(201,169,110,0.04);
-    }
-
-    /* LINHA 5: CARROSSEL HORIZONTAL - RELACIONADOS */
-    .modal-text .modal-related-row {
-      display: flex;
-      gap: 4px;
-      overflow-x: auto;
-      padding: 2px 0 4px 0;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      align-items: center;
-      margin-top: 2px;
-    }
-    .modal-text .modal-related-row::-webkit-scrollbar { display: none; }
-    .modal-text .modal-related-row .related-label {
-      flex: 0 0 auto;
-      font-size: 10px;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       font-weight: 300;
-      scroll-snap-align: start;
-      padding-right: 4px;
+      letter-spacing: 0.04em;
     }
-    .modal-text .modal-related-row .related-chip {
-      flex: 0 0 auto;
-      scroll-snap-align: start;
-      font-size: 10px;
+    .modal-text .modal-badge {
+      align-self: flex-start;
+      background: rgba(201,169,110,0.2);
+      backdrop-filter: blur(6px);
+      color: var(--gold-light);
       padding: 2px 10px;
-      min-height: 20px;
-      cursor: pointer;
-      background: rgba(201,169,110,0.08);
-      border: 1px solid rgba(201,169,110,0.06);
       border-radius: var(--radius-pill);
-      color: var(--text-secondary);
-      transition: all var(--transition);
-      white-space: nowrap;
-      font-family: 'Inter', sans-serif;
+      font-size: clamp(10px, 2.2vw, 12px);
+      border: 1px solid rgba(201,169,110,0.1);
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      min-height: 18px;
       display: flex;
       align-items: center;
     }
-    .modal-text .modal-related-row .related-chip:hover {
-      background: var(--gold-glow);
-      border-color: var(--gold);
-      color: var(--gold);
-    }
 
-    /* BOTÃO FAVORITAR - AO LADO */
     .modal-fav {
       flex-shrink: 0;
       background: none;
@@ -1541,7 +1515,6 @@
       cursor: pointer;
       color: #fff;
       transition: all var(--transition);
-      margin-left: auto;
     }
     .modal-fav:hover { transform: scale(1.05); }
     .modal-fav .fav-icon {
@@ -1579,17 +1552,16 @@
       .filter-toggle-btn { font-size: 11px; padding: 2px 10px; min-height: 28px; }
       .chip { font-size: clamp(10px, 2.2vw, 12px); padding: 2px 10px; min-height: 20px; }
       .carousel-card { flex: 0 0 85vw; width: 85vw; height: 55vh; min-height: 220px; max-height: 400px; }
-      .card-overlay .card-title { font-size: clamp(16px, 3.4vw, 19px); }
-      .card-overlay .card-desc { font-size: clamp(11px, 2.4vw, 13px); }
+      .card-overlay h3 { font-size: clamp(14px, 3vw, 16px); }
+      .card-tag { font-size: clamp(8px, 1.8vw, 10px); }
       .tendencias-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
       .galeria-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
       .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
       .footer-links a { font-size: clamp(8px, 1.8vw, 10px); padding: 1px 6px; min-height: 16px; }
       .modal-content { height: 90vh; width: 90vw; }
-      .modal-text .modal-title { font-size: clamp(18px, 3.8vw, 22px); }
+      .modal-text .modal-title { font-size: clamp(16px, 3.4vw, 20px); }
       .modal-indicators { bottom: 80px; }
       .footer { min-height: 40px; padding: 2px 0; }
-      .modal-info { padding: 20px 10px 12px 10px; }
     }
 
     @media (max-width: 375px) {
@@ -1814,14 +1786,14 @@
         </div>
         <div class="page-scroll">
           <div class="sobre-content">
-            <p><strong style="color:var(--text-primary);font-family:'Playfair Display',serif;font-style:italic;">HairOS</strong> é uma coleção de estilos capilares — um catálogo vivo que reúne tendências, clássicos e inspirações.</p>
+            <p><strong style="color:var(--text-primary);font-family:'Playfair Display',serif;font-style:italic;">HairOS</strong> é uma curadoria de estilos capilares — um catálogo vivo que reúne tendências, clássicos e inspirações.</p>
             <div class="sobre-card">
               <h4>origem</h4>
               <p>Nascida da estética atemporal da Vogue Paris dos anos 1960, a HairOS reúne 37 estilos entre cortes, colorações e produtos.</p>
             </div>
             <div class="sobre-card">
               <h4>missão</h4>
-              <p>Inspirar e revelar os estilos mais atuais através de uma seleção visual e técnica.</p>
+              <p>Inspirar e revelar os estilos mais atuais através de uma curadoria visual e técnica.</p>
             </div>
             <div class="sobre-stats">
               <div class="stat"><span class="number">37</span><span class="label">estilos</span></div>
@@ -1875,7 +1847,7 @@
 
   </div>
 
-  <!-- ===== MODAL - REFATORADO ===== -->
+  <!-- ===== MODAL ===== -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <button class="modal-close" id="modalClose">✕</button>
@@ -1886,16 +1858,12 @@
         <div class="modal-indicators" id="modalIndicators"></div>
         <div class="modal-info">
           <div class="modal-text">
-            <!-- LINHA 1: NOME -->
+            <span class="modal-class" id="modalClass">corte · médio</span>
             <span class="modal-title" id="modalTitle">Velvet Bob</span>
-            <!-- LINHA 2: DESCRIÇÃO -->
-            <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves que emolduram o rosto.</span>
-            <!-- LINHA 3: NÚMEROS (CORES) -->
-            <span class="modal-number" id="modalNumber">6.0 · 7.0</span>
-            <!-- LINHA 4: CARROSSEL - TAGS + BADGE + DETALHES JUNTOS -->
-            <div class="modal-carousel-row" id="modalCarouselRow"></div>
-            <!-- LINHA 5: CARROSSEL - RELACIONADOS -->
-            <div class="modal-related-row" id="modalRelatedRow"></div>
+            <span class="modal-desc" id="modalDesc">Clássico moderno com camadas suaves.</span>
+            <div class="modal-tags" id="modalTags"></div>
+            <div class="modal-details" id="modalDetails"></div>
+            <span class="modal-badge" id="modalBadge">tendência</span>
           </div>
           <button class="modal-fav" id="modalFavBtn">
             <span class="fav-icon">♡</span>
@@ -1912,6 +1880,7 @@
 
       // ============================================================
       // DATABASE — 37 CARDS COM 3 IMAGENS CADA
+      // CORES ATUALIZADAS COM AS NOVAS VARIAÇÕES
       // ============================================================
       const styleData = {
         'velvet-bob': {
@@ -1933,8 +1902,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['pixie-cut', 'short-bob', 'blunt-cut']
+          ]
         },
         'pixie-cut': {
           title: 'Pixie Cut',
@@ -1955,8 +1923,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['side-cut', 'short-bob', 'velvet-bob']
+          ]
         },
         'wolf-cut': {
           title: 'Wolf Cut',
@@ -1975,10 +1942,9 @@
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
-            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
-            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['shaggy-hair', 'octopus-cut', 'butterfly-cut']
+            'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
+            'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
+          ]
         },
         'side-cut': {
           title: 'Side Cut',
@@ -1999,8 +1965,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['pixie-cut', 'nirvana-cut', 'wolf-cut']
+          ]
         },
         'short-bob': {
           title: 'Short Bob',
@@ -2021,8 +1986,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['velvet-bob', 'blunt-cut', 'long-bob']
+          ]
         },
         'kitty-cut': {
           title: 'Kitty Cut',
@@ -2043,8 +2007,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['curtain-bangs', 'butterfly-cut', 'long-bob']
+          ]
         },
         'nirvana-cut': {
           title: 'Nirvana Cut',
@@ -2065,8 +2028,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['shaggy-hair', 'side-cut', 'wolf-cut']
+          ]
         },
         'long-bob': {
           title: 'Long Bob (Lob)',
@@ -2087,8 +2049,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['curtain-bangs', 'kitty-cut', 'butterfly-cut']
+          ]
         },
         'butterfly-cut': {
           title: 'Butterfly Cut',
@@ -2109,8 +2070,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['wolf-cut', 'octopus-cut', 'curtain-bangs']
+          ]
         },
         'blunt-cut': {
           title: 'Blunt Cut',
@@ -2131,8 +2091,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['short-bob', 'velvet-bob', 'long-bob']
+          ]
         },
         'octopus-cut': {
           title: 'Octopus Cut',
@@ -2153,8 +2112,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['wolf-cut', 'shaggy-hair', 'butterfly-cut']
+          ]
         },
         'shaggy-hair': {
           title: 'Shaggy Hair',
@@ -2175,8 +2133,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['nirvana-cut', 'wolf-cut', 'octopus-cut']
+          ]
         },
         'curtain-bangs': {
           title: 'Curtain Bangs',
@@ -2197,8 +2154,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['kitty-cut', 'long-bob', 'butterfly-cut']
+          ]
         },
         'ombre-tiger-eye': {
           title: 'Ombré Tiger Eye',
@@ -2219,8 +2175,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['balayage-loira', 'contour-highlights', 'babylights-morena']
+          ]
         },
         'babylights-morena': {
           title: 'Babylights Morena',
@@ -2241,8 +2196,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['ombre-tiger-eye', 'contour-highlights', 'balayage-loira']
+          ]
         },
         'contour-highlights': {
           title: 'Contour Highlights',
@@ -2263,8 +2217,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['babylights-morena', 'ombre-tiger-eye', 'mechas-contour']
+          ]
         },
         'balayage-loira': {
           title: 'Balayage Loira',
@@ -2285,8 +2238,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['californianas', 'highlights-loira', 'ombre-tiger-eye']
+          ]
         },
         'californianas': {
           title: 'Californianas',
@@ -2307,8 +2259,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['balayage-loira', 'highlights-loira', 'mechas-contour']
+          ]
         },
         'mechas-contour': {
           title: 'Mechas Contour',
@@ -2329,8 +2280,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['contour-highlights', 'californianas', 'highlights-loira']
+          ]
         },
         'highlights-loira': {
           title: 'Highlights Loira',
@@ -2351,8 +2301,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['balayage-loira', 'californianas', 'mechas-contour']
+          ]
         },
         'cherry-cola': {
           title: 'Cherry Cola',
@@ -2373,8 +2322,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['cowgirl-copper', 'ruivo-doce-leite', 'octopus-cut']
+          ]
         },
         'cowgirl-copper': {
           title: 'Cowgirl Copper',
@@ -2395,8 +2343,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['cherry-cola', 'ruivo-doce-leite', 'octopus-cut']
+          ]
         },
         'ruivo-doce-leite': {
           title: 'Ruivo Doce de Leite',
@@ -2417,8 +2364,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['cowgirl-copper', 'cherry-cola', 'ombre-tiger-eye']
+          ]
         },
         'grisalhos-frios': {
           title: 'Grisalhos Frios',
@@ -2439,8 +2385,7 @@
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['grisalhos-quentes', 'mechas-contour', 'highlights-loira']
+          ]
         },
         'grisalhos-quentes': {
           title: 'Grisalhos Quentes',
@@ -2461,8 +2406,7 @@
             'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face'
-          ],
-          related: ['grisalhos-frios', 'ruivo-doce-leite', 'ombre-tiger-eye']
+          ]
         },
         'shampoo-oleo-argao': {
           title: 'Shampoo Óleo de Argan',
@@ -2471,7 +2415,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2483,8 +2427,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['condicionador-reparador', 'mascara-capilar-umbium', 'shampoo-antifrizz']
+          ]
         },
         'condicionador-reparador': {
           title: 'Condicionador Reparador',
@@ -2493,7 +2436,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2505,8 +2448,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['shampoo-oleo-argao', 'creme-para-pentear', 'mascara-capilar-umbium']
+          ]
         },
         'mascara-capilar-umbium': {
           title: 'Máscara Capilar Umbiúm',
@@ -2515,7 +2457,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Cacheado, Crespo',
@@ -2527,8 +2469,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['oleo-finalizador-cacau', 'serum-brilho-definicao', 'condicionador-reparador']
+          ]
         },
         'serum-brilho-definicao': {
           title: 'Sérum Brilho e Definição',
@@ -2537,7 +2478,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Cacheado, Crespo',
@@ -2549,8 +2490,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['mascara-capilar-umbium', 'oleo-finalizador-cacau', 'mousse-modelador']
+          ]
         },
         'oleo-finalizador-cacau': {
           title: 'Óleo Finalizador de Cacau',
@@ -2559,7 +2499,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2571,8 +2511,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['serum-brilho-definicao', 'spray-protetor-termico', 'gel-fixacao-ultra']
+          ]
         },
         'spray-protetor-termico': {
           title: 'Spray Protetor Térmico',
@@ -2581,7 +2520,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado',
@@ -2593,8 +2532,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['oleo-finalizador-cacau', 'gel-fixacao-ultra', 'tonico-capilar-crescimento']
+          ]
         },
         'gel-fixacao-ultra': {
           title: 'Gel Fixação Ultra',
@@ -2603,7 +2541,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2615,8 +2553,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['spray-protetor-termico', 'mousse-modelador', 'tonico-capilar-crescimento']
+          ]
         },
         'tonico-capilar-crescimento': {
           title: 'Tônico Capilar Crescimento',
@@ -2625,7 +2562,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2637,8 +2574,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['shampoo-antifrizz', 'condicionador-volume', 'gel-fixacao-ultra']
+          ]
         },
         'shampoo-antifrizz': {
           title: 'Shampoo Antifrizz',
@@ -2647,7 +2583,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Ondulado, Cacheado, Crespo',
@@ -2659,8 +2595,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['tonico-capilar-crescimento', 'condicionador-volume', 'mousse-modelador']
+          ]
         },
         'condicionador-volume': {
           title: 'Condicionador Volume',
@@ -2669,7 +2604,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado',
@@ -2681,8 +2616,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['shampoo-antifrizz', 'mousse-modelador', 'creme-para-pentear']
+          ]
         },
         'creme-para-pentear': {
           title: 'Creme para Pentear',
@@ -2691,7 +2625,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
@@ -2703,8 +2637,7 @@
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['condicionador-reparador', 'mousse-modelador', 'condicionador-volume']
+          ]
         },
         'mousse-modelador': {
           title: 'Mousse Modelador',
@@ -2713,7 +2646,7 @@
           categoria: 'Produto',
           size: null,
           style: null,
-          colorFamily: null,
+          colorFamily: 'produto',
           manutencao: null,
           rosto: null,
           textura: 'Ondulado, Cacheado',
@@ -2725,8 +2658,7 @@
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center',
             'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center'
-          ],
-          related: ['serum-brilho-definicao', 'gel-fixacao-ultra', 'oleo-finalizador-cacau']
+          ]
         }
       };
 
@@ -2846,7 +2778,9 @@
           if (!data) return;
           const fav = isFavorite(key);
           const colors = getColorLabel(data);
-          const tagsHtml = data.tags.map(t => `<span class="card-tag">${t}</span>`).join('');
+          const tagsHtml = data.tags.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
+          const colorsHtml = data.cores.length ? 
+            `<div class="card-colors">${data.cores.map(c => `<span>${c}</span>`).join('')}</div>` : '';
 
           const card = document.createElement('div');
           card.className = `carousel-card${key === activeKey ? ' active-card' : ''}`;
@@ -2855,10 +2789,11 @@
             <button class="fav-btn ${fav ? 'favorited' : ''}" data-fav-key="${key}">${fav ? '♥' : '♡'}</button>
             <div class="card-img"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
             <div class="card-overlay">
-              <span class="card-title">${data.title}</span>
-              <span class="card-desc">${data.desc}</span>
-              ${colors ? `<span class="card-number">${colors}</span>` : ''}
-              <div class="card-tags-wrap">${tagsHtml}</div>
+              <div class="card-tags">${tagsHtml}</div>
+              <h3>${data.title}</h3>
+              ${colors ? `<span class="card-sub">${colors}</span>` : ''}
+              <span class="card-badge">${data.badge}</span>
+              ${colorsHtml}
             </div>
             <button class="info-btn-card" data-key="${key}">ⓘ</button>
           `;
@@ -3055,7 +2990,7 @@
       }
 
       // ============================================================
-      // MODAL - REFATORADO
+      // MODAL - COM EFEITO DE COR
       // ============================================================
       function openModal(key) {
         const data = styleData[key];
@@ -3064,79 +2999,26 @@
         STATE.modalIndex = 0;
         const images = data.gallery || [data.img];
 
-        // LINHA 1: NOME
+        // Aplica a cor de fundo baseada na família de cor
+        const colorFamily = data.colorFamily || 'morenas';
+        document.getElementById('modalOverlay').dataset.color = colorFamily;
+
         document.getElementById('modalTitle').textContent = data.title;
-        // LINHA 2: DESCRIÇÃO
         document.getElementById('modalDesc').textContent = data.desc;
-        // LINHA 3: NÚMEROS (CORES)
-        const colors = getColorLabel(data);
-        document.getElementById('modalNumber').textContent = colors || '—';
+        document.getElementById('modalClass').textContent = [data.categoria, data.size, data.style].filter(Boolean).join(' · ');
+        document.getElementById('modalBadge').textContent = data.badge;
 
-        // LINHA 4: CARROSSEL - TAGS + BADGE + DETALHES
-        const carouselRow = document.getElementById('modalCarouselRow');
-        carouselRow.innerHTML = '';
-        
-        // Tags
-        (data.tags || []).forEach(tag => {
-          const item = document.createElement('span');
-          item.className = 'carousel-item';
-          item.textContent = tag;
-          carouselRow.appendChild(item);
-        });
+        const tagsHtml = (data.tags || []).map(t => `<span>${t}</span>`).join('');
+        document.getElementById('modalTags').innerHTML = tagsHtml;
 
-        // Badge
-        if (data.badge) {
-          const badgeItem = document.createElement('span');
-          badgeItem.className = 'carousel-item badge-item';
-          badgeItem.textContent = data.badge;
-          carouselRow.appendChild(badgeItem);
-        }
-
-        // Detalhes
         const details = [];
-        if (data.categoria) details.push(`📂 ${data.categoria}`);
-        if (data.size) details.push(`📏 ${data.size}`);
-        if (data.style) details.push(`🎭 ${data.style}`);
-        if (data.colorFamily) details.push(`🎨 ${data.colorFamily}`);
-        if (data.manutencao) details.push(`🛠️ ${data.manutencao}`);
-        if (data.rosto) details.push(`👤 ${data.rosto}`);
-        if (data.textura) details.push(`✨ ${data.textura}`);
-        if (data.volume) details.push(`📊 ${data.volume}`);
-        details.forEach(detail => {
-          const item = document.createElement('span');
-          item.className = 'carousel-item detail-item';
-          item.textContent = detail;
-          carouselRow.appendChild(item);
-        });
+        if (data.manutencao) details.push(`✧ Manutenção: ${data.manutencao}`);
+        if (data.rosto) details.push(`✧ Rosto: ${data.rosto}`);
+        if (data.textura) details.push(`✧ Textura: ${data.textura}`);
+        if (data.volume) details.push(`✧ Volume: ${data.volume}`);
+        if (data.colorFamily && data.colorFamily !== 'produto') details.push(`✧ Família: ${data.colorFamily}`);
+        document.getElementById('modalDetails').innerHTML = details.map(d => `<span>${d}</span>`).join('');
 
-        // LINHA 5: CARROSSEL - RELACIONADOS
-        const relatedRow = document.getElementById('modalRelatedRow');
-        relatedRow.innerHTML = '';
-        if (data.related && data.related.length) {
-          const label = document.createElement('span');
-          label.className = 'related-label';
-          label.textContent = '→ relacionados';
-          relatedRow.appendChild(label);
-          data.related.forEach(relKey => {
-            const relData = styleData[relKey];
-            if (!relData) return;
-            const chip = document.createElement('span');
-            chip.className = 'related-chip';
-            chip.textContent = relData.title;
-            chip.addEventListener('click', (e) => {
-              e.stopPropagation();
-              closeModal();
-              setTimeout(() => {
-                STATE.currentStyle = relKey;
-                renderCarousel(relKey);
-                navigateTo('pageHome');
-              }, 300);
-            });
-            relatedRow.appendChild(chip);
-          });
-        }
-
-        // BOTÃO FAVORITAR
         const fav = isFavorite(key);
         const modalBtn = document.getElementById('modalFavBtn');
         modalBtn.dataset.favKey = key;
@@ -3144,7 +3026,6 @@
         modalBtn.querySelector('.fav-icon').textContent = fav ? '♥' : '♡';
         modalBtn.querySelector('.fav-label').textContent = fav ? 'favoritado' : 'favoritar';
 
-        // GALERIA
         const gallery = document.getElementById('modalGallery');
         gallery.innerHTML = '';
         images.forEach((img, i) => {
@@ -3156,7 +3037,6 @@
           gallery.appendChild(el);
         });
 
-        // INDICADORES
         const indicators = document.getElementById('modalIndicators');
         indicators.innerHTML = '';
         images.forEach((_, i) => {
@@ -3177,6 +3057,8 @@
       function closeModal() {
         document.getElementById('modalOverlay').classList.remove('active');
         document.body.style.overflow = '';
+        // Remove a cor para voltar ao fundo padrão
+        document.getElementById('modalOverlay').dataset.color = '';
       }
 
       function goToModalImage(index) {
@@ -3454,14 +3336,11 @@
         updateAllFavUI();
         updateFilterBadge();
 
-        console.log('✅ HAIROS PREMIUM · Modal refatorado');
-        console.log('✅ LINHA 1: NOME');
-        console.log('✅ LINHA 2: DESCRIÇÃO');
-        console.log('✅ LINHA 3: NÚMEROS (CORES)');
-        console.log('✅ LINHA 4: CARROSSEL (TAGS + BADGE + DETALHES)');
-        console.log('✅ LINHA 5: CARROSSEL (RELACIONADOS)');
-        console.log('✅ 37 cards · 37 modais · 111 imagens');
-        console.log('✅ Tudo preservado · Apenas estrutura do modal alterada');
+        console.log('✅ HAIROS PREMIUM FINAL · 37 cards com 3 imagens cada');
+        console.log('✅ Efeito de cor por família no modal');
+        console.log('✅ Filtros acumulativos · Busca com debounce');
+        console.log('✅ Footer sempre visível · Tema escuro/claro');
+        console.log('✅ Cores atualizadas com as novas variações');
       }
 
       document.addEventListener('DOMContentLoaded', init);
