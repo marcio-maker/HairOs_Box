@@ -622,19 +622,26 @@
       object-fit: cover;
       object-position: top center;
       display: block;
-      filter: none;
-      transition: all 0.6s ease;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+      transition: filter 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.6s ease;
     }
     .carousel-card:hover .card-img img {
-      filter: brightness(1.05);
+      filter: grayscale(0%) contrast(1) brightness(1);
       transform: scale(1.02);
+    }
+    .carousel-card.active-card .card-img img {
+      filter: grayscale(0%) contrast(1) brightness(1);
     }
     .carousel-card .card-img::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
       pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+    .carousel-card:hover .card-img::after {
+      opacity: 0.8;
     }
 
     .carousel-card .fav-btn {
@@ -810,10 +817,10 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      filter: none;
-      transition: all 0.5s ease;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+      transition: filter 0.6s ease, transform 0.5s ease;
     }
-    .tendencia-card:hover .tendencia-img img { filter: brightness(1.05); transform: scale(1.02); }
+    .tendencia-card:hover .tendencia-img img { filter: grayscale(0%) contrast(1) brightness(1); transform: scale(1.02); }
     .tendencia-card .tendencia-info { padding: 8px 10px; }
     .tendencia-card .tendencia-info h4 {
       font-size: clamp(14px, 3vw, 16px);
@@ -857,10 +864,10 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      filter: none;
-      transition: all 0.5s ease;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+      transition: filter 0.6s ease, transform 0.5s ease;
     }
-    .galeria-item:hover img { filter: brightness(1.05); transform: scale(1.02); }
+    .galeria-item:hover img { filter: grayscale(0%) contrast(1) brightness(1); transform: scale(1.02); }
     .galeria-item .galeria-overlay {
       position: absolute;
       bottom: 0;
@@ -903,10 +910,10 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      filter: none;
-      transition: all 0.5s ease;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+      transition: filter 0.6s ease, transform 0.5s ease;
     }
-    .fav-item:hover img { filter: brightness(1.05); transform: scale(1.02); }
+    .fav-item:hover img { filter: grayscale(0%) contrast(1) brightness(1); transform: scale(1.02); }
     .fav-item .fav-overlay {
       position: absolute;
       bottom: 0;
@@ -1355,6 +1362,11 @@
       background: #0a0808;
       filter: none;
       transition: all 0.5s ease;
+      animation: revealColor 0.8s ease forwards;
+    }
+    @keyframes revealColor {
+      0% { filter: grayscale(100%) contrast(1.2) brightness(1.1); }
+      100% { filter: grayscale(0%) contrast(1) brightness(1); }
     }
 
     .modal-nav {
@@ -1457,6 +1469,20 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .modal-text .modal-image-number {
+      font-size: clamp(12px, 2.6vw, 14px);
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      padding: 2px 12px;
+      border-radius: 14px;
+      display: inline-block;
+      width: fit-content;
+      border: 1px solid rgba(201,169,110,0.08);
+      margin: 2px 0;
+    }
     .modal-text .modal-tags {
       display: flex;
       flex-wrap: wrap;
@@ -1504,20 +1530,39 @@
       display: flex;
       align-items: center;
     }
-    /* NÚMEROS DAS IMAGENS NO MODAL */
-    .modal-text .modal-image-number {
-      font-size: clamp(12px, 2.6vw, 14px);
-      color: var(--gold-light);
-      font-weight: 500;
+    .modal-text .modal-related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 4px;
+      align-items: center;
+    }
+    .modal-text .modal-related .related-label {
+      font-size: 10px;
+      color: var(--text-muted);
       letter-spacing: 0.06em;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-      padding: 2px 12px;
-      border-radius: 14px;
-      display: inline-block;
-      width: fit-content;
-      border: 1px solid rgba(201,169,110,0.08);
-      margin: 2px 0;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+    .modal-text .modal-related .related-chip {
+      font-size: 10px;
+      padding: 1px 10px;
+      min-height: 16px;
+      cursor: pointer;
+      background: rgba(201,169,110,0.08);
+      border: 1px solid rgba(201,169,110,0.06);
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      transition: all var(--transition);
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    .modal-text .modal-related .related-chip:hover {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
     .modal-fav {
@@ -1881,6 +1926,7 @@
             <div class="modal-tags" id="modalTags"></div>
             <div class="modal-details" id="modalDetails"></div>
             <span class="modal-badge" id="modalBadge">tendência</span>
+            <div class="modal-related" id="modalRelated"></div>
           </div>
           <button class="modal-fav" id="modalFavBtn">
             <span class="fav-icon">♡</span>
@@ -1897,9 +1943,10 @@
 
       // ============================================================
       // DATABASE — 37 CARDS COM 3 IMAGENS CADA
-      // CADA IMAGEM TEM SUA PRÓPRIA NUMERAÇÃO
+      // CORTES: 2 números | COLORAÇÕES: 3 números
       // ============================================================
       const styleData = {
+        // ===== CORTES (2 números) =====
         'velvet-bob': {
           title: 'Velvet Bob',
           desc: 'Clássico moderno com camadas suaves que emolduram o rosto.',
@@ -1912,16 +1959,14 @@
           rosto: 'Oval, Quadrado',
           textura: 'Liso, Ondulado',
           volume: 'Medio',
-          // APENAS A PRIMEIRA NUMERAÇÃO PARA O CARD
-          cardColor: '6.0',
           tags: ['corte', 'bob', 'clássico', 'camadas'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
-          // CADA IMAGEM COM SUA NUMERAÇÃO
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.0' }
-          ]
+          ],
+          related: ['pixie-cut', 'short-bob', 'blunt-cut']
         },
         'pixie-cut': {
           title: 'Pixie Cut',
@@ -1935,14 +1980,14 @@
           rosto: 'Oval, Alongado',
           textura: 'Liso, Ondulado',
           volume: 'Baixo',
-          cardColor: '5.0',
           tags: ['corte', 'pixie', 'curto', 'moderno'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.0' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '5.1 · 6.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '4.0 · 5.0' }
-          ]
+          ],
+          related: ['side-cut', 'short-bob', 'velvet-bob']
         },
         'wolf-cut': {
           title: 'Wolf Cut',
@@ -1956,14 +2001,14 @@
           rosto: 'Redondo',
           textura: 'Ondulado, Cacheado',
           volume: 'Alto',
-          cardColor: '7.0',
           tags: ['corte', 'wolf', 'camadas', 'moderno'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 8.0' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 8.2' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.8' }
-          ]
+          ],
+          related: ['shaggy-hair', 'octopus-cut', 'butterfly-cut']
         },
         'side-cut': {
           title: 'Side Cut',
@@ -1977,14 +2022,14 @@
           rosto: 'Oval',
           textura: 'Liso, Ondulado',
           volume: 'Baixo',
-          cardColor: '5.0',
           tags: ['corte', 'undercut', 'alternativo', 'radical'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 7.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.2 · 7.3' },
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 6.9' }
-          ]
+          ],
+          related: ['pixie-cut', 'nirvana-cut', 'wolf-cut']
         },
         'short-bob': {
           title: 'Short Bob',
@@ -1998,14 +2043,14 @@
           rosto: 'Oval, Quadrado',
           textura: 'Liso',
           volume: 'Medio',
-          cardColor: '6.0',
           tags: ['corte', 'bob', 'curto', 'clássico'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.0' }
-          ]
+          ],
+          related: ['velvet-bob', 'blunt-cut', 'long-bob']
         },
         'kitty-cut': {
           title: 'Kitty Cut',
@@ -2019,14 +2064,14 @@
           rosto: 'Oval',
           textura: 'Liso, Ondulado',
           volume: 'Medio',
-          cardColor: '7.0',
           tags: ['corte', 'kitty', 'médio', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 7.3' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 7.5' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0' }
-          ]
+          ],
+          related: ['curtain-bangs', 'butterfly-cut', 'long-bob']
         },
         'nirvana-cut': {
           title: 'Nirvana Cut',
@@ -2040,14 +2085,14 @@
           rosto: 'Oval, Alongado',
           textura: 'Ondulado, Cacheado',
           volume: 'Medio',
-          cardColor: '5.0',
           tags: ['corte', 'grunge', 'alternativo', 'rock'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.0 · 7.4' },
-            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '5.2 · 6.2 · 7.6' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 5.8 · 7.2' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.0' },
+            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '5.4 · 6.4' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 5.8' }
+          ],
+          related: ['shaggy-hair', 'side-cut', 'wolf-cut']
         },
         'long-bob': {
           title: 'Long Bob (Lob)',
@@ -2061,14 +2106,14 @@
           rosto: 'Todos',
           textura: 'Liso, Ondulado',
           volume: 'Medio',
-          cardColor: '7.0',
           tags: ['corte', 'lob', 'longo', 'versátil'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 8.0' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.1 · 8.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0' }
-          ]
+          ],
+          related: ['curtain-bangs', 'kitty-cut', 'butterfly-cut']
         },
         'butterfly-cut': {
           title: 'Butterfly Cut',
@@ -2082,14 +2127,14 @@
           rosto: 'Redondo, Quadrado',
           textura: 'Ondulado, Cacheado',
           volume: 'Alto',
-          cardColor: '7.0',
           tags: ['corte', 'butterfly', 'longo', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 7.3 · 8.0' },
-            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 7.5 · 8.2' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.1 · 7.8' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 7.3' },
+            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 7.5' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.1' }
+          ],
+          related: ['wolf-cut', 'octopus-cut', 'curtain-bangs']
         },
         'blunt-cut': {
           title: 'Blunt Cut',
@@ -2103,14 +2148,14 @@
           rosto: 'Oval, Alongado',
           textura: 'Liso',
           volume: 'Medio',
-          cardColor: '6.0',
           tags: ['corte', 'blunt', 'reto', 'moderno'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0 · 8.0' },
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1 · 8.1' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.9 · 6.9 · 7.9' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0' },
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.9 · 6.9' }
+          ],
+          related: ['short-bob', 'velvet-bob', 'long-bob']
         },
         'octopus-cut': {
           title: 'Octopus Cut',
@@ -2124,14 +2169,14 @@
           rosto: 'Oval',
           textura: 'Ondulado, Cacheado',
           volume: 'Alto',
-          cardColor: '5.0',
           tags: ['corte', 'octopus', 'longo', 'volume'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.34 · 7.4' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.2 · 6.5 · 7.6' },
-            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 6.1 · 7.2' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.34' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.4 · 6.54' },
+            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 6.1' }
+          ],
+          related: ['wolf-cut', 'shaggy-hair', 'butterfly-cut']
         },
         'shaggy-hair': {
           title: 'Shaggy Hair',
@@ -2145,14 +2190,14 @@
           rosto: 'Redondo',
           textura: 'Ondulado, Cacheado',
           volume: 'Alto',
-          cardColor: '6.0',
           tags: ['corte', 'shag', 'camadas', 'alternativo'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.3 · 8.0' },
-            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '6.2 · 7.5 · 8.2' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.8 · 7.1 · 7.8' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.3' },
+            { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '6.2 · 7.5' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.8 · 7.1' }
+          ],
+          related: ['nirvana-cut', 'wolf-cut', 'octopus-cut']
         },
         'curtain-bangs': {
           title: 'Curtain Bangs',
@@ -2166,15 +2211,17 @@
           rosto: 'Redondo, Quadrado',
           textura: 'Liso, Ondulado',
           volume: 'Medio',
-          cardColor: '7.0',
           tags: ['corte', 'franja', 'curtain', 'romântico'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
-            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 7.3 · 8.1' },
-            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 7.5 · 8.3' },
-            { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.1 · 7.9' }
-          ]
+            { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 7.3' },
+            { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 7.5' },
+            { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.1' }
+          ],
+          related: ['kitty-cut', 'long-bob', 'butterfly-cut']
         },
+
+        // ===== COLORAÇÕES (3 números) =====
         'ombre-tiger-eye': {
           title: 'Ombré Tiger Eye',
           desc: 'Transição suave do escuro para o dourado com efeito olho de tigre. Sofisticado e natural.',
@@ -2187,14 +2234,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '5.0',
           tags: ['coloração', 'ombré', 'morenas', 'tigre'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 7.3 · 8.0' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.3 · 7.5 · 8.2' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 7.1 · 7.8' }
-          ]
+          ],
+          related: ['balayage-loira', 'contour-highlights', 'babylights-morena']
         },
         'babylights-morena': {
           title: 'Babylights Morena',
@@ -2208,14 +2255,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '6.0',
           tags: ['coloração', 'babylights', 'morenas', 'natural'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.0 · 8.0' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1 · 8.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.9 · 6.9 · 7.9' }
-          ]
+          ],
+          related: ['ombre-tiger-eye', 'contour-highlights', 'balayage-loira']
         },
         'contour-highlights': {
           title: 'Contour Highlights',
@@ -2229,14 +2276,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '5.0',
           tags: ['coloração', 'contour', 'morenas', 'iluminação'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 7.3 · 8.0' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '5.4 · 7.4 · 8.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '4.9 · 7.2 · 7.9' }
-          ]
+          ],
+          related: ['babylights-morena', 'ombre-tiger-eye', 'mechas-contour']
         },
         'balayage-loira': {
           title: 'Balayage Loira',
@@ -2250,14 +2297,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '7.0',
           tags: ['coloração', 'balayage', 'loiras', 'natural'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 8.0 · 7.3' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 8.2 · 7.5' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.8 · 7.1' }
-          ]
+          ],
+          related: ['californianas', 'highlights-loira', 'ombre-tiger-eye']
         },
         'californianas': {
           title: 'Californianas',
@@ -2271,14 +2318,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '7.0',
           tags: ['coloração', 'californianas', 'loiras', 'sol'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 8.0 · 8.1' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.2 · 8.2 · 8.3' },
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.8 · 7.8 · 7.9' }
-          ]
+          ],
+          related: ['balayage-loira', 'highlights-loira', 'mechas-contour']
         },
         'mechas-contour': {
           title: 'Mechas Contour',
@@ -2292,14 +2339,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '8.0',
           tags: ['coloração', 'contour', 'loiras', 'iluminação'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '8.0 · 8.1 · 10.12' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '8.2 · 8.3 · 10.3' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.8 · 7.9 · 9.9' }
-          ]
+          ],
+          related: ['contour-highlights', 'californianas', 'highlights-loira']
         },
         'highlights-loira': {
           title: 'Highlights Loira',
@@ -2313,14 +2360,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '7.0',
           tags: ['coloração', 'highlights', 'loiras', 'brilho'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.0 · 8.0 · 7.3' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.1 · 8.1 · 7.4' },
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.9 · 7.9 · 7.2' }
-          ]
+          ],
+          related: ['balayage-loira', 'californianas', 'mechas-contour']
         },
         'cherry-cola': {
           title: 'Cherry Cola',
@@ -2334,14 +2381,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '5.0',
           tags: ['coloração', 'cherry', 'ruivas', 'vibrante'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '5.0 · 6.34 · 7.4' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '5.2 · 6.5 · 7.6' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '4.8 · 6.1 · 7.2' }
-          ]
+          ],
+          related: ['cowgirl-copper', 'ruivo-doce-leite', 'octopus-cut']
         },
         'cowgirl-copper': {
           title: 'Cowgirl Copper',
@@ -2355,14 +2402,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '6.0',
           tags: ['coloração', 'copper', 'ruivas', 'moderno'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.0 · 7.4 · 7.3' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '6.2 · 7.6 · 7.5' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '5.8 · 7.2 · 7.1' }
-          ]
+          ],
+          related: ['cherry-cola', 'ruivo-doce-leite', 'octopus-cut']
         },
         'ruivo-doce-leite': {
           title: 'Ruivo Doce de Leite',
@@ -2376,14 +2423,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '6.34',
           tags: ['coloração', 'ruivo', 'doce leite', 'caramelo'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '6.34 · 7.3 · 7.0' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '6.5 · 7.5 · 7.2' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '6.1 · 7.1 · 6.8' }
-          ]
+          ],
+          related: ['cowgirl-copper', 'cherry-cola', 'ombre-tiger-eye']
         },
         'grisalhos-frios': {
           title: 'Grisalhos Frios',
@@ -2397,14 +2444,14 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '7.1',
           tags: ['coloração', 'grisalhos', 'prateado', 'sophisticated'],
           img: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.1 · 8.1 · 6.0' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.3 · 8.3 · 6.2' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=face', number: '6.9 · 7.9 · 5.8' }
-          ]
+          ],
+          related: ['grisalhos-quentes', 'mechas-contour', 'highlights-loira']
         },
         'grisalhos-quentes': {
           title: 'Grisalhos Quentes',
@@ -2418,16 +2465,17 @@
           rosto: null,
           textura: null,
           volume: null,
-          cardColor: '7.3',
           tags: ['coloração', 'grisalhos', 'quente', 'natural'],
           img: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&h=600&fit=crop&crop=face',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=1067&fit=crop&crop=face', number: '7.3 · 8.3 · 7.0' },
             { src: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&h=1067&fit=crop&crop=face', number: '7.5 · 8.5 · 7.2' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=face', number: '7.1 · 8.1 · 6.8' }
-          ]
+          ],
+          related: ['grisalhos-frios', 'ruivo-doce-leite', 'ombre-tiger-eye']
         },
-        // PRODUTOS (sem numeração)
+
+        // ===== PRODUTOS (sem numeração) =====
         'shampoo-oleo-argao': {
           title: 'Shampoo Óleo de Argan',
           desc: 'Shampoo nutritivo com óleo de argan para fios secos e danificados. Recuperação profunda.',
@@ -2440,14 +2488,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Medio, Alto',
-          cardColor: '',
           tags: ['produto', 'shampoo', 'argan', 'nutrição'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['condicionador-reparador', 'mascara-capilar-umbium', 'shampoo-antifrizz']
         },
         'condicionador-reparador': {
           title: 'Condicionador Reparador',
@@ -2461,14 +2509,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Medio',
-          cardColor: '',
           tags: ['produto', 'condicionador', 'queratina', 'reparação'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['shampoo-oleo-argao', 'creme-para-pentear', 'mascara-capilar-umbium']
         },
         'mascara-capilar-umbium': {
           title: 'Máscara Capilar Umbiúm',
@@ -2482,14 +2530,14 @@
           rosto: null,
           textura: 'Cacheado, Crespo',
           volume: 'Alto',
-          cardColor: '',
           tags: ['produto', 'máscara', 'umbiúm', 'hidratação'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['oleo-finalizador-cacau', 'serum-brilho-definicao', 'condicionador-reparador']
         },
         'serum-brilho-definicao': {
           title: 'Sérum Brilho e Definição',
@@ -2503,14 +2551,14 @@
           rosto: null,
           textura: 'Cacheado, Crespo',
           volume: 'Medio, Alto',
-          cardColor: '',
           tags: ['produto', 'sérum', 'definição', 'brilho'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['mascara-capilar-umbium', 'oleo-finalizador-cacau', 'mousse-modelador']
         },
         'oleo-finalizador-cacau': {
           title: 'Óleo Finalizador de Cacau',
@@ -2524,14 +2572,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Medio',
-          cardColor: '',
           tags: ['produto', 'óleo', 'cacau', 'finalização'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['serum-brilho-definicao', 'spray-protetor-termico', 'gel-fixacao-ultra']
         },
         'spray-protetor-termico': {
           title: 'Spray Protetor Térmico',
@@ -2545,14 +2593,14 @@
           rosto: null,
           textura: 'Liso, Ondulado',
           volume: 'Baixo, Medio',
-          cardColor: '',
           tags: ['produto', 'spray', 'proteção', 'térmico'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['oleo-finalizador-cacau', 'gel-fixacao-ultra', 'tonico-capilar-crescimento']
         },
         'gel-fixacao-ultra': {
           title: 'Gel Fixação Ultra',
@@ -2566,14 +2614,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Baixo, Medio',
-          cardColor: '',
           tags: ['produto', 'gel', 'fixação', 'forte'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['spray-protetor-termico', 'mousse-modelador', 'tonico-capilar-crescimento']
         },
         'tonico-capilar-crescimento': {
           title: 'Tônico Capilar Crescimento',
@@ -2587,14 +2635,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Baixo, Medio',
-          cardColor: '',
           tags: ['produto', 'tônico', 'crescimento', 'estimulante'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['shampoo-antifrizz', 'condicionador-volume', 'gel-fixacao-ultra']
         },
         'shampoo-antifrizz': {
           title: 'Shampoo Antifrizz',
@@ -2608,14 +2656,14 @@
           rosto: null,
           textura: 'Ondulado, Cacheado, Crespo',
           volume: 'Medio, Alto',
-          cardColor: '',
           tags: ['produto', 'shampoo', 'antifrizz', 'controle'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['tonico-capilar-crescimento', 'condicionador-volume', 'mousse-modelador']
         },
         'condicionador-volume': {
           title: 'Condicionador Volume',
@@ -2629,14 +2677,14 @@
           rosto: null,
           textura: 'Liso, Ondulado',
           volume: 'Alto',
-          cardColor: '',
           tags: ['produto', 'condicionador', 'volume', 'leveza'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['shampoo-antifrizz', 'mousse-modelador', 'creme-para-pentear']
         },
         'creme-para-pentear': {
           title: 'Creme para Pentear',
@@ -2650,14 +2698,14 @@
           rosto: null,
           textura: 'Liso, Ondulado, Cacheado',
           volume: 'Medio',
-          cardColor: '',
           tags: ['produto', 'creme', 'desembaraço', 'hidratação'],
           img: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['condicionador-reparador', 'mousse-modelador', 'condicionador-volume']
         },
         'mousse-modelador': {
           title: 'Mousse Modelador',
@@ -2671,14 +2719,14 @@
           rosto: null,
           textura: 'Ondulado, Cacheado',
           volume: 'Alto',
-          cardColor: '',
           tags: ['produto', 'mousse', 'modelagem', 'textura'],
           img: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=400&h=600&fit=crop&crop=center',
           gallery: [
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&h=1067&fit=crop&crop=center', number: '' },
             { src: 'https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&h=1067&fit=crop&crop=center', number: '' }
-          ]
+          ],
+          related: ['serum-brilho-definicao', 'gel-fixacao-ultra', 'oleo-finalizador-cacau']
         }
       };
 
@@ -2793,6 +2841,8 @@
           if (!data) return;
           const fav = isFavorite(key);
           const tagsHtml = data.tags.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
+          // Card mostra a numeração da primeira imagem
+          const cardNumber = data.gallery && data.gallery[0] ? data.gallery[0].number : '';
 
           const card = document.createElement('div');
           card.className = `carousel-card${key === activeKey ? ' active-card' : ''}`;
@@ -2803,7 +2853,7 @@
             <div class="card-overlay">
               <div class="card-tags">${tagsHtml}</div>
               <h3>${data.title}</h3>
-              ${data.cardColor ? `<span class="card-sub">${data.cardColor}</span>` : ''}
+              ${cardNumber ? `<span class="card-sub">${cardNumber}</span>` : ''}
               <span class="card-badge">${data.badge}</span>
             </div>
             <button class="info-btn-card" data-key="${key}">ⓘ</button>
@@ -2907,13 +2957,14 @@
         tendencias.forEach(key => {
           const data = styleData[key];
           if (!data) return;
+          const cardNumber = data.gallery && data.gallery[0] ? data.gallery[0].number : '';
           const card = document.createElement('div');
           card.className = 'tendencia-card';
           card.innerHTML = `
             <div class="tendencia-img"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
             <div class="tendencia-info">
               <h4>${data.title}</h4>
-              ${data.cardColor ? `<div class="tendencia-colors">${data.cardColor}</div>` : ''}
+              ${cardNumber ? `<div class="tendencia-colors">${cardNumber}</div>` : ''}
               <span class="tendencia-tag">${data.badge}</span>
             </div>
           `;
@@ -2929,13 +2980,14 @@
         keys.forEach(key => {
           const data = styleData[key];
           if (!data) return;
+          const cardNumber = data.gallery && data.gallery[0] ? data.gallery[0].number : '';
           const item = document.createElement('div');
           item.className = 'galeria-item';
           item.innerHTML = `
             <img src="${data.img}" alt="${data.title}" loading="lazy">
             <div class="galeria-overlay">
               <span>${data.title}</span>
-              ${data.cardColor ? `<div class="galeria-colors">${data.cardColor}</div>` : ''}
+              ${cardNumber ? `<div class="galeria-colors">${cardNumber}</div>` : ''}
             </div>
           `;
           item.addEventListener('click', () => openModal(key));
@@ -2953,6 +3005,7 @@
         STATE.favorites.forEach(key => {
           const data = styleData[key];
           if (!data) return;
+          const cardNumber = data.gallery && data.gallery[0] ? data.gallery[0].number : '';
           const item = document.createElement('div');
           item.className = 'fav-item';
           item.innerHTML = `
@@ -2960,7 +3013,7 @@
             <img src="${data.img}" alt="${data.title}" loading="lazy">
             <div class="fav-overlay">
               <span>${data.title}</span>
-              ${data.cardColor ? `<div class="fav-colors">${data.cardColor}</div>` : ''}
+              ${cardNumber ? `<div class="fav-colors">${cardNumber}</div>` : ''}
             </div>
           `;
           item.querySelector('.fav-remove').addEventListener('click', e => {
@@ -3033,6 +3086,33 @@
           document.getElementById('modalImageNumber').style.display = 'inline-block';
         } else {
           document.getElementById('modalImageNumber').style.display = 'none';
+        }
+
+        // RELATED SUGGESTIONS
+        const relatedContainer = document.getElementById('modalRelated');
+        relatedContainer.innerHTML = '';
+        if (data.related && data.related.length) {
+          const label = document.createElement('span');
+          label.className = 'related-label';
+          label.textContent = '→ relacionados:';
+          relatedContainer.appendChild(label);
+          data.related.forEach(relKey => {
+            const relData = styleData[relKey];
+            if (!relData) return;
+            const chip = document.createElement('span');
+            chip.className = 'related-chip';
+            chip.textContent = relData.title;
+            chip.addEventListener('click', (e) => {
+              e.stopPropagation();
+              closeModal();
+              setTimeout(() => {
+                STATE.currentStyle = relKey;
+                renderCarousel(relKey);
+                navigateTo('pageHome');
+              }, 300);
+            });
+            relatedContainer.appendChild(chip);
+          });
         }
 
         const fav = isFavorite(key);
@@ -3371,11 +3451,11 @@
         updateAllFavUI();
         updateFilterBadge();
 
-        console.log('✅ HAIROS PREMIUM FINAL - VERSÃO CORRETA');
+        console.log('✅ HAIROS PREMIUM FINAL - VERSÃO DEFINITIVA');
         console.log('✅ 37 estilos com 3 imagens cada');
-        console.log('✅ Cards: 1 numeração');
-        console.log('✅ Modais: 3 imagens com 3 numerações diferentes');
-        console.log('✅ Efeito de cor por família no modal');
+        console.log('✅ Cards: 1 combinação (igual à imagem 1 do modal)');
+        console.log('✅ Cortes: 2 números | Colorações: 3 números');
+        console.log('✅ Efeito Vogue: cards em cinza, modal com cor');
         console.log('✅ Tudo funcionando perfeitamente');
       }
 
