@@ -85,7 +85,7 @@
       padding: 0;
     }
 
-        /* ============================================================
+    /* ============================================================
        SPLASH
        ============================================================ */
     .splash {
@@ -172,14 +172,19 @@
     }
 
     @keyframes pulseLogo {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
     }
 
     /* ============================================================
        APP CONTAINER
        ============================================================ */
-        .app {
+    .app {
       width: 100%;
       max-width: 430px;
       height: 100vh;
@@ -212,6 +217,155 @@
         padding: 8px 16px 4px 16px;
       }
     }
+
+    /* ============================================================
+       RESULTADOS COUNT
+       ============================================================ */
+    .results-count {
+      font-size: 10px;
+      color: var(--text-muted);
+      padding: 2px 0 4px 0;
+      opacity: 0.3;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    .results-count .count-number {
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    /* ============================================================
+       TOAST
+       ============================================================ */
+    .toast {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 400;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 9999;
+      border: 1px solid var(--border-gold);
+      pointer-events: none;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast .toast-icon {
+      margin-right: 8px;
+    }
+
+    /* ============================================================
+       CAROUSEL LOADING
+       ============================================================ */
+    .carousel-track.loading {
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+
+    /* ============================================================
+       FAV BUTTON PULSE
+       ============================================================ */
+    .fav-btn.pulse {
+      animation: pulseFav 0.4s ease;
+    }
+
+    @keyframes pulseFav {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.35);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* ============================================================
+       MODAL IMAGE LOADING
+       ============================================================ */
+    .modal-gallery img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      scroll-snap-align: start;
+      display: block;
+      background: var(--bg-card);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .modal-gallery img.loaded {
+      opacity: 1;
+      animation: revealColor 0.8s ease forwards;
+    }
+
+    @keyframes revealColor {
+      0% {
+        filter: grayscale(100%) contrast(1.2) brightness(1.1);
+      }
+      100% {
+        filter: grayscale(0%) contrast(1) brightness(1);
+      }
+    }
+
+    /* ============================================================
+       SHIMMER EFFECT (esqueleto)
+       ============================================================ */
+    .carousel-card .card-img {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .carousel-card .card-img .shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(201, 169, 110, 0.05) 50%,
+          transparent 100%);
+      animation: shimmer 1.8s infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .carousel-card .card-img img.loaded+.shimmer {
+      display: none;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* ============================================================
+       TODO O RESTO DO SEU CSS AQUI (mantido igual)
+       ============================================================ */
 
     /* ============================================================
        HEADER
@@ -902,6 +1056,7 @@
       align-items: center;
       touch-action: pan-x;
       cursor: grab;
+      transition: opacity 0.3s ease;
     }
 
     .carousel-track:active {
@@ -929,7 +1084,6 @@
       position: relative;
       aspect-ratio: 9/12;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-      /* STAGGER — entrada em cascata */
       opacity: 0;
       animation: cardFade 0.4s ease forwards;
     }
@@ -976,6 +1130,7 @@
       height: 100%;
       overflow: hidden;
       position: relative;
+      background: var(--bg-card);
     }
 
     .carousel-card .card-img img {
@@ -986,6 +1141,12 @@
       display: block;
       filter: grayscale(100%) contrast(1.1) brightness(1.05);
       transition: filter 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s ease;
+      opacity: 0;
+      transition: opacity 0.5s ease, filter 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.6s ease;
+    }
+
+    .carousel-card .card-img img.loaded {
+      opacity: 1;
     }
 
     .carousel-card:hover .card-img img {
@@ -1004,6 +1165,7 @@
       background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 55%);
       pointer-events: none;
       transition: opacity 0.6s ease;
+      z-index: 2;
     }
 
     .carousel-card:hover .card-img::after {
@@ -2024,9 +2186,13 @@
       object-position: top center;
       scroll-snap-align: start;
       display: block;
-      background: #0a0808;
-      filter: none;
-      transition: all 0.5s ease;
+      background: var(--bg-card);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .modal-gallery img.loaded {
+      opacity: 1;
       animation: revealColor 0.8s ease forwards;
     }
 
@@ -2403,6 +2569,11 @@
         min-height: 40px;
         padding: 2px 0;
       }
+      .toast {
+        bottom: 75px;
+        font-size: 11px;
+        padding: 8px 16px;
+      }
     }
 
     @media (max-width: 375px) {
@@ -2480,7 +2651,7 @@
 
 <body>
 
-    <!-- ===== SPLASH ===== -->
+  <!-- ===== SPLASH ===== -->
   <div class="splash" id="splash">
     <div class="splash-logo">HairOS<span>.</span></div>
     <div class="splash-sub">Catálogo · 2026</div>
@@ -2489,6 +2660,12 @@
       <div class="splash-bar-fill" id="splashBarFill"></div>
     </div>
     <div class="splash-percent" id="splashPercent">CARREGANDO</div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon">♥</span>
+    <span id="toastMessage">Adicionado aos favoritos</span>
   </div>
 
   <div class="app">
@@ -2501,7 +2678,6 @@
       </div>
       <div class="header-actions">
         <button class="header-btn theme-toggle" id="themeToggle" aria-label="Alternar tema">
-          <!-- Lua/Ícone de tema -->
           <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
@@ -2693,6 +2869,11 @@
     <!-- ===== ACTIVE FILTERS ===== -->
     <div class="active-filters-bar" id="activeFiltersBar"></div>
 
+    <!-- ===== RESULTS COUNT ===== -->
+    <div class="results-count" id="resultsCount">
+      <span class="count-number" id="countNumber">37</span> estilos encontrados
+    </div>
+
     <!-- ===== CHIPS ===== -->
     <div class="chip-wrapper" id="chipWrapper">
       <div class="chip-carousel" id="chipCarousel"></div>
@@ -2781,23 +2962,18 @@
             <div style="text-align:center;">
               <p style="font-size:10px;color:var(--text-muted);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:4px;font-weight:300;">siga a hairOS</p>
               <div class="contato-social">
-                <!-- Instagram -->
                 <a href="https://instagram.com/seuusuario" target="_blank" aria-label="Instagram">
                   <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="19.5" cy="4.5" r="1.5"/></svg>
                 </a>
-                <!-- YouTube -->
                 <a href="https://www.youtube.com/@seucanal" target="_blank" aria-label="YouTube">
                   <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
                 </a>
-                <!-- TikTok -->
                 <a href="https://www.tiktok.com/@seuusuario" target="_blank" aria-label="TikTok">
                   <svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.2 4.2 0 0 1 3.9 3.8 4.2 4.2 0 0 1-1.6-3.8 4.2 4.2 0 0 0-2.3-1.4 4.2 4.2 0 0 1-4.2 3.8v5.4a4.2 4.2 0 1 1-4.2-4.2v2.2a2 2 0 1 0 2 2V5.82h2.4z"/></svg>
                 </a>
-                <!-- WhatsApp -->
                 <a href="https://wa.me/5511914809693" target="_blank" aria-label="WhatsApp">
                   <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/><path d="M11 8a4 4 0 00-4 4 4 4 0 004 4 4 4 0 004-4 4 4 0 00-4-4z"/></svg>
                 </a>
-                <!-- Facebook -->
                 <a href="https://www.facebook.com/seuusuario" target="_blank" aria-label="Facebook">
                   <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                 </a>
@@ -2909,7 +3085,7 @@
     (function() {
       'use strict';
 
-            // ============================================================
+      // ============================================================
       // SPLASH — com barra de progresso
       // ============================================================
       function initSplash() {
@@ -2920,19 +3096,44 @@
 
         if (!splash) return;
 
-        let progress = 0;
+        // PRÉ-CARREGAMENTO DE IMAGENS
+        const keys = Object.keys(styleData);
+        let imagesLoaded = 0;
+        const totalImages = keys.length;
 
-        const interval = setInterval(() => {
+        function preloadImages() {
+          keys.forEach(key => {
+            const img = new Image();
+            img.src = styleData[key].img;
+            img.onload = () => {
+              imagesLoaded++;
+              // Atualiza progresso baseado em imagens
+              const percent = Math.min(Math.round((imagesLoaded / totalImages) * 100), 90);
+              if (barFill) barFill.style.width = percent + '%';
+              if (percentText) {
+                if (percent < 30) percentText.textContent = 'CARREGANDO IMAGENS';
+                else if (percent < 60) percentText.textContent = 'PREPARANDO ESTILOS';
+                else if (percent < 85) percentText.textContent = 'QUASE PRONTO';
+                else percentText.textContent = 'PRONTO! ✨';
+              }
+            };
+            img.onerror = () => {
+              imagesLoaded++;
+            };
+          });
+        }
+
+        preloadImages();
+
+        let progress = 30;
+        let interval = setInterval(() => {
           progress += 2;
 
           if (progress > 100) {
             clearInterval(interval);
 
-            // Mostra o app e esconde o splash
             setTimeout(() => {
-              app.style.opacity = '1';
-              app.style.transform = 'scale(1)';
-              app.style.pointerEvents = 'auto';
+              app.classList.add('visible');
               splash.classList.add('hide');
 
               setTimeout(() => {
@@ -2943,42 +3144,60 @@
             return;
           }
 
-          // Atualiza barra
-          if (barFill) {
+          // Atualiza barra se ainda não foi preenchida pelas imagens
+          if (barFill && imagesLoaded < totalImages) {
+            const imgPercent = Math.min(Math.round((imagesLoaded / totalImages) * 100), 90);
+            const currentWidth = Math.max(progress, imgPercent);
+            barFill.style.width = Math.min(currentWidth, 100) + '%';
+          } else if (barFill) {
             barFill.style.width = progress + '%';
           }
 
           // Atualiza texto
-          if (percentText) {
-            if (progress < 30) {
-              percentText.textContent = 'CARREGANDO';
-            } else if (progress < 60) {
-              percentText.textContent = 'PREPARANDO ESTILOS';
-            } else if (progress < 85) {
-              percentText.textContent = 'QUASE PRONTO';
-            } else {
-              percentText.textContent = 'PRONTO! ✨';
-            }
+          if (percentText && imagesLoaded < totalImages) {
+            if (progress < 30) percentText.textContent = 'CARREGANDO IMAGENS';
+            else if (progress < 60) percentText.textContent = 'PREPARANDO ESTILOS';
+            else if (progress < 85) percentText.textContent = 'QUASE PRONTO';
+            else percentText.textContent = 'PRONTO! ✨';
+          } else if (percentText) {
+            if (progress < 30) percentText.textContent = 'CARREGANDO';
+            else if (progress < 60) percentText.textContent = 'PREPARANDO ESTILOS';
+            else if (progress < 85) percentText.textContent = 'QUASE PRONTO';
+            else percentText.textContent = 'PRONTO! ✨';
           }
         }, 30);
 
-        // Fallback: se algo travar, força saída após 5 segundos
+        // Fallback: se algo travar, força saída após 6 segundos
         setTimeout(() => {
           if (!splash.classList.contains('hide')) {
             clearInterval(interval);
-            app.style.opacity = '1';
-            app.style.transform = 'scale(1)';
-            app.style.pointerEvents = 'auto';
+            app.classList.add('visible');
             splash.classList.add('hide');
             setTimeout(() => {
               if (splash.parentNode) splash.remove();
             }, 600);
           }
-        }, 5000);
+        }, 6000);
       }
 
       // ============================================================
-      // DATABASE — 37 CARDS
+      // TOAST
+      // ============================================================
+      function showToast(message, icon = '♥') {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toastMessage');
+        const toastIcon = document.getElementById('toastIcon');
+        toastIcon.textContent = icon;
+        toastMsg.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2200);
+      }
+
+      // ============================================================
+      // DATABASE — 37 CARDS (mantido igual)
       // ============================================================
       const styleData = {
         'velvet-bob': {
@@ -3783,7 +4002,8 @@
         theme: localStorage.getItem('hairos_theme') || 'dark',
         modalKey: null,
         modalIndex: 0,
-        dropdownOpen: false
+        dropdownOpen: false,
+        scrollPosition: 0
       };
 
       // ============================================================
@@ -3792,10 +4012,23 @@
       function isFavorite(key) { return STATE.favorites.includes(key); }
 
       function toggleFavorite(key) {
+        const isFav = isFavorite(key);
         const idx = STATE.favorites.indexOf(key);
         idx > -1 ? STATE.favorites.splice(idx, 1) : STATE.favorites.push(key);
         localStorage.setItem('hairos_favorites', JSON.stringify(STATE.favorites));
         updateAllFavUI();
+
+        // Toast
+        const message = isFav ? 'Removido dos favoritos' : 'Adicionado aos favoritos';
+        const icon = isFav ? '♡' : '♥';
+        showToast(message, icon);
+
+        // Pulse animation
+        document.querySelectorAll(`[data-fav-key="${key}"]`).forEach(el => {
+          el.classList.add('pulse');
+          setTimeout(() => el.classList.remove('pulse'), 400);
+        });
+
         return isFavorite(key);
       }
 
@@ -3873,10 +4106,16 @@
         if (!activeKey || !keys.includes(activeKey)) activeKey = 'velvet-bob';
         STATE.currentStyle = activeKey;
 
+        // Update results count
+        document.getElementById('countNumber').textContent = keys.length;
+
         const sorted = [activeKey, ...keys.filter(k => k !== activeKey)];
         const track = document.getElementById('carouselTrack');
         track.innerHTML = '';
         const items = [];
+
+        // Adiciona classe loading
+        track.classList.add('loading');
 
         sorted.forEach(key => {
           const data = styleData[key];
@@ -3894,7 +4133,10 @@
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </button>
-            <div class="card-img"><img src="${data.img}" alt="${data.title}" loading="lazy"></div>
+            <div class="card-img">
+              <img src="${data.img}" alt="${data.title}" loading="lazy">
+              <div class="shimmer"></div>
+            </div>
             <div class="card-overlay">
               <div class="card-tags">${tagsHtml}</div>
               <h3>${data.title}</h3>
@@ -3908,6 +4150,15 @@
               </svg>
             </button>
           `;
+
+          // Imagem load handler
+          const img = card.querySelector('.card-img img');
+          img.onload = () => {
+            img.classList.add('loaded');
+          };
+          img.onerror = () => {
+            img.classList.add('loaded');
+          };
 
           card.querySelector('.fav-btn').addEventListener('click', e => {
             e.stopPropagation();
@@ -3925,16 +4176,26 @@
           items.push(card);
         });
 
+        // Remove loading após renderizar
+        setTimeout(() => {
+          track.classList.remove('loading');
+        }, 300);
+
         updateIndicators(items);
         renderChips(activeKey);
         updateActiveFiltersBar();
 
+        // Scroll suave para o card ativo
         setTimeout(() => {
           const idx = sorted.indexOf(activeKey);
           if (idx >= 0 && items[idx]) {
             items[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
           }
-        }, 80);
+          // Restaura posição de scroll salva
+          if (STATE.scrollPosition && !activeKey) {
+            track.scrollLeft = STATE.scrollPosition;
+          }
+        }, 150);
       }
 
       function updateIndicators(items) {
@@ -4095,6 +4356,7 @@
         document.getElementById('chipWrapper').style.display = isHome ? 'block' : 'none';
         document.querySelector('.carousel-wrapper').style.display = isHome ? 'block' : 'none';
         document.getElementById('indicators').style.display = isHome ? 'flex' : 'none';
+        document.getElementById('resultsCount').style.display = isHome ? 'block' : 'none';
 
         document.querySelectorAll('.footer-links a').forEach(link => {
           link.classList.toggle('active-link', link.dataset.page === pageId);
@@ -4207,7 +4469,9 @@
           el.alt = data.title;
           el.loading = 'lazy';
           el.dataset.number = img.number || '';
-          if (i === 0) el.classList.add('active-modal-img');
+          el.onload = () => el.classList.add('loaded');
+          el.onerror = () => el.classList.add('loaded');
+          if (i === 0) el.classList.add('loaded');
           gallery.appendChild(el);
         });
 
@@ -4281,22 +4545,45 @@
       }
 
       // ============================================================
+      // KEYBOARD SHORTCUTS
+      // ============================================================
+      function initKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+          const track = document.getElementById('carouselTrack');
+          if (!track || !document.getElementById('pageHome').classList.contains('active-page')) return;
+
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            track.scrollBy({ left: 300, behavior: 'smooth' });
+          }
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            track.scrollBy({ left: -300, behavior: 'smooth' });
+          }
+        });
+      }
+
+      // ============================================================
       // INIT
       // ============================================================
       function init() {
-        initSplash();
         applyTheme(STATE.theme);
+        initSplash();
 
         // MENU
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const menuOverlay = document.getElementById('menuOverlay');
         const menuClose = document.getElementById('menuClose');
 
-        function openMenu() { menuOverlay.classList.add('active');
-          document.body.style.overflow = 'hidden'; }
+        function openMenu() {
+          menuOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
 
-        function closeMenu() { menuOverlay.classList.remove('active');
-          document.body.style.overflow = ''; }
+        function closeMenu() {
+          menuOverlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
 
         hamburgerBtn.addEventListener('click', openMenu);
         menuClose.addEventListener('click', closeMenu);
@@ -4489,13 +4776,16 @@
           }
         });
 
-        // KEYBOARD
+        // KEYBOARD - Modal
         document.addEventListener('keydown', e => {
           if (!document.getElementById('modalOverlay').classList.contains('active')) return;
           if (e.key === 'Escape') closeModal();
           if (e.key === 'ArrowLeft') goToModalImage(STATE.modalIndex - 1);
           if (e.key === 'ArrowRight') goToModalImage(STATE.modalIndex + 1);
         });
+
+        // KEYBOARD - Carousel shortcuts
+        initKeyboardShortcuts();
 
         // CONTATO
         document.getElementById('contatoForm').addEventListener('submit', function(e) {
@@ -4506,8 +4796,11 @@
             if (!input.value.trim()) { input.classList.add('error');
               valid = false; } else { input.classList.remove('error'); }
           });
-          if (!valid) { alert('⚠️ Preencha todos os campos.'); return; }
-          alert('📨 Mensagem enviada com sucesso!');
+          if (!valid) {
+            showToast('⚠️ Preencha todos os campos.', '⚠️');
+            return;
+          }
+          showToast('📨 Mensagem enviada com sucesso!', '✅');
           this.reset();
         });
 
@@ -4556,6 +4849,9 @@
         const track = document.getElementById('carouselTrack');
         let scrollTimer;
         track.addEventListener('scroll', function() {
+          // Salva posição de scroll
+          STATE.scrollPosition = this.scrollLeft;
+
           clearTimeout(scrollTimer);
           scrollTimer = setTimeout(() => {
             const items = this.querySelectorAll('.carousel-card');
@@ -4597,8 +4893,8 @@
         updateAllFavUI();
         updateFilterBadge();
 
-        console.log('✅ HAIRÓS — VERSÃO FINAL REFATORADA');
-        console.log('✅ 37 estilos | SVGs inline | Design polido');
+        console.log('✅ HAIRÓS — VERSÃO COMPLETA COM TODAS AS MELHORIAS');
+        console.log('✅ 37 estilos | Pré-carregamento | Toast | Shimmer | Keyboard | Scroll persistente');
       }
 
       document.addEventListener('DOMContentLoaded', init);
