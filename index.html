@@ -85,7 +85,7 @@
       padding: 0;
     }
 
-    /* ============================================================
+        /* ============================================================
        SPLASH
        ============================================================ */
     .splash {
@@ -99,43 +99,87 @@
       justify-content: center;
       transition: opacity 0.6s ease;
     }
+
     .splash.hide {
       opacity: 0;
       pointer-events: none;
     }
+
     .splash .splash-logo {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 6vw, 38px);
+      font-size: 36px;
       font-weight: 700;
       font-style: italic;
       color: var(--text-primary);
-      letter-spacing: -0.02em;
+      animation: pulseLogo 1.5s ease-in-out infinite;
     }
+
     .splash .splash-logo span {
       color: var(--gold);
     }
-    .splash .splash-bar {
-      margin-top: 18px;
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      animation: splashBar 0.8s ease forwards;
+
+    .splash .splash-sub {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      opacity: 0.4;
+      margin-top: 2px;
     }
-    @keyframes splashBar {
-      0% {
-        width: 0;
-        opacity: 0;
+
+    .splash .splash-spinner {
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(201, 169, 110, 0.1);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-top: 24px;
+    }
+
+    .splash .splash-bar {
+      width: 140px;
+      height: 2px;
+      background: rgba(201, 169, 110, 0.08);
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .splash .splash-bar-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 10px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .splash .splash-percent {
+      font-size: 10px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      opacity: 0.3;
+      margin-top: 6px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      min-height: 16px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
-      100% {
-        width: 40px;
-        opacity: 1;
-      }
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
 
     /* ============================================================
        APP CONTAINER
        ============================================================ */
-    .app {
+        .app {
       width: 100%;
       max-width: 430px;
       height: 100vh;
@@ -147,8 +191,17 @@
       padding-top: calc(6px + var(--safe-top));
       padding-bottom: calc(2px + var(--safe-bottom));
       position: relative;
-      transition: background var(--transition);
+      transition: background var(--transition), opacity 0.6s ease, transform 0.6s ease;
       overflow: hidden;
+      opacity: 0;
+      transform: scale(0.97);
+      pointer-events: none;
+    }
+
+    .app.visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
     }
 
     @media (min-width: 768px) {
@@ -2427,10 +2480,15 @@
 
 <body>
 
-  <!-- ===== SPLASH ===== -->
+    <!-- ===== SPLASH ===== -->
   <div class="splash" id="splash">
     <div class="splash-logo">HairOS<span>.</span></div>
-    <div class="splash-bar"></div>
+    <div class="splash-sub">Catálogo · 2026</div>
+    <div class="splash-spinner"></div>
+    <div class="splash-bar">
+      <div class="splash-bar-fill" id="splashBarFill"></div>
+    </div>
+    <div class="splash-percent" id="splashPercent">CARREGANDO</div>
   </div>
 
   <div class="app">
@@ -2851,24 +2909,72 @@
     (function() {
       'use strict';
 
-      // ============================================================
-      // SPLASH
+            // ============================================================
+      // SPLASH — com barra de progresso
       // ============================================================
       function initSplash() {
         const splash = document.getElementById('splash');
+        const barFill = document.getElementById('splashBarFill');
+        const percentText = document.getElementById('splashPercent');
+        const app = document.querySelector('.app');
+
         if (!splash) return;
 
-        function hideSplash() {
-          splash.classList.add('hide');
-          setTimeout(() => { splash.remove(); }, 600);
-        }
+        let progress = 0;
 
-        if (document.readyState === 'complete') {
-          setTimeout(hideSplash, 400);
-        } else {
-          window.addEventListener('load', () => setTimeout(hideSplash, 400));
-          setTimeout(hideSplash, 1200);
-        }
+        const interval = setInterval(() => {
+          progress += 2;
+
+          if (progress > 100) {
+            clearInterval(interval);
+
+            // Mostra o app e esconde o splash
+            setTimeout(() => {
+              app.style.opacity = '1';
+              app.style.transform = 'scale(1)';
+              app.style.pointerEvents = 'auto';
+              splash.classList.add('hide');
+
+              setTimeout(() => {
+                if (splash.parentNode) splash.remove();
+              }, 600);
+            }, 200);
+
+            return;
+          }
+
+          // Atualiza barra
+          if (barFill) {
+            barFill.style.width = progress + '%';
+          }
+
+          // Atualiza texto
+          if (percentText) {
+            if (progress < 30) {
+              percentText.textContent = 'CARREGANDO';
+            } else if (progress < 60) {
+              percentText.textContent = 'PREPARANDO ESTILOS';
+            } else if (progress < 85) {
+              percentText.textContent = 'QUASE PRONTO';
+            } else {
+              percentText.textContent = 'PRONTO! ✨';
+            }
+          }
+        }, 30);
+
+        // Fallback: se algo travar, força saída após 5 segundos
+        setTimeout(() => {
+          if (!splash.classList.contains('hide')) {
+            clearInterval(interval);
+            app.style.opacity = '1';
+            app.style.transform = 'scale(1)';
+            app.style.pointerEvents = 'auto';
+            splash.classList.add('hide');
+            setTimeout(() => {
+              if (splash.parentNode) splash.remove();
+            }, 600);
+          }
+        }, 5000);
       }
 
       // ============================================================
