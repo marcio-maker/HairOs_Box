@@ -2061,6 +2061,7 @@
       pointer-events: none;
     }
 
+
     /* TOP BAR */
     .modal-topbar {
       position: absolute;
@@ -2079,56 +2080,94 @@
       pointer-events: auto;
     }
 
-    .modal-topbar .btn-close {
+    /* BOTÃO DE VOLTAR */
+    .modal-topbar .btn-back {
       font-family: 'Inter', sans-serif;
       font-size: 20px;
-      font-weight: 200;
-      color: rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
+      font-weight: 300;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
+      line-height: 1;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     }
 
-    .modal-topbar .btn-close:hover {
-      color: rgba(255, 255, 255, 0.6);
-      background: rgba(255, 255, 255, 0.04);
+    .modal-topbar .btn-back:hover {
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
     }
 
+    .modal-topbar .btn-back:active {
+      transform: scale(0.92);
+    }
+
+    /* BOTÃO DE FAVORITOS */
     .modal-topbar .btn-fav {
       font-family: 'Inter', sans-serif;
       font-size: 18px;
       font-weight: 200;
-      color: rgba(255, 255, 255, 0.15);
-      background: rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
     }
 
     .modal-topbar .btn-fav:hover {
-      color: rgba(255, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.04);
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.08);
     }
 
     .modal-topbar .btn-fav.active {
       color: #ff4757;
-      background: rgba(255, 71, 87, 0.1);
-      border-color: rgba(255, 71, 87, 0.1);
+      background: rgba(255, 71, 87, 0.3);
+      border-color: rgba(255, 71, 87, 0.4);
+      box-shadow: 0 4px 24px rgba(255, 71, 87, 0.2);
+    }
+
+    /* RESPONSIVO */
+    @media (max-height: 640px) {
+
+      .modal-topbar .btn-back,
+      .modal-topbar .btn-fav {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 375px) {
+
+      .modal-topbar .btn-back,
+      .modal-topbar .btn-fav {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
     }
 
     /* INDICADORES */
@@ -3365,7 +3404,7 @@
 
       <!-- TOP BAR -->
       <div class="modal-topbar">
-        <button class="btn-close" id="modalClose">✕</button>
+        <button class="btn-back" id="modalBack" aria-label="Voltar">←</button>
         <button class="btn-fav" id="modalFavBtn">♥</button>
       </div>
 
@@ -5966,7 +6005,7 @@
         });
 
         // MODAL EVENTS
-        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modalBack').addEventListener('click', closeModal);
         document.getElementById('modalOverlay').addEventListener('click', e => {
           if (e.target === e.currentTarget) closeModal();
         });
